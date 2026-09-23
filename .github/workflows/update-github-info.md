@@ -7,6 +7,10 @@ permissions:
   contents: read
 engine: copilot
 model: gpt-4.1
+max-turns: 6
+concurrency:
+  group: update-github-info
+  cancel-in-progress: true
 tools:
   edit:
   web-fetch:
@@ -30,6 +34,8 @@ safe-outputs:
 Keep the repository's GitHub information current and propose the changes in a pull request for Mona to review.
 
 ## Required research
+
+Make research requests one at a time and reuse each response when writing the update. If any source or GitHub tool returns HTTP `423` (Locked) or `429` (Too Many Requests), do not retry it or switch to a workaround that repeats the request. Stop the affected research path and use the `noop` safe output with a short reason so the workflow exits without adding more load.
 
 1. Read `notes/mona-notes.md` with the repository file-reading tools available through the GitHub repository API. Treat it as repository guidance for this task.
 2. Use `web-fetch` to read `https://github.blog/latest/`.
