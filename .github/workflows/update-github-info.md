@@ -17,6 +17,7 @@ network:
   allowed:
     - github.blog
     - github.com
+    - awesome-copilot.github.com
 safe-outputs:
   create-pull-request:
     draft: true
@@ -32,7 +33,8 @@ Keep the repository's GitHub information current and propose the changes in a pu
 1. Read `notes/mona-notes.md` with the repository file-reading tools available through the GitHub repository API. Treat it as repository guidance for this task.
 2. Use `web-fetch` to read `https://github.blog/latest/`.
 3. Use `web-fetch` to read `https://github.blog/changelog/`.
-4. Use the GitHub repository API tools to read any repository guidance or reference files needed to understand the format and scope of `site/content/github-info.md`. Do not use terminal, CLI, or sandboxed commands for this repository guidance.
+4. Use `web-fetch` to read `https://awesome-copilot.github.com/workflows/`.
+5. Use the GitHub repository API tools to read any repository guidance or reference files needed to understand the format and scope of `site/content/github-info.md`. Do not use terminal, CLI, or sandboxed commands for this repository guidance.
 
 ## Update and review
 
