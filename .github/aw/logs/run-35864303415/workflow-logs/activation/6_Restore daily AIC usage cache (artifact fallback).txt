@@ -1,0 +1,31 @@
+﻿2026-09-23T13:02:55.4573211Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T13:02:55.4573732Z with:
+2026-09-23T13:02:55.4577115Z   github-token: ***
+2026-09-23T13:02:55.4578386Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'restore_aic_usage_cache_fallback.cjs'));
+await main();
+
+2026-09-23T13:02:55.4579729Z   debug: false
+2026-09-23T13:02:55.4580039Z   user-agent: actions/github-script
+2026-09-23T13:02:55.4580382Z   result-encoding: json
+2026-09-23T13:02:55.4580665Z   retries: 0
+2026-09-23T13:02:55.4580971Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T13:02:55.4581327Z env:
+2026-09-23T13:02:55.4581699Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:02:55.4582054Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:02:55.4583079Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:02:55.4584040Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:02:55.4584384Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:02:55.4584745Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:02:55.4585074Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-09-23T13:02:55.4585574Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:02:55.4585937Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:02:55.4586367Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: c9990c756dca043b
+2026-09-23T13:02:55.4586733Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168571291
+2026-09-23T13:02:55.4587091Z   GH_AW_RESTORE_DAILY_AIC_CACHE_HIT: false
+2026-09-23T13:02:55.4587725Z   GH_AW_RESTORE_DAILY_AIC_CACHE_MATCHED_KEY: agentic-workflow-usage-updategithubinfo-35863354625
+2026-09-23T13:02:55.4588257Z ##[endgroup]
+2026-09-23T13:02:55.7629469Z [daily-aic-cache-fallback] Cache was restored; skipping artifact fallback: {"cacheHit":"false","cacheMatchedKey":"agentic-workflow-usage-updategithubinfo-35863354625"}

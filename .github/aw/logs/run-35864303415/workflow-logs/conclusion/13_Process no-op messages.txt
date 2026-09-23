@@ -1,0 +1,40 @@
+﻿2026-09-23T13:06:16.4937634Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T13:06:16.4939572Z with:
+2026-09-23T13:06:16.4949796Z   github-token: ***
+2026-09-23T13:06:16.4954323Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'handle_noop_message.cjs'));
+await main();
+
+2026-09-23T13:06:16.4959264Z   debug: false
+2026-09-23T13:06:16.4960395Z   user-agent: actions/github-script
+2026-09-23T13:06:16.4961710Z   result-encoding: json
+2026-09-23T13:06:16.4962846Z   retries: 0
+2026-09-23T13:06:16.4964034Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T13:06:16.4965629Z env:
+2026-09-23T13:06:16.4966670Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:06:16.4968041Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:06:16.4971694Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:06:16.4975534Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:06:16.4976921Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:06:16.4978347Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:06:16.4979596Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:06:16.4981034Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:06:16.4982677Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: a5a9fe6c102ebaf3
+2026-09-23T13:06:16.4984174Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168768773
+2026-09-23T13:06:16.4985830Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-09-23T13:06:16.4987236Z   GH_AW_NOOP_MAX: 1
+2026-09-23T13:06:16.4988418Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T13:06:16.4993269Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T13:06:16.4999675Z   GH_AW_RUN_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/actions/runs/35864303415
+2026-09-23T13:06:16.5002069Z   GH_AW_AGENT_CONCLUSION: failure
+2026-09-23T13:06:16.5003407Z   GH_AW_NOOP_REPORT_AS_ISSUE: false
+2026-09-23T13:06:16.5004662Z   GH_AW_AIC: 
+2026-09-23T13:06:16.5005951Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-09-23T13:06:16.5007215Z   GH_AW_AMBIENT_CONTEXT: 
+2026-09-23T13:06:16.5008444Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T13:06:16.5009743Z ##[endgroup]
+2026-09-23T13:06:16.6267421Z Agent output content length: 24
+2026-09-23T13:06:16.6273845Z No noop items found in agent output

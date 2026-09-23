@@ -1,0 +1,20 @@
+﻿2026-09-23T12:39:46.7739177Z ##[group]Run actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-09-23T12:39:46.7741055Z with:
+2026-09-23T12:39:46.7742300Z   key: agentic-workflow-usage-updategithubinfo-35861368570
+2026-09-23T12:39:46.7744036Z   path: /tmp/gh-aw/agentic-workflow-usage-cache.jsonl
+2026-09-23T12:39:46.7745775Z   enableCrossOsArchive: false
+2026-09-23T12:39:46.7746928Z env:
+2026-09-23T12:39:46.7747884Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:46.7749174Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:46.7752849Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:46.7756702Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:46.7758002Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:46.7759860Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:46.7761061Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:46.7762454Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:46.7764142Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: f314a8841215b52f
+2026-09-23T12:39:46.7765766Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167181577
+2026-09-23T12:39:46.7767068Z ##[endgroup]
+2026-09-23T12:39:46.9365324Z [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room --files-from manifest.txt --use-compress-program zstdmt
+2026-09-23T12:39:47.4179009Z Sent 290 of 290 (100.0%), 0.0 MBs/sec
+2026-09-23T12:39:47.6564173Z Cache saved with key: agentic-workflow-usage-updategithubinfo-35861368570

@@ -1,0 +1,50 @@
+﻿2026-09-23T12:38:34.7363721Z ##[group]Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+2026-09-23T12:38:34.7364214Z with:
+2026-09-23T12:38:34.7364451Z   name: agent-output-fallback
+2026-09-23T12:38:34.7364821Z   path: /tmp/gh-aw/agent_output.json
+/tmp/gh-aw/safeoutputs.jsonl
+
+2026-09-23T12:38:34.7365211Z   if-no-files-found: ignore
+2026-09-23T12:38:34.7365476Z   compression-level: 6
+2026-09-23T12:38:34.7365755Z   overwrite: false
+2026-09-23T12:38:34.7365998Z   include-hidden-files: false
+2026-09-23T12:38:34.7366255Z   archive: true
+2026-09-23T12:38:34.7366630Z env:
+2026-09-23T12:38:34.7366983Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:38:34.7367481Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:38:34.7369198Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:38:34.7370907Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:38:34.7371445Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:38:34.7372022Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:38:34.7372645Z   DEFAULT_BRANCH: main
+2026-09-23T12:38:34.7373032Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-09-23T12:38:34.7373462Z   GH_AW_ASSETS_BRANCH: 
+2026-09-23T12:38:34.7373851Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-09-23T12:38:34.7374360Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-09-23T12:38:34.7374908Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-09-23T12:38:34.7375346Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-09-23T12:38:34.7375782Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-09-23T12:38:34.7376196Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-09-23T12:38:34.7376629Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-09-23T12:38:34.7376878Z   GH_AW_PR_HEAD_REPO: 
+2026-09-23T12:38:34.7377132Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:38:34.7377415Z   GH_AW_WORKFLOW_ID_SANITIZED: updategithubinfo
+2026-09-23T12:38:34.7377801Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:38:34.7378279Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5c6d187e32cf3618
+2026-09-23T12:38:34.7378861Z   GITHUB_AW_OTEL_JOB_START_MS: 1790166944750
+2026-09-23T12:38:34.7379442Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-09-23T12:38:34.7379761Z ##[endgroup]
+2026-09-23T12:38:34.8863516Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-09-23T12:38:34.8865986Z The least common ancestor is /tmp/gh-aw. This will be the root directory of the artifact
+2026-09-23T12:38:34.8867025Z With the provided path, there will be 1 file uploaded
+2026-09-23T12:38:34.8893514Z Artifact name is valid!
+2026-09-23T12:38:34.8923155Z Root directory input is valid!
+2026-09-23T12:38:35.2034283Z Uploading artifact: agent-output-fallback.zip
+2026-09-23T12:38:35.2077396Z Beginning upload of artifact content to blob storage
+2026-09-23T12:38:35.4448181Z Uploaded bytes 170
+2026-09-23T12:38:35.5027544Z Finished uploading artifact content to blob storage!
+2026-09-23T12:38:35.5028836Z SHA256 digest of uploaded artifact is 94d259c91ac1693decda9b84ec1c547e7659d1cae736fa6eae46c671be73035f
+2026-09-23T12:38:35.5029794Z Finalizing artifact upload
+2026-09-23T12:38:35.8633614Z Artifact agent-output-fallback successfully finalized. Artifact ID 10750617075
+2026-09-23T12:38:35.8636131Z Artifact agent-output-fallback has been successfully uploaded! Final size is 170 bytes. Artifact ID is 10750617075
+2026-09-23T12:38:35.8638996Z Artifact download URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/actions/runs/35861368570/artifacts/10750617075

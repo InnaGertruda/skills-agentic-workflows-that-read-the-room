@@ -1,0 +1,43 @@
+﻿2026-09-23T13:03:56.6456694Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T13:03:56.6457451Z with:
+2026-09-23T13:03:56.6458634Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'create_files.cjs'));
+await main();
+
+2026-09-23T13:03:56.6462236Z   github-token: ***
+2026-09-23T13:03:56.6462468Z   debug: false
+2026-09-23T13:03:56.6462694Z   user-agent: actions/github-script
+2026-09-23T13:03:56.6462980Z   result-encoding: json
+2026-09-23T13:03:56.6463203Z   retries: 0
+2026-09-23T13:03:56.6463440Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T13:03:56.6463741Z env:
+2026-09-23T13:03:56.6463946Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:03:56.6464257Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:03:56.6465210Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:03:56.6466372Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:03:56.6466666Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:03:56.6466975Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:03:56.6467475Z   DEFAULT_BRANCH: main
+2026-09-23T13:03:56.6467721Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-09-23T13:03:56.6467979Z   GH_AW_ASSETS_BRANCH: 
+2026-09-23T13:03:56.6468208Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-09-23T13:03:56.6468496Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-09-23T13:03:56.6468818Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-09-23T13:03:56.6469067Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-09-23T13:03:56.6469538Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-09-23T13:03:56.6469917Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-09-23T13:03:56.6485802Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-09-23T13:03:56.6486245Z   GH_AW_PR_HEAD_REPO: 
+2026-09-23T13:03:56.6486655Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:03:56.6487357Z   GH_AW_WORKFLOW_ID_SANITIZED: updategithubinfo
+2026-09-23T13:03:56.6488005Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:03:56.6488439Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 7d8a91ed6b5765c4
+2026-09-23T13:03:56.6488779Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168612689
+2026-09-23T13:03:56.6489108Z   GH_AW_FILE_ROOT: /home/runner/work/_temp/gh-aw
+2026-09-23T13:03:56.6489652Z   GH_AW_FILE_CONFIG: {"files":[{"path":"safeoutputs/config.json","content_env":"GH_AW_SAFE_OUTPUTS_CONFIG"}]}
+2026-09-23T13:03:56.6493116Z   GH_AW_SAFE_OUTPUTS_CONFIG: {"create_pull_request":{"draft":true,"max":1,"max_patch_files":100,"max_patch_size":4096,"protect_top_level_dot_folders":true,"protected_files":["package.json","bun.lockb","bunfig.toml","deno.json","deno.jsonc","deno.lock","global.json","NuGet.Config","Directory.Packages.props","mix.exs","mix.lock","go.mod","go.sum","stack.yaml","stack.yaml.lock","pom.xml","build.gradle","build.gradle.kts","settings.gradle","settings.gradle.kts","gradle.properties","package-lock.json","yarn.lock","pnpm-lock.yaml","npm-shrinkwrap.json","requirements.txt","Pipfile","Pipfile.lock","pyproject.toml","setup.py","setup.cfg","Gemfile","Gemfile.lock","uv.lock","CODEOWNERS","DESIGN.md","README.md","CONTRIBUTING.md","CHANGELOG.md","SECURITY.md","CODE_OF_CONDUCT.md","AGENTS.md"],"protected_files_policy":"request_review"},"create_report_incomplete_issue":{},"missing_data":{},"missing_tool":{},"noop":{"max":1,"report-as-issue":"false"},"report_incomplete":{}}
+2026-09-23T13:03:56.6496387Z ##[endgroup]
+2026-09-23T13:03:56.7503510Z Created 1 generated file(s) under /home/runner/work/_temp/gh-aw

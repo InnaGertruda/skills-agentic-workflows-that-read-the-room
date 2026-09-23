@@ -1,0 +1,27 @@
+﻿2026-09-23T12:35:27.3035306Z ##[group]Run actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9
+2026-09-23T12:35:27.3037464Z with:
+2026-09-23T12:35:27.3038542Z   key: agentic-workflow-usage-updategithubinfo-35861368570
+2026-09-23T12:35:27.3040065Z   restore-keys: agentic-workflow-usage-updategithubinfo-
+2026-09-23T12:35:27.3041494Z   path: /tmp/gh-aw/agentic-workflow-usage-cache.jsonl
+2026-09-23T12:35:27.3042785Z   enableCrossOsArchive: false
+2026-09-23T12:35:27.3044043Z   fail-on-cache-miss: false
+2026-09-23T12:35:27.3045029Z   lookup-only: false
+2026-09-23T12:35:27.3126965Z env:
+2026-09-23T12:35:27.3128157Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:35:27.3129332Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:35:27.3132555Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:35:27.3135922Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:35:27.3137259Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:35:27.3138460Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:35:27.3139513Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-09-23T12:35:27.3140557Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:35:27.3141701Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:35:27.3143050Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5e5a65a0467a2627
+2026-09-23T12:35:27.3144513Z   GITHUB_AW_OTEL_JOB_START_MS: 1790166926997
+2026-09-23T12:35:27.3145760Z ##[endgroup]
+2026-09-23T12:35:27.6288568Z Cache hit for restore-key: agentic-workflow-usage-updategithubinfo-35860653872
+2026-09-23T12:35:27.9454276Z Received 275 of 275 (100.0%), 0.0 MBs/sec
+2026-09-23T12:35:27.9457653Z Cache Size: ~0 MB (275 B)
+2026-09-23T12:35:27.9474349Z [command]/usr/bin/tar -xf /home/runner/work/_temp/bd0ecf28-9997-4a38-9e4a-7fc2e3d8ac92/cache.tzst -P -C /home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room --use-compress-program unzstd
+2026-09-23T12:35:27.9543141Z Cache restored successfully
+2026-09-23T12:35:27.9622881Z Cache restored from key: agentic-workflow-usage-updategithubinfo-35860653872

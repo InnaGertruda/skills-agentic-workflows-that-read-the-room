@@ -1,0 +1,51 @@
+﻿2026-09-23T13:03:46.5020213Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T13:03:46.5020654Z with:
+2026-09-23T13:03:46.5021667Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const determineAutomaticLockdown = require(path.join(actionsDir, 'determine_automatic_lockdown.cjs'));
+await determineAutomaticLockdown(github, context, core);
+
+2026-09-23T13:03:46.5025329Z   github-token: ***
+2026-09-23T13:03:46.5025557Z   debug: false
+2026-09-23T13:03:46.5025783Z   user-agent: actions/github-script
+2026-09-23T13:03:46.5026073Z   result-encoding: json
+2026-09-23T13:03:46.5026301Z   retries: 0
+2026-09-23T13:03:46.5026539Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T13:03:46.5026841Z env:
+2026-09-23T13:03:46.5027046Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:03:46.5027641Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:03:46.5028608Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:03:46.5029573Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:03:46.5029859Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:03:46.5030164Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:03:46.5030411Z   DEFAULT_BRANCH: main
+2026-09-23T13:03:46.5030646Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-09-23T13:03:46.5030898Z   GH_AW_ASSETS_BRANCH: 
+2026-09-23T13:03:46.5031126Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-09-23T13:03:46.5031414Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-09-23T13:03:46.5031734Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-09-23T13:03:46.5031982Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-09-23T13:03:46.5032237Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-09-23T13:03:46.5032485Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-09-23T13:03:46.5032727Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-09-23T13:03:46.5032959Z   GH_AW_PR_HEAD_REPO: 
+2026-09-23T13:03:46.5033185Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:03:46.5033461Z   GH_AW_WORKFLOW_ID_SANITIZED: updategithubinfo
+2026-09-23T13:03:46.5033821Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:03:46.5034187Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 7d8a91ed6b5765c4
+2026-09-23T13:03:46.5034508Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168612689
+2026-09-23T13:03:46.5034784Z   GH_AW_GITHUB_TOKEN: 
+2026-09-23T13:03:46.5035020Z   GH_AW_GITHUB_MCP_SERVER_TOKEN: 
+2026-09-23T13:03:46.5035296Z   GH_AW_GITHUB_MIN_INTEGRITY: approved
+2026-09-23T13:03:46.5035569Z   GH_AW_GITHUB_REPOS: all
+2026-09-23T13:03:46.5035797Z ##[endgroup]
+2026-09-23T13:03:46.5993169Z Determining automatic guard policy for GitHub MCP server
+2026-09-23T13:03:46.5994781Z Checking repository: InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T13:03:46.9967391Z Repository visibility: public
+2026-09-23T13:03:46.9967957Z Repository is private: false
+2026-09-23T13:03:46.9973761Z Configured min-integrity: approved
+2026-09-23T13:03:46.9974725Z Configured repos: all
+2026-09-23T13:03:46.9975950Z min-integrity already configured as 'approved' — not overriding
+2026-09-23T13:03:46.9976859Z repos already configured as 'all' — not overriding
+2026-09-23T13:03:46.9978014Z Automatic guard policy determination complete for public repository
+2026-09-23T13:03:46.9979158Z GitHub MCP guard policy automatically applied for public repository. min-integrity='approved' and repos='all'.

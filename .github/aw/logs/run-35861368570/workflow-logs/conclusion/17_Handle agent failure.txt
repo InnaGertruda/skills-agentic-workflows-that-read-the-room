@@ -1,0 +1,121 @@
+﻿2026-09-23T12:39:50.5979487Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T12:39:50.5980975Z with:
+2026-09-23T12:39:50.5984028Z   github-token: ***
+2026-09-23T12:39:50.5985884Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'handle_agent_failure.cjs'));
+await main();
+
+2026-09-23T12:39:50.5987445Z   debug: false
+2026-09-23T12:39:50.5987845Z   user-agent: actions/github-script
+2026-09-23T12:39:50.5988295Z   result-encoding: json
+2026-09-23T12:39:50.5988680Z   retries: 0
+2026-09-23T12:39:50.5989099Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T12:39:50.5989569Z env:
+2026-09-23T12:39:50.5989928Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:50.5990401Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:50.5991652Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:50.5992870Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:50.5993358Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:50.5993836Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:50.5994266Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:50.5994954Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:50.5995520Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: f314a8841215b52f
+2026-09-23T12:39:50.5996025Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167181577
+2026-09-23T12:39:50.5996540Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-09-23T12:39:50.5997040Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:50.5997973Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T12:39:50.5999196Z   GH_AW_RUN_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/actions/runs/35861368570
+2026-09-23T12:39:50.5999953Z   GH_AW_AGENT_CONCLUSION: failure
+2026-09-23T12:39:50.6000410Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T12:39:50.6000887Z   GH_AW_ACTION_FAILURE_ISSUE_EXPIRES_HOURS: 0
+2026-09-23T12:39:50.6001356Z   GH_AW_ENGINE_ID: copilot
+2026-09-23T12:39:50.6001783Z   GH_AW_SECRET_VERIFICATION_RESULT: success
+2026-09-23T12:39:50.6003710Z   GH_AW_ENGINE_SECRET_FAILURE_MESSAGE: **Alternative**: If your organization has a Copilot subscription, you can avoid the need for a personal access token by adding a top-level `permissions` block to your workflow file. This enables Copilot inference through the org using the built-in GitHub Actions token.
+
+```yaml
+permissions:
+  copilot-requests: write
+```
+
+See: https://github.github.com/gh-aw/reference/engines/#github-copilot-default
+2026-09-23T12:39:50.6005872Z   GH_AW_CHECKOUT_PR_SUCCESS: true
+2026-09-23T12:39:50.6006329Z   GH_AW_EFFECTIVE_TOKENS: 
+2026-09-23T12:39:50.6006758Z   GH_AW_AI_CREDITS_RATE_LIMIT_ERROR: false
+2026-09-23T12:39:50.6007224Z   GH_AW_UNKNOWN_MODEL_AI_CREDITS: false
+2026-09-23T12:39:50.6007857Z   GH_AW_AIC: 
+2026-09-23T12:39:50.6008231Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-09-23T12:39:50.6008684Z   GH_AW_MAX_AI_CREDITS: 1000
+2026-09-23T12:39:50.6009119Z   GH_AW_INFERENCE_ACCESS_ERROR: false
+2026-09-23T12:39:50.6009576Z   GH_AW_MCP_POLICY_ERROR: false
+2026-09-23T12:39:50.6010015Z   GH_AW_AGENTIC_ENGINE_TIMEOUT: false
+2026-09-23T12:39:50.6010471Z   GH_AW_MODEL_NOT_SUPPORTED_ERROR: false
+2026-09-23T12:39:50.6010939Z   GH_AW_HTTP_400_RESPONSE_ERROR: false
+2026-09-23T12:39:50.6011398Z   GH_AW_MAX_CACHE_MISSES_EXCEEDED: false
+2026-09-23T12:39:50.6011861Z   GH_AW_MISSING_MODEL_PRICING_ERROR: false
+2026-09-23T12:39:50.6012335Z   GH_AW_MISSING_MODEL_PRICING_MODEL_NAME: 
+2026-09-23T12:39:50.6012818Z   GH_AW_SHELL_EXPANSION_GUARD_REJECTED: false
+2026-09-23T12:39:50.6013785Z   GH_AW_ENGINE_API_HOSTS: api.enterprise.githubcopilot.com,api.githubcopilot.com,api.business.githubcopilot.com,api.individual.githubcopilot.com
+2026-09-23T12:39:50.6015106Z   GH_AW_CODE_PUSH_FAILURE_ERRORS: 
+2026-09-23T12:39:50.6015579Z   GH_AW_CODE_PUSH_FAILURE_COUNT: 
+2026-09-23T12:39:50.6016031Z   GH_AW_LOCKDOWN_CHECK_FAILED: false
+2026-09-23T12:39:50.6016481Z   GH_AW_OAUTH_TOKEN_CHECK_FAILED: false
+2026-09-23T12:39:50.6016933Z   GH_AW_STALE_LOCK_FILE_FAILED: false
+2026-09-23T12:39:50.6017388Z   GH_AW_DAILY_AI_CREDITS_EXCEEDED: false
+2026-09-23T12:39:50.6017879Z   GH_AW_DAILY_AI_CREDITS_TOTAL_EFFECTIVE_TOKENS: 
+2026-09-23T12:39:50.6018369Z   GH_AW_DAILY_AI_CREDITS_THRESHOLD: 
+2026-09-23T12:39:50.6018818Z   GH_AW_GROUP_REPORTS: false
+2026-09-23T12:39:50.6019259Z   GH_AW_FAILURE_REPORT_AS_ISSUE: true
+2026-09-23T12:39:50.6019738Z   GH_AW_MISSING_TOOL_REPORT_AS_FAILURE: true
+2026-09-23T12:39:50.6020221Z   GH_AW_MISSING_DATA_REPORT_AS_FAILURE: true
+2026-09-23T12:39:50.6020679Z   GH_AW_TIMEOUT_MINUTES: 20
+2026-09-23T12:39:50.6021081Z ##[endgroup]
+2026-09-23T12:39:50.7426898Z [ai-credits] aiCredits source=none GH_AW_AIC=(unset)
+2026-09-23T12:39:50.7432350Z [ai-credits] maxAICredits source=env(GH_AW_MAX_AI_CREDITS) value=1000
+2026-09-23T12:39:50.7436070Z [ai-credits] rateLimitSignal source=none
+2026-09-23T12:39:50.7476395Z Agent conclusion: failure
+2026-09-23T12:39:50.7479402Z Workflow name: update-github-info
+2026-09-23T12:39:50.7482193Z Workflow ID: update-github-info
+2026-09-23T12:39:50.7485194Z Secret verification result: success
+2026-09-23T12:39:50.7487881Z Engine secret failure message: (set)
+2026-09-23T12:39:50.7491308Z Assignment error count: 0
+2026-09-23T12:39:50.7495342Z Assign copilot failure count: 0
+2026-09-23T12:39:50.7498882Z Skill install failure count: 0
+2026-09-23T12:39:50.7501929Z Create discussion error count: 0
+2026-09-23T12:39:50.7505051Z Code push failure count: 0
+2026-09-23T12:39:50.7508634Z Checkout PR success: true
+2026-09-23T12:39:50.7511405Z AI credits: (none)
+2026-09-23T12:39:50.7514198Z Configured max AI credits: 1000
+2026-09-23T12:39:50.7517345Z AI credits rate-limit error: false
+2026-09-23T12:39:50.7520152Z Max AI credits exceeded (harness budget abort): false
+2026-09-23T12:39:50.7523055Z Daily workflow AIC guardrail exceeded: false
+2026-09-23T12:39:50.7524807Z Inference access error: false
+2026-09-23T12:39:50.7526483Z MCP policy error: false
+2026-09-23T12:39:50.7527629Z Agentic engine timeout: false
+2026-09-23T12:39:50.7528799Z Model not supported error: false
+2026-09-23T12:39:50.7529949Z HTTP 400 response error: false
+2026-09-23T12:39:50.7531103Z Unknown model AI credits error: false
+2026-09-23T12:39:50.7532367Z Unknown model AI credits sources (audit/output): false/false
+2026-09-23T12:39:50.7533664Z Missing model pricing error: false (model: (unknown))
+2026-09-23T12:39:50.7535231Z Shell expansion guard rejected: false
+2026-09-23T12:39:50.7536505Z Push repo-memory result: 
+2026-09-23T12:39:50.7537868Z App token minting failed (safe_outputs/conclusion/activation): false/false/false
+2026-09-23T12:39:50.7539224Z Lockdown check failed: false
+2026-09-23T12:39:50.7540382Z OAuth token check failed: false
+2026-09-23T12:39:50.7541534Z Stale lock file check failed: false
+2026-09-23T12:39:50.7547962Z Cache memory enabled: false
+2026-09-23T12:39:50.7548515Z Cache memory restored (from restore outputs): false
+2026-09-23T12:39:50.7549050Z Missing tool report-as-failure: true
+2026-09-23T12:39:50.7549524Z Missing data report-as-failure: true
+2026-09-23T12:39:50.7553131Z Agent output content length: 24
+2026-09-23T12:39:50.7695435Z Searching for pull request from branch: main
+2026-09-23T12:39:51.2109280Z No pull request found for branch: main
+2026-09-23T12:39:51.2246185Z Parent issue creation is disabled (group-reports: false)
+2026-09-23T12:39:51.2288242Z Checking for existing issue with precise failure metadata for title: "[aw] update-github-info failed"
+2026-09-23T12:39:51.5895990Z Found existing issue #7: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/issues/7
+2026-09-23T12:39:51.5911960Z agent-stdio.log not found at /tmp/gh-aw/agent-stdio.log, skipping engine failure context
+2026-09-23T12:39:51.5922754Z Generating failure comment footer with aiCredits context: (none)
+2026-09-23T12:39:52.0856543Z ✓ Added comment to existing issue #7
+2026-09-23T12:39:52.6369363Z Cascade check: 2 failure issue(s) in the last 60 min (threshold: 10) — no cascade

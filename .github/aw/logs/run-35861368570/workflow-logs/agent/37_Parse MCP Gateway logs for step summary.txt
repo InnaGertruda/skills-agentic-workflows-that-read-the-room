@@ -1,0 +1,383 @@
+﻿2026-09-23T12:38:33.8066913Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T12:38:33.8067632Z with:
+2026-09-23T12:38:33.8069718Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'parse_mcp_gateway_log.cjs'));
+await main();
+
+2026-09-23T12:38:33.8076197Z   github-token: ***
+2026-09-23T12:38:33.8076577Z   debug: false
+2026-09-23T12:38:33.8076948Z   user-agent: actions/github-script
+2026-09-23T12:38:33.8077418Z   result-encoding: json
+2026-09-23T12:38:33.8077794Z   retries: 0
+2026-09-23T12:38:33.8078187Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T12:38:33.8078688Z env:
+2026-09-23T12:38:33.8079039Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:38:33.8079533Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:38:33.8081204Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:38:33.8083070Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:38:33.8083557Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:38:33.8084089Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:38:33.8084513Z   DEFAULT_BRANCH: main
+2026-09-23T12:38:33.8084896Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-09-23T12:38:33.8085306Z   GH_AW_ASSETS_BRANCH: 
+2026-09-23T12:38:33.8085696Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-09-23T12:38:33.8086182Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-09-23T12:38:33.8086733Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-09-23T12:38:33.8087157Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-09-23T12:38:33.8087597Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-09-23T12:38:33.8087998Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-09-23T12:38:33.8088402Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-09-23T12:38:33.8088811Z   GH_AW_PR_HEAD_REPO: 
+2026-09-23T12:38:33.8089190Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:38:33.8089648Z   GH_AW_WORKFLOW_ID_SANITIZED: updategithubinfo
+2026-09-23T12:38:33.8090342Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:38:33.8091200Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5c6d187e32cf3618
+2026-09-23T12:38:33.8092335Z   GITHUB_AW_OTEL_JOB_START_MS: 1790166944750
+2026-09-23T12:38:33.8112520Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-09-23T12:38:33.8113118Z ##[endgroup]
+2026-09-23T12:38:33.9207618Z ##[group]=== Listing All Gateway-Related Files ===
+2026-09-23T12:38:33.9210172Z ##[group]📁 Directory: /tmp/gh-aw/mcp-logs
+2026-09-23T12:38:33.9212471Z ##[group]gateway.md (560 bytes)
+2026-09-23T12:38:33.9213527Z <details>
+2026-09-23T12:38:33.9214115Z <summary>MCP Gateway</summary>
+2026-09-23T12:38:33.9214558Z 
+2026-09-23T12:38:33.9215004Z - ✓ **startup** MCPG Gateway version: v0.4.18
+2026-09-23T12:38:33.9216666Z - ✓ **startup** Starting MCPG with config: stdin, listen: 0.0.0.0:8080, log-dir: /tmp/gh-aw/mcp-logs/
+2026-09-23T12:38:33.9218132Z - ✓ **startup** WASM compilation cache directory: /tmp/gh-aw/wazero-cache
+2026-09-23T12:38:33.9218839Z - ✓ **startup** Environment validation passed
+2026-09-23T12:38:33.9219454Z - ✓ **startup** Loaded 2 MCP server(s): [github safeoutputs]
+2026-09-23T12:38:33.9221034Z - ✓ **startup** Guards sink server ID logging enrichment disabled (no sink server IDs configured)
+2026-09-23T12:38:33.9222502Z - ✓ **startup** OpenTelemetry tracing disabled (no OTLP endpoint configured)
+2026-09-23T12:38:33.9222881Z 
+2026-09-23T12:38:33.9223184Z ##[endgroup]
+2026-09-23T12:38:33.9223575Z ##[group]github.log (525 bytes)
+2026-09-23T12:38:33.9225037Z [2026-09-23T12:36:08.239Z] [INFO] [difc] Guard policy: {"allow-only":{"approval-labels":[],"blocked-users":[],"min-integrity":"approved","repos":"InnaGertruda/skills-agentic-workflows-that-read-the-room","trusted-users":[]}}
+2026-09-23T12:38:33.9226238Z [2026-09-23T12:36:08.547Z] [INFO] [difc] Loaded discovered WASM guard from file: 00-github-guard.wasm
+2026-09-23T12:38:33.9227678Z [2026-09-23T12:36:09.651Z] [WARN] [difc] FORCED REPOS=PUBLIC: failed to parse existing policy for override (skipping): invalid server guard policy: allow-only.repos string must be 'all' or 'public'
+2026-09-23T12:38:33.9228479Z 
+2026-09-23T12:38:33.9228949Z ##[endgroup]
+2026-09-23T12:38:33.9229756Z ##[group]mcp-gateway.log (37121 bytes)
+2026-09-23T12:38:33.9230453Z [2026-09-23T12:36:03.375Z] [INFO] [startup] MCPG Gateway version: v0.4.18
+2026-09-23T12:38:33.9231497Z [2026-09-23T12:36:03.376Z] [INFO] [startup] Starting MCPG with config: stdin, listen: 0.0.0.0:8080, log-dir: /tmp/gh-aw/mcp-logs/
+2026-09-23T12:38:33.9232957Z [2026-09-23T12:36:03.382Z] [DEBUG] [cmd:root] Starting MCPG with config: stdin, listen: 0.0.0.0:8080
+2026-09-23T12:38:33.9233794Z [2026-09-23T12:36:03.382Z] [DEBUG] [cmd:root] WASM cache dir resolved from default (logDir="/tmp/gh-aw/mcp-logs/"): "/tmp/gh-aw/wazero-cache"
+2026-09-23T12:38:33.9234721Z [2026-09-23T12:36:03.383Z] [DEBUG] [cmd:root] Configuring WASM compilation cache: resolvedDir="/tmp/gh-aw/wazero-cache", flagChanged=false
+2026-09-23T12:38:33.9236148Z [2026-09-23T12:36:03.383Z] [DEBUG] [guard:wasm] Configuring global compilation cache: dir="/tmp/gh-aw/wazero-cache"
+2026-09-23T12:38:33.9236917Z [2026-09-23T12:36:03.384Z] [DEBUG] [guard:wasm] Creating disk-backed compilation cache: dir=/tmp/gh-aw/wazero-cache
+2026-09-23T12:38:33.9237601Z [2026-09-23T12:36:03.505Z] [DEBUG] [guard:wasm] Global compilation cache replaced successfully
+2026-09-23T12:38:33.9238312Z [2026-09-23T12:36:03.505Z] [DEBUG] [cmd:root] WASM compilation cache configured: mode=disk, dir="/tmp/gh-aw/wazero-cache"
+2026-09-23T12:38:33.9239036Z [2026-09-23T12:36:03.506Z] [INFO] [startup] WASM compilation cache directory: /tmp/gh-aw/wazero-cache
+2026-09-23T12:38:33.9239654Z [2026-09-23T12:36:03.506Z] [DEBUG] [config:config] Loading configuration from stdin JSON
+2026-09-23T12:38:33.9240194Z [2026-09-23T12:36:03.507Z] [DEBUG] [config:config] Read 2651 bytes from stdin
+2026-09-23T12:38:33.9240787Z [2026-09-23T12:36:03.508Z] [DEBUG] [config:config_stdin] Checking 2 server(s) for 'local' type normalization
+2026-09-23T12:38:33.9241436Z [2026-09-23T12:36:03.508Z] [DEBUG] [config:expand] Expanding variables: context=raw JSON data
+2026-09-23T12:38:33.9242360Z [2026-09-23T12:36:03.508Z] [DEBUG] [config:expand] Expanded variable: GITHUB_WORKSPACE (found in environment)
+2026-09-23T12:38:33.9243886Z [2026-09-23T12:36:03.509Z] [DEBUG] [config:expand] Expanded variable: GITHUB_WORKSPACE (found in environment)
+2026-09-23T12:38:33.9244608Z [2026-09-23T12:36:03.509Z] [DEBUG] [config:expand] Expanded variable: GITHUB_WORKSPACE (found in environment)
+2026-09-23T12:38:33.9245302Z [2026-09-23T12:36:03.509Z] [DEBUG] [config:expand] Expanded variable: DEFAULT_BRANCH (found in environment)
+2026-09-23T12:38:33.9246018Z [2026-09-23T12:36:03.510Z] [DEBUG] [config:expand] Expanded variable: GH_AW_ASSETS_ALLOWED_EXTS (found in environment)
+2026-09-23T12:38:33.9246750Z [2026-09-23T12:36:03.510Z] [DEBUG] [config:expand] Expanded variable: GH_AW_ASSETS_BRANCH (found in environment)
+2026-09-23T12:38:33.9247489Z [2026-09-23T12:36:03.511Z] [DEBUG] [config:expand] Expanded variable: GH_AW_ASSETS_MAX_SIZE_KB (found in environment)
+2026-09-23T12:38:33.9248205Z [2026-09-23T12:36:03.511Z] [DEBUG] [config:expand] Expanded variable: GH_AW_MCP_LOG_DIR (found in environment)
+2026-09-23T12:38:33.9248918Z [2026-09-23T12:36:03.512Z] [DEBUG] [config:expand] Expanded variable: GH_AW_SAFE_OUTPUTS (found in environment)
+2026-09-23T12:38:33.9249660Z [2026-09-23T12:36:03.512Z] [DEBUG] [config:expand] Expanded variable: GH_AW_SAFE_OUTPUTS_CONFIG_PATH (found in environment)
+2026-09-23T12:38:33.9250450Z [2026-09-23T12:36:03.512Z] [DEBUG] [config:expand] Expanded variable: GH_AW_SAFE_OUTPUTS_TOOLS_PATH (found in environment)
+2026-09-23T12:38:33.9251252Z [2026-09-23T12:36:03.513Z] [DEBUG] [config:expand] Expanded variable: GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST (found in environment)
+2026-09-23T12:38:33.9252052Z [2026-09-23T12:36:03.513Z] [DEBUG] [config:expand] Expanded variable: GH_AW_PR_HEAD_BASE_BRANCH (found in environment)
+2026-09-23T12:38:33.9253093Z [2026-09-23T12:36:03.514Z] [DEBUG] [config:expand] Expanded variable: GH_AW_PR_HEAD_BASE_SHA (found in environment)
+2026-09-23T12:38:33.9253827Z [2026-09-23T12:36:03.514Z] [DEBUG] [config:expand] Expanded variable: GH_AW_PR_HEAD_BASE_REPO (found in environment)
+2026-09-23T12:38:33.9254578Z [2026-09-23T12:36:03.515Z] [DEBUG] [config:expand] Expanded variable: GH_AW_PR_HEAD_BASE_PR_NUMBER (found in environment)
+2026-09-23T12:38:33.9255321Z [2026-09-23T12:36:03.515Z] [DEBUG] [config:expand] Expanded variable: GH_AW_PR_HEAD_BASE_REF (found in environment)
+2026-09-23T12:38:33.9256028Z [2026-09-23T12:36:03.515Z] [DEBUG] [config:expand] Expanded variable: GH_AW_PR_HEAD_REPO (found in environment)
+2026-09-23T12:38:33.9256726Z [2026-09-23T12:36:03.516Z] [DEBUG] [config:expand] Expanded variable: GITHUB_EVENT_NAME (found in environment)
+2026-09-23T12:38:33.9257415Z [2026-09-23T12:36:03.516Z] [DEBUG] [config:expand] Expanded variable: GITHUB_EVENT_PATH (found in environment)
+2026-09-23T12:38:33.9258113Z [2026-09-23T12:36:03.517Z] [DEBUG] [config:expand] Expanded variable: GITHUB_REPOSITORY (found in environment)
+2026-09-23T12:38:33.9258787Z [2026-09-23T12:36:03.517Z] [DEBUG] [config:expand] Expanded variable: GITHUB_SHA (found in environment)
+2026-09-23T12:38:33.9259454Z [2026-09-23T12:36:03.517Z] [DEBUG] [config:expand] Expanded variable: GITHUB_TOKEN (found in environment)
+2026-09-23T12:38:33.9260133Z [2026-09-23T12:36:03.518Z] [DEBUG] [config:expand] Expanded variable: GITHUB_WORKSPACE (found in environment)
+2026-09-23T12:38:33.9260819Z [2026-09-23T12:36:03.518Z] [DEBUG] [config:expand] Expanded variable: RUNNER_TEMP (found in environment)
+2026-09-23T12:38:33.9261552Z [2026-09-23T12:36:03.519Z] [DEBUG] [config:expand] Variable expansion completed: context=raw JSON data, undefined_count=0
+2026-09-23T12:38:33.9262629Z [2026-09-23T12:36:03.519Z] [DEBUG] [config:config_stdin] Stripped gateway extension fields for schema validation: 2 servers processed
+2026-09-23T12:38:33.9263487Z [2026-09-23T12:36:03.525Z] [DEBUG] [config:validation_schema] Starting JSON schema validation: data_size=3268 bytes
+2026-09-23T12:38:33.9264194Z [2026-09-23T12:36:03.526Z] [DEBUG] [config:validation_schema] Compiling JSON schema for the first time
+2026-09-23T12:38:33.9264983Z [2026-09-23T12:36:03.549Z] [DEBUG] [config:validation_schema] Schema compiled and cached successfully
+2026-09-23T12:38:33.9265653Z [2026-09-23T12:36:03.550Z] [DEBUG] [config:validation_schema] Schema compilation/retrieval took: 23.965833ms
+2026-09-23T12:38:33.9266425Z [2026-09-23T12:36:03.550Z] [DEBUG] [config:validation_schema] JSON parsing took: 55.533µs
+2026-09-23T12:38:33.9272995Z [2026-09-23T12:36:03.551Z] [DEBUG] [config:validation_schema] Schema validation took: 61.985µs
+2026-09-23T12:38:33.9274012Z [2026-09-23T12:36:03.552Z] [DEBUG] [config:validation_schema] Total validation completed successfully in 26.449887ms
+2026-09-23T12:38:33.9283944Z [2026-09-23T12:36:03.553Z] [DEBUG] [config:config] Parsed stdin config with 2 servers
+2026-09-23T12:38:33.9285170Z [2026-09-23T12:36:03.553Z] [DEBUG] [config:validation_gateway] Validating string patterns: server_count=2
+2026-09-23T12:38:33.9286840Z [2026-09-23T12:36:03.553Z] [DEBUG] [config:validation_gateway] Validating server: name=github, type=stdio
+2026-09-23T12:38:33.9288213Z [2026-09-23T12:36:03.554Z] [DEBUG] [config:config] IsStdioServerType: type="stdio", result=true
+2026-09-23T12:38:33.9289594Z [2026-09-23T12:36:03.554Z] [DEBUG] [config:validation_gateway] Validating server: name=safeoutputs, type=stdio
+2026-09-23T12:38:33.9290990Z [2026-09-23T12:36:03.555Z] [DEBUG] [config:config] IsStdioServerType: type="stdio", result=true
+2026-09-23T12:38:33.9292494Z [2026-09-23T12:36:03.555Z] [DEBUG] [config:validation_gateway] Validating gateway configuration
+2026-09-23T12:38:33.9293738Z [2026-09-23T12:36:03.555Z] [DEBUG] [config:validation_rules] Validating gateway port
+2026-09-23T12:38:33.9295333Z [2026-09-23T12:36:03.556Z] [DEBUG] [config:validation_rules] Validating port range: port=8080, jsonPath=gateway.port
+2026-09-23T12:38:33.9297023Z [2026-09-23T12:36:03.556Z] [DEBUG] [config:validation_rules] Validating startup timeout
+2026-09-23T12:38:33.9298772Z [2026-09-23T12:36:03.557Z] [DEBUG] [config:validation_rules] Validating positive timeout: field=startupTimeout, value=120, jsonPath=gateway.startupTimeout
+2026-09-23T12:38:33.9300583Z [2026-09-23T12:36:03.557Z] [DEBUG] [config:validation_gateway] Validating payload directory: /tmp/gh-aw/mcp-payloads
+2026-09-23T12:38:33.9302682Z [2026-09-23T12:36:03.558Z] [DEBUG] [config:validation_rules] Validating absolute path: field=payloadDir, value=/tmp/gh-aw/mcp-payloads, jsonPath=gateway.payloadDir
+2026-09-23T12:38:33.9304541Z [2026-09-23T12:36:03.558Z] [DEBUG] [config:validation_rules] Valid Unix absolute path: /tmp/gh-aw/mcp-payloads
+2026-09-23T12:38:33.9305954Z [2026-09-23T12:36:03.559Z] [DEBUG] [config:validation_gateway] Gateway config validation passed
+2026-09-23T12:38:33.9307258Z [2026-09-23T12:36:03.559Z] [DEBUG] [config:validation_gateway] Validating gateway configuration
+2026-09-23T12:38:33.9308485Z [2026-09-23T12:36:03.559Z] [DEBUG] [config:validation_rules] Validating gateway port
+2026-09-23T12:38:33.9309820Z [2026-09-23T12:36:03.560Z] [DEBUG] [config:validation_rules] Validating port range: port=8080, jsonPath=gateway.port
+2026-09-23T12:38:33.9311194Z [2026-09-23T12:36:03.560Z] [DEBUG] [config:validation_rules] Validating startup timeout
+2026-09-23T12:38:33.9312977Z [2026-09-23T12:36:03.561Z] [DEBUG] [config:validation_rules] Validating positive timeout: field=startupTimeout, value=120, jsonPath=gateway.startupTimeout
+2026-09-23T12:38:33.9314830Z [2026-09-23T12:36:03.561Z] [DEBUG] [config:validation_gateway] Validating payload directory: /tmp/gh-aw/mcp-payloads
+2026-09-23T12:38:33.9316765Z [2026-09-23T12:36:03.562Z] [DEBUG] [config:validation_rules] Validating absolute path: field=payloadDir, value=/tmp/gh-aw/mcp-payloads, jsonPath=gateway.payloadDir
+2026-09-23T12:38:33.9318875Z [2026-09-23T12:36:03.562Z] [DEBUG] [config:validation_rules] Valid Unix absolute path: /tmp/gh-aw/mcp-payloads
+2026-09-23T12:38:33.9320350Z [2026-09-23T12:36:03.562Z] [DEBUG] [config:validation_gateway] Gateway config validation passed
+2026-09-23T12:38:33.9321563Z [2026-09-23T12:36:03.563Z] [DEBUG] [config:config_stdin] Converting stdin config: 2 servers
+2026-09-23T12:38:33.9323064Z [2026-09-23T12:36:03.563Z] [DEBUG] [config:config] MCP_GATEWAY_TOOL_TIMEOUT not set in environment
+2026-09-23T12:38:33.9323974Z [2026-09-23T12:36:03.564Z] [DEBUG] [config:config_stdin] Gateway configured: port=8080, toolTimeout=60, startupTimeout=120
+2026-09-23T12:38:33.9324874Z [2026-09-23T12:36:03.564Z] [DEBUG] [config:feature] Applying 2 default setter(s)
+2026-09-23T12:38:33.9325396Z [2026-09-23T12:36:03.565Z] [DEBUG] [config:feature] All default setters applied
+2026-09-23T12:38:33.9326169Z [2026-09-23T12:36:03.565Z] [DEBUG] [config:config] Effective container runtime name: "docker" (config="")
+2026-09-23T12:38:33.9327036Z [2026-09-23T12:36:03.566Z] [DEBUG] [config:config] Effective container runtime command: "docker"
+2026-09-23T12:38:33.9327754Z [2026-09-23T12:36:03.566Z] [DEBUG] [config:validation_server] Validating server config: name=github, type=stdio
+2026-09-23T12:38:33.9328753Z [2026-09-23T12:36:03.567Z] [DEBUG] [config:config] NormalizeServerType: type "stdio" unchanged
+2026-09-23T12:38:33.9329595Z [2026-09-23T12:36:03.567Z] [DEBUG] [config:config] IsStdioServerType: type="stdio", result=true
+2026-09-23T12:38:33.9330332Z [2026-09-23T12:36:03.568Z] [DEBUG] [config:validation_server] Server config validation passed: name=github, type=stdio
+2026-09-23T12:38:33.9331424Z [2026-09-23T12:36:03.568Z] [DEBUG] [config:config_stdin] Server "github": expanding 5 environment variable(s)
+2026-09-23T12:38:33.9332688Z [2026-09-23T12:36:03.569Z] [DEBUG] [config:expand] Expanding env variables for server: github, count=5
+2026-09-23T12:38:33.9333688Z [2026-09-23T12:36:03.569Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.github.env.GITHUB_FEATURES
+2026-09-23T12:38:33.9335118Z [2026-09-23T12:36:03.570Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.github.env.GITHUB_FEATURES, undefined_count=0
+2026-09-23T12:38:33.9336270Z [2026-09-23T12:36:03.570Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.github.env.GITHUB_HOST
+2026-09-23T12:38:33.9337426Z [2026-09-23T12:36:03.571Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.github.env.GITHUB_HOST, undefined_count=0
+2026-09-23T12:38:33.9338616Z [2026-09-23T12:36:03.571Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.github.env.GITHUB_PERSONAL_ACCESS_TOKEN
+2026-09-23T12:38:33.9339892Z [2026-09-23T12:36:03.571Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.github.env.GITHUB_PERSONAL_ACCESS_TOKEN, undefined_count=0
+2026-09-23T12:38:33.9341127Z [2026-09-23T12:36:03.572Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.github.env.GITHUB_READ_ONLY
+2026-09-23T12:38:33.9342448Z [2026-09-23T12:36:03.572Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.github.env.GITHUB_READ_ONLY, undefined_count=0
+2026-09-23T12:38:33.9343667Z [2026-09-23T12:36:03.573Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.github.env.GITHUB_TOOLSETS
+2026-09-23T12:38:33.9344869Z [2026-09-23T12:36:03.573Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.github.env.GITHUB_TOOLSETS, undefined_count=0
+2026-09-23T12:38:33.9345900Z [2026-09-23T12:36:03.573Z] [DEBUG] [config:expand] Env variable expansion completed for server: github
+2026-09-23T12:38:33.9346671Z [2026-09-23T12:36:03.574Z] [DEBUG] [config:config_stdin] Converting server "github": type=stdio
+2026-09-23T12:38:33.9347596Z [2026-09-23T12:36:03.574Z] [DEBUG] [config:config_stdin] Server "github": configured stdio container=ghcr.io/github/github-mcp-server:v1.11.0, env_vars=5, mounts=0
+2026-09-23T12:38:33.9349302Z [2026-09-23T12:36:03.575Z] [DEBUG] [config:config] Configured stdio MCP server: name=github, container=ghcr.io/github/github-mcp-server:v1.11.0
+2026-09-23T12:38:33.9350628Z [2026-09-23T12:36:03.575Z] [DEBUG] [config:validation_server] Validating server config: name=safeoutputs, type=stdio
+2026-09-23T12:38:33.9351744Z [2026-09-23T12:36:03.576Z] [DEBUG] [config:config] NormalizeServerType: type "stdio" unchanged
+2026-09-23T12:38:33.9352666Z [2026-09-23T12:36:03.576Z] [DEBUG] [config:config] IsStdioServerType: type="stdio", result=true
+2026-09-23T12:38:33.9353504Z [2026-09-23T12:36:03.576Z] [DEBUG] [config:validation_server] Validating mounts for server: name=safeoutputs, mount_count=3
+2026-09-23T12:38:33.9355402Z [2026-09-23T12:36:03.577Z] [DEBUG] [config:validation_rules] Validating mount format: mount=/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room:/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room:rw, jsonPath=mcpServers.safeoutputs, index=0
+2026-09-23T12:38:33.9357390Z [2026-09-23T12:36:03.577Z] [DEBUG] [mountspec:mountspec] Parsing mount spec: parts=3
+2026-09-23T12:38:33.9358588Z [2026-09-23T12:36:03.578Z] [DEBUG] [config:validation_rules] Validating mount format: mount=/home/runner/work/_temp/gh-aw/safeoutputs:/home/runner/work/_temp/gh-aw/safeoutputs:rw, jsonPath=mcpServers.safeoutputs, index=1
+2026-09-23T12:38:33.9359608Z [2026-09-23T12:36:03.578Z] [DEBUG] [mountspec:mountspec] Parsing mount spec: parts=3
+2026-09-23T12:38:33.9360397Z [2026-09-23T12:36:03.579Z] [DEBUG] [config:validation_rules] Validating mount format: mount=/tmp/gh-aw:/tmp/gh-aw:rw, jsonPath=mcpServers.safeoutputs, index=2
+2026-09-23T12:38:33.9361317Z [2026-09-23T12:36:03.579Z] [DEBUG] [mountspec:mountspec] Parsing mount spec: parts=3
+2026-09-23T12:38:33.9361992Z [2026-09-23T12:36:03.580Z] [DEBUG] [config:validation_server] Server config validation passed: name=safeoutputs, type=stdio
+2026-09-23T12:38:33.9363147Z [2026-09-23T12:36:03.580Z] [DEBUG] [config:config_stdin] Server "safeoutputs": expanding 23 environment variable(s)
+2026-09-23T12:38:33.9363873Z [2026-09-23T12:36:03.580Z] [DEBUG] [config:expand] Expanding env variables for server: safeoutputs, count=23
+2026-09-23T12:38:33.9364921Z [2026-09-23T12:36:03.581Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST
+2026-09-23T12:38:33.9366477Z [2026-09-23T12:36:03.581Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST, undefined_count=0
+2026-09-23T12:38:33.9367820Z [2026-09-23T12:36:03.582Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_REPO
+2026-09-23T12:38:33.9368826Z [2026-09-23T12:36:03.582Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_REPO, undefined_count=0
+2026-09-23T12:38:33.9369834Z [2026-09-23T12:36:03.582Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_EVENT_PATH
+2026-09-23T12:38:33.9370817Z [2026-09-23T12:36:03.583Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_EVENT_PATH, undefined_count=0
+2026-09-23T12:38:33.9371954Z [2026-09-23T12:36:03.584Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.RUNNER_TEMP
+2026-09-23T12:38:33.9373396Z [2026-09-23T12:36:03.584Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.RUNNER_TEMP, undefined_count=0
+2026-09-23T12:38:33.9374412Z [2026-09-23T12:36:03.585Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_BRANCH
+2026-09-23T12:38:33.9375460Z [2026-09-23T12:36:03.585Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_BRANCH, undefined_count=0
+2026-09-23T12:38:33.9376516Z [2026-09-23T12:36:03.586Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_PR_NUMBER
+2026-09-23T12:38:33.9377582Z [2026-09-23T12:36:03.586Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_PR_NUMBER, undefined_count=0
+2026-09-23T12:38:33.9378795Z [2026-09-23T12:36:03.587Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_REF
+2026-09-23T12:38:33.9379820Z [2026-09-23T12:36:03.587Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_REF, undefined_count=0
+2026-09-23T12:38:33.9380826Z [2026-09-23T12:36:03.588Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_WORKSPACE
+2026-09-23T12:38:33.9381819Z [2026-09-23T12:36:03.588Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_WORKSPACE, undefined_count=0
+2026-09-23T12:38:33.9383011Z [2026-09-23T12:36:03.588Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.DEBUG
+2026-09-23T12:38:33.9384133Z [2026-09-23T12:36:03.589Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.DEBUG, undefined_count=0
+2026-09-23T12:38:33.9385171Z [2026-09-23T12:36:03.589Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.DEFAULT_BRANCH
+2026-09-23T12:38:33.9386218Z [2026-09-23T12:36:03.590Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.DEFAULT_BRANCH, undefined_count=0
+2026-09-23T12:38:33.9387228Z [2026-09-23T12:36:03.590Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_ALLOWED_EXTS
+2026-09-23T12:38:33.9388270Z [2026-09-23T12:36:03.591Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_ALLOWED_EXTS, undefined_count=0
+2026-09-23T12:38:33.9389443Z [2026-09-23T12:36:03.591Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS
+2026-09-23T12:38:33.9390445Z [2026-09-23T12:36:03.592Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS, undefined_count=0
+2026-09-23T12:38:33.9391748Z [2026-09-23T12:36:03.592Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS_TOOLS_PATH
+2026-09-23T12:38:33.9393700Z [2026-09-23T12:36:03.593Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS_TOOLS_PATH, undefined_count=0
+2026-09-23T12:38:33.9395574Z [2026-09-23T12:36:03.593Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_EVENT_NAME
+2026-09-23T12:38:33.9397385Z [2026-09-23T12:36:03.594Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_EVENT_NAME, undefined_count=0
+2026-09-23T12:38:33.9399184Z [2026-09-23T12:36:03.594Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_REPOSITORY
+2026-09-23T12:38:33.9400987Z [2026-09-23T12:36:03.594Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_REPOSITORY, undefined_count=0
+2026-09-23T12:38:33.9403054Z [2026-09-23T12:36:03.595Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_BRANCH
+2026-09-23T12:38:33.9404892Z [2026-09-23T12:36:03.595Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_BRANCH, undefined_count=0
+2026-09-23T12:38:33.9406757Z [2026-09-23T12:36:03.596Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_MAX_SIZE_KB
+2026-09-23T12:38:33.9408657Z [2026-09-23T12:36:03.596Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_MAX_SIZE_KB, undefined_count=0
+2026-09-23T12:38:33.9410476Z [2026-09-23T12:36:03.597Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_SHA
+2026-09-23T12:38:33.9412759Z [2026-09-23T12:36:03.597Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_SHA, undefined_count=0
+2026-09-23T12:38:33.9414562Z [2026-09-23T12:36:03.598Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_SHA
+2026-09-23T12:38:33.9416261Z [2026-09-23T12:36:03.598Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_SHA, undefined_count=0
+2026-09-23T12:38:33.9417663Z [2026-09-23T12:36:03.598Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_TOKEN
+2026-09-23T12:38:33.9418639Z [2026-09-23T12:36:03.601Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_TOKEN, undefined_count=0
+2026-09-23T12:38:33.9419656Z [2026-09-23T12:36:03.602Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_REPO
+2026-09-23T12:38:33.9420697Z [2026-09-23T12:36:03.602Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_REPO, undefined_count=0
+2026-09-23T12:38:33.9421704Z [2026-09-23T12:36:03.603Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_MCP_LOG_DIR
+2026-09-23T12:38:33.9422974Z [2026-09-23T12:36:03.603Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_MCP_LOG_DIR, undefined_count=0
+2026-09-23T12:38:33.9424184Z [2026-09-23T12:36:03.604Z] [DEBUG] [config:expand] Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS_CONFIG_PATH
+2026-09-23T12:38:33.9425268Z [2026-09-23T12:36:03.604Z] [DEBUG] [config:expand] Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS_CONFIG_PATH, undefined_count=0
+2026-09-23T12:38:33.9426215Z [2026-09-23T12:36:03.605Z] [DEBUG] [config:expand] Env variable expansion completed for server: safeoutputs
+2026-09-23T12:38:33.9426887Z [2026-09-23T12:36:03.605Z] [DEBUG] [config:config_stdin] Converting server "safeoutputs": type=stdio
+2026-09-23T12:38:33.9427550Z [2026-09-23T12:36:03.605Z] [DEBUG] [config:config_stdin] Server "safeoutputs": using custom entrypoint "sh"
+2026-09-23T12:38:33.9428218Z [2026-09-23T12:36:03.606Z] [DEBUG] [config:config_stdin] Server "safeoutputs": added 3 volume mount(s)
+2026-09-23T12:38:33.9428908Z [2026-09-23T12:36:03.606Z] [DEBUG] [config:config_stdin] Server "safeoutputs": adding 2 extra Docker runtime arg(s)
+2026-09-23T12:38:33.9429630Z [2026-09-23T12:36:03.607Z] [DEBUG] [config:config_stdin] Server "safeoutputs": adding 2 entrypoint arg(s)
+2026-09-23T12:38:33.9430526Z [2026-09-23T12:36:03.607Z] [DEBUG] [config:config_stdin] Server "safeoutputs": configured stdio container=ghcr.io/github/gh-aw-node, env_vars=23, mounts=3
+2026-09-23T12:38:33.9431493Z [2026-09-23T12:36:03.608Z] [DEBUG] [config:config] Configured stdio MCP server: name=safeoutputs, container=ghcr.io/github/gh-aw-node
+2026-09-23T12:38:33.9432427Z [2026-09-23T12:36:03.608Z] [DEBUG] [config:feature] Applying 1 stdin converter(s)
+2026-09-23T12:38:33.9432956Z [2026-09-23T12:36:03.609Z] [DEBUG] [config:feature] All stdin converters applied
+2026-09-23T12:38:33.9433522Z [2026-09-23T12:36:03.609Z] [DEBUG] [config:validation_gateway] Validating guard policies: count=0
+2026-09-23T12:38:33.9434279Z [2026-09-23T12:36:03.609Z] [DEBUG] [config:config] GetAgentIDs: gateway.agentIds not set, falling back to singular effective agent ID
+2026-09-23T12:38:33.9435083Z [2026-09-23T12:36:03.610Z] [DEBUG] [config:agent_policy] No per-agent policies configured; skipping validation
+2026-09-23T12:38:33.9435786Z [2026-09-23T12:36:03.610Z] [DEBUG] [config:config] Converted stdin config to internal format with 2 servers
+2026-09-23T12:38:33.9436386Z [2026-09-23T12:36:03.611Z] [DEBUG] [cmd:root] Configuration loaded with 2 servers
+2026-09-23T12:38:33.9437101Z [2026-09-23T12:36:03.611Z] [DEBUG] [config:config] Effective container runtime name: "docker" (config="")
+2026-09-23T12:38:33.9437740Z [2026-09-23T12:36:03.612Z] [DEBUG] [config:config] Effective container runtime command: "docker"
+2026-09-23T12:38:33.9438401Z [2026-09-23T12:36:03.612Z] [DEBUG] [cmd:root] Validating execution environment with container runtime docker...
+2026-09-23T12:38:33.9439079Z [2026-09-23T12:36:03.613Z] [DEBUG] [config:validation_env] Starting execution environment validation
+2026-09-23T12:38:33.9439661Z [2026-09-23T12:36:03.613Z] [DEBUG] [sys:container] Detecting container environment
+2026-09-23T12:38:33.9440200Z [2026-09-23T12:36:03.614Z] [DEBUG] [sys:container] Container detected via /.dockerenv
+2026-09-23T12:38:33.9440755Z [2026-09-23T12:36:03.614Z] [DEBUG] [sys:container] Scanning 2 cgroup file(s) for container ID
+2026-09-23T12:38:33.9441406Z [2026-09-23T12:36:03.615Z] [DEBUG] [sys:container] No container ID found in cgroup file: path=/proc/1/cgroup
+2026-09-23T12:38:33.9442311Z [2026-09-23T12:36:03.615Z] [DEBUG] [sys:container] No container ID found in cgroup file: path=/proc/self/cgroup
+2026-09-23T12:38:33.9443097Z [2026-09-23T12:36:03.616Z] [DEBUG] [sys:container] No container ID found in any cgroup file
+2026-09-23T12:38:33.9443776Z [2026-09-23T12:36:03.616Z] [DEBUG] [config:validation_env] Containerization check: isContainerized=true, containerID=
+2026-09-23T12:38:33.9444542Z [2026-09-23T12:36:03.616Z] [DEBUG] [sys:docker] Checking Docker socket accessibility: socketPath=/var/run/docker.sock
+2026-09-23T12:38:33.9445175Z [2026-09-23T12:36:08.210Z] [DEBUG] [sys:docker] Docker daemon check: accessible=true
+2026-09-23T12:38:33.9445937Z [2026-09-23T12:36:08.211Z] [DEBUG] [config:validation_env] Validation complete: valid=true, errors=0, warnings=0
+2026-09-23T12:38:33.9446548Z [2026-09-23T12:36:08.211Z] [INFO] [startup] Environment validation passed
+2026-09-23T12:38:33.9447058Z [2026-09-23T12:36:08.212Z] [INFO] [startup] Loaded 2 MCP server(s): [github safeoutputs]
+2026-09-23T12:38:33.9447966Z [2026-09-23T12:36:08.213Z] [DEBUG] [cmd:root] Resolving guard policy override: cliChanged=false, cliGuardPolicyChanged=false, allowOnlyPublic=false, owner="", repo="", minIntegrity=""
+2026-09-23T12:38:33.9449207Z [2026-09-23T12:36:08.213Z] [DEBUG] [config:guard_policy] ResolveGuardPolicyOverride: cliChanged=false, hasCLIPolicyJSON=false, allowOnlyPublic=false, owner="", repo="", minIntegrity=""
+2026-09-23T12:38:33.9450221Z [2026-09-23T12:36:08.213Z] [DEBUG] [config:guard_policy] ResolveGuardPolicyOverride: no guard policy configured (nil)
+2026-09-23T12:38:33.9450856Z [2026-09-23T12:36:08.214Z] [DEBUG] [cmd:root] No guard policy override configured
+2026-09-23T12:38:33.9451413Z [2026-09-23T12:36:08.214Z] [DEBUG] [cmd:root] Guard policy resolved: hasOverride=false, source=
+2026-09-23T12:38:33.9452010Z [2026-09-23T12:36:08.215Z] [DEBUG] [difc:sink_server_ids] Setting sink server IDs: input_count=0
+2026-09-23T12:38:33.9452930Z [2026-09-23T12:36:08.215Z] [DEBUG] [difc:sink_server_ids] No sink server IDs provided, clearing configuration
+2026-09-23T12:38:33.9453687Z [2026-09-23T12:36:08.215Z] [INFO] [startup] Guards sink server ID logging enrichment disabled (no sink server IDs configured)
+2026-09-23T12:38:33.9454348Z [2026-09-23T12:36:08.216Z] [DEBUG] [cmd:root] Server mode: routed, guards mode: 
+2026-09-23T12:38:33.9454929Z [2026-09-23T12:36:08.217Z] [DEBUG] [cmd:root] Applying tracing overrides: shouldInitTracingConfig=true
+2026-09-23T12:38:33.9455607Z [2026-09-23T12:36:08.217Z] [DEBUG] [cmd:root] Gateway tracing config was nil, initializing empty TracingConfig
+2026-09-23T12:38:33.9456338Z [2026-09-23T12:36:08.217Z] [DEBUG] [cmd:root] Tracing overrides applied: endpointConfigured=false, serviceName=""
+2026-09-23T12:38:33.9456956Z [2026-09-23T12:36:08.218Z] [DEBUG] [cmd:root] Initializing tracing provider
+2026-09-23T12:38:33.9457577Z [2026-09-23T12:36:08.218Z] [DEBUG] [tracing:provider] resolveServiceName: using default service name: "mcp-gateway"
+2026-09-23T12:38:33.9458488Z [2026-09-23T12:36:08.219Z] [DEBUG] [tracing:provider] Registering global W3C TraceContext+Baggage text map propagator
+2026-09-23T12:38:33.9459186Z [2026-09-23T12:36:08.219Z] [DEBUG] [tracing:provider] Tracing disabled: no OTLP endpoint configured
+2026-09-23T12:38:33.9459791Z [2026-09-23T12:36:08.219Z] [DEBUG] [cmd:root] Tracing provider initialized successfully
+2026-09-23T12:38:33.9460403Z [2026-09-23T12:36:08.220Z] [INFO] [startup] OpenTelemetry tracing disabled (no OTLP endpoint configured)
+2026-09-23T12:38:33.9461050Z [2026-09-23T12:36:08.220Z] [DEBUG] [cmd:root] Creating unified MCP server: mode=routed, servers=2
+2026-09-23T12:38:33.9461722Z [2026-09-23T12:36:08.226Z] [DEBUG] [server:unified] Creating new unified server: sequentialLaunch=false, servers=2
+2026-09-23T12:38:33.9462743Z [2026-09-23T12:36:08.226Z] [DEBUG] [launcher:launcher] Creating new launcher with 2 configured servers
+2026-09-23T12:38:33.9463347Z [2026-09-23T12:36:08.227Z] [DEBUG] [sys:container] Detecting container environment
+2026-09-23T12:38:33.9464028Z [2026-09-23T12:36:08.227Z] [DEBUG] [sys:container] Container detected via /.dockerenv
+2026-09-23T12:38:33.9464610Z [2026-09-23T12:36:08.227Z] [DEBUG] [sys:container] Scanning 2 cgroup file(s) for container ID
+2026-09-23T12:38:33.9465251Z [2026-09-23T12:36:08.228Z] [DEBUG] [sys:container] No container ID found in cgroup file: path=/proc/1/cgroup
+2026-09-23T12:38:33.9465956Z [2026-09-23T12:36:08.228Z] [DEBUG] [sys:container] No container ID found in cgroup file: path=/proc/self/cgroup
+2026-09-23T12:38:33.9466594Z [2026-09-23T12:36:08.229Z] [DEBUG] [sys:container] No container ID found in any cgroup file
+2026-09-23T12:38:33.9467354Z [2026-09-23T12:36:08.229Z] [DEBUG] [launcher:launcher] Container detection: runningInContainer=true
+2026-09-23T12:38:33.9468223Z [2026-09-23T12:36:08.229Z] [DEBUG] [config:config] Resolved gateway config after defaulting: port=8080, startupTimeout=120, toolTimeout=60, keepaliveInterval=1500
+2026-09-23T12:38:33.9469026Z [2026-09-23T12:36:08.230Z] [DEBUG] [config:feature] Applying 2 default setter(s)
+2026-09-23T12:38:33.9469633Z [2026-09-23T12:36:08.230Z] [DEBUG] [config:config_tracing] Applying default tracing service name: mcp-gateway
+2026-09-23T12:38:33.9470243Z [2026-09-23T12:36:08.231Z] [DEBUG] [config:feature] All default setters applied
+2026-09-23T12:38:33.9470752Z [2026-09-23T12:36:08.231Z] [DEBUG] [launcher:launcher] Using startup timeout: 2m0s
+2026-09-23T12:38:33.9471492Z [2026-09-23T12:36:08.231Z] [DEBUG] [launcher:pool] Creating new session connection pool: idleTimeout=6h0m0s, cleanupInterval=5m0s, maxErrors=10
+2026-09-23T12:38:33.9472548Z [2026-09-23T12:36:08.232Z] [DEBUG] [launcher:pool] Cleanup goroutine started
+2026-09-23T12:38:33.9473326Z [2026-09-23T12:36:08.232Z] [DEBUG] [launcher:mount_policy] Mount policy overridden by MCP_GATEWAY_ALLOWED_MOUNT_ROOTS: 6 root(s)
+2026-09-23T12:38:33.9474266Z [2026-09-23T12:36:08.233Z] [DEBUG] [server:unified] Payload configuration: dir=/tmp/gh-aw/mcp-payloads, pathPrefix=, sizeThreshold=524288 bytes (512.00 KB)
+2026-09-23T12:38:33.9475181Z [2026-09-23T12:36:08.233Z] [DEBUG] [difc:agent] Creating agent registry with defaults: secrecyTags=0, integrityTags=0
+2026-09-23T12:38:33.9475827Z [2026-09-23T12:36:08.233Z] [DEBUG] [difc:capabilities] Creating new capabilities set
+2026-09-23T12:38:33.9476450Z [2026-09-23T12:36:08.234Z] [DEBUG] [launcher:launcher] Retrieved server IDs: count=2, ids=[github safeoutputs]
+2026-09-23T12:38:33.9477184Z [2026-09-23T12:36:08.234Z] [DEBUG] [server:system_tools] Creating new SysServer with 2 servers: [github safeoutputs]
+2026-09-23T12:38:33.9477962Z [2026-09-23T12:36:08.235Z] [DEBUG] [server:tool_registry_helpers] Built allowed tool sets: 0 server(s) with tool restrictions
+2026-09-23T12:38:33.9478824Z [2026-09-23T12:36:08.235Z] [DEBUG] [server:circuit_breaker] Creating circuit breaker: serverID=safeoutputs, threshold=3, cooldown=1m0s
+2026-09-23T12:38:33.9479699Z [2026-09-23T12:36:08.236Z] [DEBUG] [server:circuit_breaker] Created circuit breaker for server safeoutputs: threshold=0, cooldown=0s
+2026-09-23T12:38:33.9480690Z [2026-09-23T12:36:08.236Z] [DEBUG] [server:circuit_breaker] Creating circuit breaker: serverID=github, threshold=3, cooldown=1m0s
+2026-09-23T12:38:33.9481518Z [2026-09-23T12:36:08.237Z] [DEBUG] [server:circuit_breaker] Created circuit breaker for server github: threshold=0, cooldown=0s
+2026-09-23T12:38:33.9482557Z [2026-09-23T12:36:08.237Z] [DEBUG] [server:circuit_breaker] buildCircuitBreakers: created 2 circuit breakers
+2026-09-23T12:38:33.9483170Z [2026-09-23T12:36:08.237Z] [DEBUG] [guard:registry] Creating new guard registry
+2026-09-23T12:38:33.9483722Z [2026-09-23T12:36:08.238Z] [DEBUG] [server:http_server] Creating SDK server: name=awmg-unified
+2026-09-23T12:38:33.9484270Z [2026-09-23T12:36:08.238Z] [INFO] [difc] MCP_GATEWAY_WASM_GUARDS_DIR=/guards
+2026-09-23T12:38:33.9484870Z [2026-09-23T12:36:08.239Z] [DEBUG] [launcher:launcher] Retrieved server IDs: count=2, ids=[github safeoutputs]
+2026-09-23T12:38:33.9486017Z [2026-09-23T12:36:08.240Z] [INFO] [difc] [github] Guard policy: {"allow-only":{"approval-labels":[],"blocked-users":[],"min-integrity":"approved","repos":"InnaGertruda/skills-agentic-workflows-that-read-the-room","trusted-users":[]}}
+2026-09-23T12:38:33.9487228Z [2026-09-23T12:36:08.240Z] [DEBUG] [guard:wasm] Checking for baked-in container guard at /guards/github/00-github-guard.wasm
+2026-09-23T12:38:33.9487995Z [2026-09-23T12:36:08.241Z] [DEBUG] [guard:wasm] Found baked-in container guard: /guards/github/00-github-guard.wasm
+2026-09-23T12:38:33.9488755Z [2026-09-23T12:36:08.241Z] [DEBUG] [guard:wasm] Creating WASM guard: name=github, path=/guards/github/00-github-guard.wasm
+2026-09-23T12:38:33.9489602Z [2026-09-23T12:36:08.296Z] [DEBUG] [guard:wasm] Creating WASM guard from bytes: name=github, size=312202
+2026-09-23T12:38:33.9490238Z [2026-09-23T12:36:08.356Z] [DEBUG] [guard:wasm] Instantiating WASM host functions: guard=github
+2026-09-23T12:38:33.9490920Z [2026-09-23T12:36:08.357Z] [DEBUG] [guard:wasm] WASM host functions instantiated: guard=github (call_backend, host_log)
+2026-09-23T12:38:33.9491596Z [2026-09-23T12:36:08.546Z] [DEBUG] [guard:wasm] WASM guard created successfully: name=github
+2026-09-23T12:38:33.9492363Z [2026-09-23T12:36:08.547Z] [INFO] [difc] [github] Loaded discovered WASM guard from file: 00-github-guard.wasm
+2026-09-23T12:38:33.9493066Z [2026-09-23T12:36:08.548Z] [DEBUG] [envutil:github] Looking up GitHub token=[REDACTED] 4 candidate env vars
+2026-09-23T12:38:33.9493736Z [2026-09-23T12:36:08.548Z] [DEBUG] [envutil:github] GitHub token found: source=GITHUB_MCP_SERVER_TOKEN
+2026-09-23T12:38:33.9494399Z [2026-09-23T12:36:08.549Z] [DEBUG] [envutil:github] Looking up GitHub token=[REDACTED] 4 candidate env vars
+2026-09-23T12:38:33.9495064Z [2026-09-23T12:36:08.550Z] [DEBUG] [envutil:github] GitHub token found: source=GITHUB_MCP_SERVER_TOKEN
+2026-09-23T12:38:33.9495646Z [2026-09-23T12:36:08.550Z] [DEBUG] [envutil:github] GitHub API URL using default: 
+2026-09-23T12:38:33.9496262Z [2026-09-23T12:36:08.550Z] [DEBUG] [envutil:github] Deriving API URL from server URL: https://github.com
+2026-09-23T12:38:33.9496989Z [2026-09-23T12:36:08.551Z] [DEBUG] [envutil:github] GitHub.com detected, using default API URL: https://api.github.com
+2026-09-23T12:38:33.9497859Z [2026-09-23T12:36:08.551Z] [DEBUG] [envutil:github] GitHub API URL derived from GITHUB_SERVER_URL=https://github.com: https://api.github.com
+2026-09-23T12:38:33.9498976Z [2026-09-23T12:36:08.551Z] [DEBUG] [githubhttp:visibility] Fetching repo visibility: nwo=InnaGertruda/skills-agentic-workflows-that-read-the-room, apiBaseURL=https://api.github.com
+2026-09-23T12:38:33.9500268Z [2026-09-23T12:36:08.552Z] [DEBUG] [githubhttp:client] GitHub GET: baseURL="https://api.github.com", path="/repos/InnaGertruda/skills-agentic-workflows-that-read-the-room", hasAuth=true
+2026-09-23T12:38:33.9501520Z [2026-09-23T12:36:08.552Z] [DEBUG] [githubhttp:client] Applying GitHub API headers: method="GET", path="/repos/InnaGertruda/skills-agentic-workflows-that-read-the-room", hasAuth=true
+2026-09-23T12:38:33.9503094Z [2026-09-23T12:36:09.642Z] [DEBUG] [githubhttp:client] GitHub GET response: path="/repos/InnaGertruda/skills-agentic-workflows-that-read-the-room", status=200
+2026-09-23T12:38:33.9504212Z [2026-09-23T12:36:09.643Z] [DEBUG] [githubhttp:visibility] Repo visibility resolved: nwo=InnaGertruda/skills-agentic-workflows-that-read-the-room, visibility=public
+2026-09-23T12:38:33.9505409Z [2026-09-23T12:36:09.643Z] [DEBUG] [server:guard_init] resolveWorkflowRepoVisibility: cached repo visibility for InnaGertruda/skills-agentic-workflows-that-read-the-room: public
+2026-09-23T12:38:33.9506394Z [2026-09-23T12:36:09.644Z] [DEBUG] [config:guard_policy] ParseServerGuardPolicy: serverID=github, keyCount=1
+2026-09-23T12:38:33.9507158Z [2026-09-23T12:36:09.644Z] [DEBUG] [config:guard_policy] ParsePolicyMap: hasAllowOnly=true, hasWriteSink=false, keyCount=1
+2026-09-23T12:38:33.9507854Z [2026-09-23T12:36:09.645Z] [DEBUG] [config:guard_policy] Parsing guard policy JSON: len=169
+2026-09-23T12:38:33.9508474Z [2026-09-23T12:36:09.645Z] [DEBUG] [config:guard_policy] UnmarshalJSON: parsing guard policy, keys=1
+2026-09-23T12:38:33.9509142Z [2026-09-23T12:36:09.645Z] [DEBUG] [config:guard_policy] UnmarshalJSON: parsing allow-only policy, fields=5
+2026-09-23T12:38:33.9509940Z [2026-09-23T12:36:09.646Z] [DEBUG] [config:guard_policy] UnmarshalJSON: allow-only policy parsed, repos=string, minIntegrity=approved
+2026-09-23T12:38:33.9510715Z [2026-09-23T12:36:09.646Z] [DEBUG] [config:guard_policy] UnmarshalJSON: guard policy type is allow-only
+2026-09-23T12:38:33.9511431Z [2026-09-23T12:36:09.647Z] [DEBUG] [config:guard_policy] ValidateGuardPolicy: delegating to allow-only normalization
+2026-09-23T12:38:33.9512876Z [2026-09-23T12:36:09.647Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: field=allow-only.min-integrity, raw="approved", optional=false
+2026-09-23T12:38:33.9513898Z [2026-09-23T12:36:09.648Z] [DEBUG] [config:guard_policy] NormalizeIntegrityLevel: input="approved", normalized="approved", optional=false
+2026-09-23T12:38:33.9514878Z [2026-09-23T12:36:09.648Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: normalized field=allow-only.min-integrity to "approved"
+2026-09-23T12:38:33.9515793Z [2026-09-23T12:36:09.648Z] [DEBUG] [config:guard_policy] Normalizing guard policy: integrity=approved, reposType=string
+2026-09-23T12:38:33.9516715Z [2026-09-23T12:36:09.649Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: field=allow-only.disapproval-integrity, raw="", optional=true
+2026-09-23T12:38:33.9517653Z [2026-09-23T12:36:09.649Z] [DEBUG] [config:guard_policy] NormalizeIntegrityLevel: input="", normalized="", optional=true
+2026-09-23T12:38:33.9518566Z [2026-09-23T12:36:09.650Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: normalized field=allow-only.disapproval-integrity to ""
+2026-09-23T12:38:33.9519630Z [2026-09-23T12:36:09.650Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: field=allow-only.endorser-min-integrity, raw="", optional=true
+2026-09-23T12:38:33.9520565Z [2026-09-23T12:36:09.650Z] [DEBUG] [config:guard_policy] NormalizeIntegrityLevel: input="", normalized="", optional=true
+2026-09-23T12:38:33.9521479Z [2026-09-23T12:36:09.651Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: normalized field=allow-only.endorser-min-integrity to ""
+2026-09-23T12:38:33.9523782Z [2026-09-23T12:36:09.652Z] [WARN] [difc] [github] FORCED REPOS=PUBLIC: failed to parse existing policy for override (skipping): invalid server guard policy: allow-only.repos string must be 'all' or 'public'
+2026-09-23T12:38:33.9525479Z [2026-09-23T12:36:09.652Z] [DEBUG] [server:guard_init] Resolving guard policy: serverID=github
+2026-09-23T12:38:33.9526569Z [2026-09-23T12:36:09.652Z] [DEBUG] [config:guard_policy] ParseServerGuardPolicy: serverID=github, keyCount=1
+2026-09-23T12:38:33.9527896Z [2026-09-23T12:36:09.653Z] [DEBUG] [config:guard_policy] ParsePolicyMap: hasAllowOnly=true, hasWriteSink=false, keyCount=1
+2026-09-23T12:38:33.9529326Z [2026-09-23T12:36:09.653Z] [DEBUG] [config:guard_policy] Parsing guard policy JSON: len=169
+2026-09-23T12:38:33.9530015Z [2026-09-23T12:36:09.654Z] [DEBUG] [config:guard_policy] UnmarshalJSON: parsing guard policy, keys=1
+2026-09-23T12:38:33.9530730Z [2026-09-23T12:36:09.654Z] [DEBUG] [config:guard_policy] UnmarshalJSON: parsing allow-only policy, fields=5
+2026-09-23T12:38:33.9531521Z [2026-09-23T12:36:09.655Z] [DEBUG] [config:guard_policy] UnmarshalJSON: allow-only policy parsed, repos=string, minIntegrity=approved
+2026-09-23T12:38:33.9532560Z [2026-09-23T12:36:09.656Z] [DEBUG] [config:guard_policy] UnmarshalJSON: guard policy type is allow-only
+2026-09-23T12:38:33.9533296Z [2026-09-23T12:36:09.656Z] [DEBUG] [config:guard_policy] ValidateGuardPolicy: delegating to allow-only normalization
+2026-09-23T12:38:33.9534228Z [2026-09-23T12:36:09.657Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: field=allow-only.min-integrity, raw="approved", optional=false
+2026-09-23T12:38:33.9535240Z [2026-09-23T12:36:09.657Z] [DEBUG] [config:guard_policy] NormalizeIntegrityLevel: input="approved", normalized="approved", optional=false
+2026-09-23T12:38:33.9536411Z [2026-09-23T12:36:09.658Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: normalized field=allow-only.min-integrity to "approved"
+2026-09-23T12:38:33.9537337Z [2026-09-23T12:36:09.658Z] [DEBUG] [config:guard_policy] Normalizing guard policy: integrity=approved, reposType=string
+2026-09-23T12:38:33.9538262Z [2026-09-23T12:36:09.659Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: field=allow-only.disapproval-integrity, raw="", optional=true
+2026-09-23T12:38:33.9539195Z [2026-09-23T12:36:09.659Z] [DEBUG] [config:guard_policy] NormalizeIntegrityLevel: input="", normalized="", optional=true
+2026-09-23T12:38:33.9540263Z [2026-09-23T12:36:09.660Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: normalized field=allow-only.disapproval-integrity to ""
+2026-09-23T12:38:33.9541332Z [2026-09-23T12:36:09.660Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: field=allow-only.endorser-min-integrity, raw="", optional=true
+2026-09-23T12:38:33.9542627Z [2026-09-23T12:36:09.660Z] [DEBUG] [config:guard_policy] NormalizeIntegrityLevel: input="", normalized="", optional=true
+2026-09-23T12:38:33.9543598Z [2026-09-23T12:36:09.661Z] [DEBUG] [config:guard_policy] ValidateAndNormalizeIntegrityField: normalized field=allow-only.endorser-min-integrity to ""
+2026-09-23T12:38:33.9544376Z [2026-09-23T12:36:09.661Z] [DEBUG] [cmd:root] Shutting down tracing provider
+2026-09-23T12:38:33.9544897Z [2026-09-23T12:36:09.662Z] [DEBUG] [cmd:root] Tracing provider shut down successfully
+2026-09-23T12:38:33.9545428Z [2026-09-23T12:36:09.662Z] [DEBUG] [guard:wasm] Closing global compilation cache
+2026-09-23T12:38:33.9545940Z [2026-09-23T12:36:09.663Z] [DEBUG] [guard:wasm] Global compilation cache closed
+2026-09-23T12:38:33.9546463Z [2026-09-23T12:36:09.663Z] [DEBUG] [launcher:pool] Context cancelled, stopping cleanup
+2026-09-23T12:38:33.9546802Z 
+2026-09-23T12:38:33.9547874Z ##[endgroup]
+2026-09-23T12:38:33.9548591Z ##[group]observed-url-domains.json (2 bytes)
+2026-09-23T12:38:33.9549100Z {}
+2026-09-23T12:38:33.9549647Z ##[endgroup]
+2026-09-23T12:38:33.9550015Z   rpc-messages.jsonl (empty file)
+2026-09-23T12:38:33.9550484Z   safeoutputs/ (directory)
+2026-09-23T12:38:33.9550903Z   tools.json (empty file)
+2026-09-23T12:38:33.9551525Z ##[endgroup]
+2026-09-23T12:38:33.9552278Z ##[endgroup]
+2026-09-23T12:38:33.9552654Z Found rpc-messages.jsonl (0 bytes)
+2026-09-23T12:38:33.9568388Z ##[warning]rpc-messages.jsonl is present but zero bytes; continuing without RPC summary
+2026-09-23T12:38:33.9570439Z No gateway.log found at: /tmp/gh-aw/mcp-logs/gateway.log
+2026-09-23T12:38:33.9571129Z No stderr.log found at: /tmp/gh-aw/mcp-logs/stderr.log
+2026-09-23T12:38:33.9571701Z Found gateway.md (546 bytes)

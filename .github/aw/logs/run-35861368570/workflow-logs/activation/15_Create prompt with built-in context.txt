@@ -1,0 +1,79 @@
+﻿2026-09-23T12:35:30.9280760Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T12:35:30.9282460Z with:
+2026-09-23T12:35:30.9285786Z   script: const { setupGlobals } = require(process.env.GH_AW_ACTIONS_DIR + '/setup_globals.cjs');
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(process.env.GH_AW_ACTIONS_DIR + '/create_prompt.cjs');
+await main(core);
+
+2026-09-23T12:35:30.9296169Z   github-token: ***
+2026-09-23T12:35:30.9297095Z   debug: false
+2026-09-23T12:35:30.9298021Z   user-agent: actions/github-script
+2026-09-23T12:35:30.9299136Z   result-encoding: json
+2026-09-23T12:35:30.9300079Z   retries: 0
+2026-09-23T12:35:30.9301042Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T12:35:30.9302237Z env:
+2026-09-23T12:35:30.9303108Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:35:30.9304240Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:35:30.9307699Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:35:30.9311341Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:35:30.9312475Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:35:30.9313691Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:35:30.9314748Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-09-23T12:35:30.9319643Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:35:30.9322025Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:35:30.9324782Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5e5a65a0467a2627
+2026-09-23T12:35:30.9326255Z   GITHUB_AW_OTEL_JOB_START_MS: 1790166926997
+2026-09-23T12:35:30.9334391Z   GH_AW_ACTIONS_DIR: /home/runner/work/_temp/gh-aw/actions
+2026-09-23T12:35:30.9336316Z   GH_AW_PROMPT: /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt
+2026-09-23T12:35:30.9338092Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-09-23T12:35:30.9345205Z   GH_AW_PROMPT_CONFIG: {"items":[{"content_env":"GH_AW_PROMPT_CONTENT_0000"},{"file":"xpia.md"},{"file":"temp_folder_prompt.md"},{"file":"markdown.md"},{"file":"safe_outputs_prompt.md"},{"content_env":"GH_AW_PROMPT_CONTENT_0001"},{"file":"safe_outputs_create_pull_request.md"},{"content_env":"GH_AW_PROMPT_CONTENT_0002"},{"file":"mcp_cli_tools_with_safeoutputs_prompt.md"},{"content_env":"GH_AW_PROMPT_CONTENT_0003"},{"file":"github_mcp_tools_with_safeoutputs_prompt.md"},{"content_env":"GH_AW_PROMPT_CONTENT_0004"},{"content_env":"GH_AW_PROMPT_CONTENT_0005"}]}
+2026-09-23T12:35:30.9353726Z   GH_AW_EXPR_1A3A194A: false
+2026-09-23T12:35:30.9354777Z   GH_AW_EXPR_463A214A: false
+2026-09-23T12:35:30.9355951Z   GH_AW_EXPR_802A9F6A: false
+2026-09-23T12:35:30.9356975Z   GH_AW_EXPR_FF1D34CE: 
+2026-09-23T12:35:30.9358044Z   GH_AW_GITHUB_ACTOR: InnaGertruda
+2026-09-23T12:35:30.9360190Z   GH_AW_GITHUB_REPOSITORY: InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:30.9361837Z   GH_AW_GITHUB_RUN_ID: 35861368570
+2026-09-23T12:35:30.9363986Z   GH_AW_GITHUB_WORKSPACE: /home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:30.9366402Z   GH_AW_PROMPT_CONTENT_0000: <system>
+
+2026-09-23T12:35:30.9368235Z   GH_AW_PROMPT_CONTENT_0001: <safe-output-tools>
+Tools: create_pull_request, missing_tool, missing_data, noop
+
+2026-09-23T12:35:30.9370183Z   GH_AW_PROMPT_CONTENT_0002: </safe-output-tools>
+
+2026-09-23T12:35:30.9383116Z   GH_AW_PROMPT_CONTENT_0003: <github-context>
+The following GitHub context information is available for this workflow:
+{{#if github.actor}}
+- **actor**: __GH_AW_GITHUB_ACTOR__
+{{/if}}
+{{#if github.repository}}
+- **repository**: __GH_AW_GITHUB_REPOSITORY__
+{{/if}}
+{{#if github.workspace}}
+- **workspace**: __GH_AW_GITHUB_WORKSPACE__
+{{/if}}
+{{#if github.event.issue.number || (github.aw.context.item_type == 'issue' && github.aw.context.item_number)}}
+- **issue-number**: #__GH_AW_EXPR_802A9F6A__
+{{/if}}
+{{#if github.event.discussion.number || (github.aw.context.item_type == 'discussion' && github.aw.context.item_number)}}
+- **discussion-number**: #__GH_AW_EXPR_1A3A194A__
+{{/if}}
+{{#if github.event.pull_request.number || (github.aw.context.item_type == 'pull_request' && github.aw.context.item_number)}}
+- **pull-request-number**: #__GH_AW_EXPR_463A214A__
+{{/if}}
+{{#if github.event.comment.id || github.aw.context.comment_id}}
+- **comment-id**: __GH_AW_EXPR_FF1D34CE__
+{{/if}}
+{{#if github.run_id}}
+- **workflow-run-id**: __GH_AW_GITHUB_RUN_ID__
+{{/if}}
+</github-context>
+
+
+2026-09-23T12:35:30.9396077Z   GH_AW_PROMPT_CONTENT_0004: </system>
+
+2026-09-23T12:35:30.9397666Z   GH_AW_PROMPT_CONTENT_0005: {{#runtime-import .github/workflows/update-github-info.md}}
+
+2026-09-23T12:35:30.9399280Z ##[endgroup]
+2026-09-23T12:35:31.0777051Z Created prompt at /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt (12340 bytes)

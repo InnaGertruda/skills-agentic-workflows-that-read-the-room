@@ -1,0 +1,84 @@
+﻿2026-09-23T13:04:48.1682793Z ##[group]Run mkdir -p /tmp/gh-aw/
+2026-09-23T13:04:48.1683462Z [36;1mmkdir -p /tmp/gh-aw/[0m
+2026-09-23T13:04:48.1683912Z [36;1mfind "/tmp/gh-aw/" -type f -print[0m
+2026-09-23T13:04:48.1684313Z [36;1mif [ -f "/tmp/gh-aw/agent_output.json" ]; then[0m
+2026-09-23T13:04:48.1684845Z [36;1m  echo "GH_AW_AGENT_OUTPUT=/tmp/gh-aw/agent_output.json" >> "$GITHUB_OUTPUT"[0m
+2026-09-23T13:04:48.1685289Z [36;1mfi[0m
+2026-09-23T13:04:48.1862109Z shell: /usr/bin/bash -e {0}
+2026-09-23T13:04:48.1862666Z env:
+2026-09-23T13:04:48.1863037Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:04:48.1863526Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:04:48.1864682Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:04:48.1865797Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:04:48.1866254Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:04:48.1866834Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:04:48.1867214Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:04:48.1867630Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:04:48.1868119Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 01328b9d54ed9922
+2026-09-23T13:04:48.1868593Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168685492
+2026-09-23T13:04:48.1869013Z ##[endgroup]
+2026-09-23T13:04:48.1966048Z /tmp/gh-aw/base/.github/steps/2-step.md
+2026-09-23T13:04:48.1966724Z /tmp/gh-aw/base/.github/steps/3-step.md
+2026-09-23T13:04:48.1967156Z /tmp/gh-aw/base/.github/steps/1-step.md
+2026-09-23T13:04:48.1967534Z /tmp/gh-aw/base/.github/steps/x-review.md
+2026-09-23T13:04:48.1968183Z /tmp/gh-aw/base/.github/aw/actions-lock.json
+2026-09-23T13:04:48.1968711Z /tmp/gh-aw/base/.github/mcp.json
+2026-09-23T13:04:48.1969246Z /tmp/gh-aw/base/.github/agents/agentic-workflows.md
+2026-09-23T13:04:48.1969865Z /tmp/gh-aw/base/.github/prompts/manage-mona-site.prompt.md
+2026-09-23T13:04:48.1970346Z /tmp/gh-aw/base/.github/images/repo-settings.png
+2026-09-23T13:04:48.1970802Z /tmp/gh-aw/base/.github/images/run-update-github-info-1.png
+2026-09-23T13:04:48.1971229Z /tmp/gh-aw/base/.github/images/mona-astro-site-run-debug.png
+2026-09-23T13:04:48.1971703Z /tmp/gh-aw/base/.github/images/generated-update-pr.svg
+2026-09-23T13:04:48.1972202Z /tmp/gh-aw/base/.github/images/repo-secrets-2.png
+2026-09-23T13:04:48.1972617Z /tmp/gh-aw/base/.github/images/agentic-workflows-agent.png
+2026-09-23T13:04:48.1973025Z /tmp/gh-aw/base/.github/images/repo-secrets-3.png
+2026-09-23T13:04:48.1973464Z /tmp/gh-aw/base/.github/images/fine-grained-token-2.png
+2026-09-23T13:04:48.1973927Z /tmp/gh-aw/base/.github/images/actions-secrets-settings.svg
+2026-09-23T13:04:48.1974380Z /tmp/gh-aw/base/.github/images/run-update-github-info-2.png
+2026-09-23T13:04:48.1974772Z /tmp/gh-aw/base/.github/images/repo-secrets-1.png
+2026-09-23T13:04:48.1975245Z /tmp/gh-aw/base/.github/images/pr-files-changed-github-info.svg
+2026-09-23T13:04:48.1975913Z /tmp/gh-aw/base/.github/images/sign-in-sync-settings.png
+2026-09-23T13:04:48.1976374Z /tmp/gh-aw/base/.github/images/run-update-github-info-3.png
+2026-09-23T13:04:48.1976824Z /tmp/gh-aw/base/.github/images/actions-permissions-1.png
+2026-09-23T13:04:48.1977205Z /tmp/gh-aw/base/.github/images/run-workflow-button.svg
+2026-09-23T13:04:48.1977670Z /tmp/gh-aw/base/.github/images/fine-grained-token-1.png
+2026-09-23T13:04:48.1978102Z /tmp/gh-aw/base/.github/images/add-copilot-github-token-secret.svg
+2026-09-23T13:04:48.1978576Z /tmp/gh-aw/base/.github/skills/agentic-workflows/SKILL.md
+2026-09-23T13:04:48.1978987Z /tmp/gh-aw/base/.github/workflows/1-step.yml
+2026-09-23T13:04:48.1979393Z /tmp/gh-aw/base/.github/workflows/3-step.yml
+2026-09-23T13:04:48.1979793Z /tmp/gh-aw/base/.github/workflows/0-start-exercise.yml
+2026-09-23T13:04:48.1980164Z /tmp/gh-aw/base/.github/workflows/2-step.yml
+2026-09-23T13:04:48.1980579Z /tmp/gh-aw/base/.github/workflows/update-github-info.md
+2026-09-23T13:04:48.1981040Z /tmp/gh-aw/base/.github/workflows/update-github-info.lock.yml
+2026-09-23T13:04:48.1981727Z /tmp/gh-aw/base/.github/workflows/copilot-setup-steps.yml
+2026-09-23T13:04:48.1982143Z /tmp/gh-aw/sandbox/firewall/audit/image-manifest.json
+2026-09-23T13:04:48.1982593Z /tmp/gh-aw/sandbox/firewall/audit/awf-resolved-config.json
+2026-09-23T13:04:48.1983042Z /tmp/gh-aw/sandbox/firewall/audit/docker-compose.redacted.yml
+2026-09-23T13:04:48.1983493Z /tmp/gh-aw/sandbox/firewall/audit/policy-manifest.json
+2026-09-23T13:04:48.1983860Z /tmp/gh-aw/sandbox/firewall/audit/squid.conf
+2026-09-23T13:04:48.1984249Z /tmp/gh-aw/sandbox/firewall/logs/access.log
+2026-09-23T13:04:48.1984643Z /tmp/gh-aw/sandbox/firewall/logs/audit.jsonl
+2026-09-23T13:04:48.1985030Z /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/otel.jsonl
+2026-09-23T13:04:48.1985535Z /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl
+2026-09-23T13:04:48.1986275Z /tmp/gh-aw/sandbox/firewall/logs/api-proxy-logs/models.json
+2026-09-23T13:04:48.1986682Z /tmp/gh-aw/sandbox/firewall/logs/cache.log
+2026-09-23T13:04:48.1987080Z /tmp/gh-aw/sandbox/agent/logs/process-1790168663444-390.log
+2026-09-23T13:04:48.1987472Z /tmp/gh-aw/otel.jsonl
+2026-09-23T13:04:48.1987810Z /tmp/gh-aw/mcp-logs/rpc-messages.jsonl
+2026-09-23T13:04:48.1988180Z /tmp/gh-aw/mcp-logs/tools.json
+2026-09-23T13:04:48.1988516Z /tmp/gh-aw/mcp-logs/mcp-gateway.log
+2026-09-23T13:04:48.1988879Z /tmp/gh-aw/mcp-logs/gateway.md
+2026-09-23T13:04:48.1989187Z /tmp/gh-aw/mcp-logs/safeoutputs.log
+2026-09-23T13:04:48.1989551Z /tmp/gh-aw/mcp-logs/safeoutputs/server.log
+2026-09-23T13:04:48.1989969Z /tmp/gh-aw/mcp-logs/observed-url-domains.json
+2026-09-23T13:04:48.1990301Z /tmp/gh-aw/mcp-logs/github.log
+2026-09-23T13:04:48.1990657Z /tmp/gh-aw/pre-agent-audit.txt
+2026-09-23T13:04:48.1990956Z /tmp/gh-aw/aw_info.json
+2026-09-23T13:04:48.1991320Z /tmp/gh-aw/awf-config.json
+2026-09-23T13:04:48.1991650Z /tmp/gh-aw/github_rate_limits.jsonl
+2026-09-23T13:04:48.1991981Z /tmp/gh-aw/agent_output.json
+2026-09-23T13:04:48.1992310Z /tmp/gh-aw/agent-stdio.log
+2026-09-23T13:04:48.1992626Z /tmp/gh-aw/aw-prompts/prompt-template.txt
+2026-09-23T13:04:48.1993027Z /tmp/gh-aw/aw-prompts/prompt.txt
+2026-09-23T13:04:48.1993391Z /tmp/gh-aw/aw-prompts/prompt-import-tree.json
+2026-09-23T13:04:48.1993738Z /tmp/gh-aw/models.json

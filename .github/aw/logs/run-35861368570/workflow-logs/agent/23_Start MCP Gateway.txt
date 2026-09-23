@@ -1,0 +1,954 @@
+﻿2026-09-23T12:35:58.9183320Z ##[group]Run set -eo pipefail
+2026-09-23T12:35:58.9184122Z [36;1mset -eo pipefail[0m
+2026-09-23T12:35:58.9184685Z [36;1mmkdir -p "${RUNNER_TEMP}/gh-aw/mcp-config"[0m
+2026-09-23T12:35:58.9185797Z [36;1mif [ -n "${GITHUB_EVENT_PATH:-}" ] && [ -r "${GITHUB_EVENT_PATH}" ]; then[0m
+2026-09-23T12:35:58.9186854Z [36;1m  GH_AW_SAFEOUTPUTS_EVENT_PATH="${RUNNER_TEMP}/gh-aw/safeoutputs/github_event.json"[0m
+2026-09-23T12:35:58.9187857Z [36;1m  cp "${GITHUB_EVENT_PATH}" "${GH_AW_SAFEOUTPUTS_EVENT_PATH}"[0m
+2026-09-23T12:35:58.9188699Z [36;1m  export GITHUB_EVENT_PATH="${GH_AW_SAFEOUTPUTS_EVENT_PATH}"[0m
+2026-09-23T12:35:58.9189381Z [36;1mfi[0m
+2026-09-23T12:35:58.9189750Z [36;1m[0m
+2026-09-23T12:35:58.9190400Z [36;1m# Export gateway environment variables for MCP config and gateway script[0m
+2026-09-23T12:35:58.9191198Z [36;1mexport MCP_GATEWAY_PORT="8080"[0m
+2026-09-23T12:35:58.9191776Z [36;1mexport MCP_GATEWAY_DOMAIN="awmg-mcpg"[0m
+2026-09-23T12:35:58.9192746Z [36;1mexport MCP_GATEWAY_HOST_DOMAIN="localhost"[0m
+2026-09-23T12:35:58.9193573Z [36;1mMCP_GATEWAY_AGENT_ID=$(openssl rand -base64 45 | tr -d '/+=')[0m
+2026-09-23T12:35:58.9194378Z [36;1mecho "::add-mask::${MCP_GATEWAY_AGENT_ID}"[0m
+2026-09-23T12:35:58.9194982Z [36;1mexport MCP_GATEWAY_AGENT_ID[0m
+2026-09-23T12:35:58.9195658Z [36;1mexport MCP_GATEWAY_PAYLOAD_DIR="/tmp/gh-aw/mcp-payloads"[0m
+2026-09-23T12:35:58.9196387Z [36;1mmkdir -p "${MCP_GATEWAY_PAYLOAD_DIR}"[0m
+2026-09-23T12:35:58.9197025Z [36;1mexport MCP_GATEWAY_PAYLOAD_SIZE_THRESHOLD="524288"[0m
+2026-09-23T12:35:58.9198391Z [36;1mexport MCP_GATEWAY_ALLOWED_MOUNT_ROOTS="${GITHUB_WORKSPACE}:rw,${RUNNER_TEMP}/gh-aw:ro,${RUNNER_TEMP}/gh-aw/safeoutputs:rw,/opt:ro,/tmp:rw,/usr/bin/gh:ro"[0m
+2026-09-23T12:35:58.9199837Z [36;1mexport GH_AW_PR_HEAD_BASE_BRANCH="${GH_AW_PR_HEAD_BASE_BRANCH:-}"[0m
+2026-09-23T12:35:58.9200693Z [36;1mexport GH_AW_PR_HEAD_BASE_SHA="${GH_AW_PR_HEAD_BASE_SHA:-}"[0m
+2026-09-23T12:35:58.9201523Z [36;1mexport GH_AW_PR_HEAD_BASE_REPO="${GH_AW_PR_HEAD_BASE_REPO:-}"[0m
+2026-09-23T12:35:58.9202720Z [36;1mexport GH_AW_PR_HEAD_BASE_PR_NUMBER="${GH_AW_PR_HEAD_BASE_PR_NUMBER:-}"[0m
+2026-09-23T12:35:58.9203631Z [36;1mexport GH_AW_PR_HEAD_BASE_REF="${GH_AW_PR_HEAD_BASE_REF:-}"[0m
+2026-09-23T12:35:58.9204416Z [36;1mexport GH_AW_PR_HEAD_REPO="${GH_AW_PR_HEAD_REPO:-}"[0m
+2026-09-23T12:35:58.9205066Z [36;1mexport DEBUG="*"[0m
+2026-09-23T12:35:58.9205490Z [36;1m[0m
+2026-09-23T12:35:58.9205867Z [36;1mexport GH_AW_ENGINE="copilot"[0m
+2026-09-23T12:35:58.9206478Z [36;1mMCP_GATEWAY_UID=$(id -u 2>/dev/null || echo '0')[0m
+2026-09-23T12:35:58.9207177Z [36;1mMCP_GATEWAY_GID=$(id -g 2>/dev/null || echo '0')[0m
+2026-09-23T12:35:58.9207978Z [36;1msource "${RUNNER_TEMP}/gh-aw/actions/resolve_docker_socket_gid.sh"[0m
+2026-09-23T12:35:58.9220109Z [36;1mexport MCP_GATEWAY_DOCKER_COMMAND='docker run -i --rm --network bridge -p 127.0.0.1:'"${MCP_GATEWAY_PORT}"':'"${MCP_GATEWAY_PORT}"' --name awmg-mcpg --add-host host.docker.internal:host-gateway --user '"${MCP_GATEWAY_UID}"':'"${MCP_GATEWAY_GID}"' --group-add '"${DOCKER_SOCK_GID}"' -v '"${DOCKER_SOCK_PATH}"':/var/run/docker.sock -e MCP_GATEWAY_PORT -e MCP_GATEWAY_DOMAIN -e MCP_GATEWAY_AGENT_ID -e MCP_GATEWAY_PAYLOAD_DIR -e MCP_GATEWAY_PAYLOAD_SIZE_THRESHOLD -e DOCKER_HOST=unix:///var/run/docker.sock -e DEBUG -e MCP_GATEWAY_LOG_DIR -e GH_AW_MCP_LOG_DIR -e GH_AW_SAFE_OUTPUTS -e GH_AW_SAFE_OUTPUTS_CONFIG_PATH -e GH_AW_SAFE_OUTPUTS_TOOLS_PATH -e GH_AW_PR_HEAD_BASE_BRANCH -e GH_AW_PR_HEAD_BASE_SHA -e GH_AW_PR_HEAD_BASE_REPO -e GH_AW_PR_HEAD_BASE_PR_NUMBER -e GH_AW_PR_HEAD_BASE_REF -e GH_AW_PR_HEAD_REPO -e GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST -e GH_AW_ASSETS_BRANCH -e GH_AW_ASSETS_MAX_SIZE_KB -e GH_AW_ASSETS_ALLOWED_EXTS -e DEFAULT_BRANCH -e GITHUB_MCP_SERVER_TOKEN -e GITHUB_MCP_GUARD_MIN_INTEGRITY -e GITHUB_MCP_GUARD_REPOS -e GH_AW_SINK_VISIBILITY -e GITHUB_REPOSITORY -e GITHUB_SERVER_URL -e GITHUB_SHA -e GITHUB_WORKSPACE -e GITHUB_TOKEN -e GITHUB_RUN_ID -e GITHUB_RUN_NUMBER -e GITHUB_RUN_ATTEMPT -e GITHUB_JOB -e GITHUB_ACTION -e GITHUB_EVENT_NAME -e GITHUB_EVENT_PATH -e GITHUB_ACTOR -e GITHUB_ACTOR_ID -e GITHUB_TRIGGERING_ACTOR -e GITHUB_WORKFLOW -e GITHUB_WORKFLOW_REF -e GITHUB_WORKFLOW_SHA -e GITHUB_REF -e GITHUB_REF_NAME -e GITHUB_REF_TYPE -e GITHUB_HEAD_REF -e GITHUB_BASE_REF -e RUNNER_TEMP -e RUNNER_TOOL_CACHE -e MCP_GATEWAY_ALLOWED_MOUNT_ROOTS -e GITHUB_AW_OTEL_TRACE_ID -e GITHUB_AW_OTEL_PARENT_SPAN_ID -e OTEL_EXPORTER_OTLP_HEADERS -v /tmp/gh-aw/mcp-payloads:/tmp/gh-aw/mcp-payloads:rw -v /opt:/opt:ro -v /tmp:/tmp:rw -v '"${GITHUB_WORKSPACE}"':'"${GITHUB_WORKSPACE}"':rw -v '"${RUNNER_TEMP}"'/gh-aw/safeoutputs:'"${RUNNER_TEMP}"'/gh-aw/safeoutputs:rw ghcr.io/github/gh-aw-mcpg:v0.4.18'[0m
+2026-09-23T12:35:58.9233065Z [36;1m[0m
+2026-09-23T12:35:58.9233491Z [36;1mmkdir -p "$HOME/.copilot"[0m
+2026-09-23T12:35:58.9234284Z [36;1mGH_AW_NODE=$(which node 2>/dev/null || command -v node 2>/dev/null || echo node)[0m
+2026-09-23T12:35:58.9235496Z [36;1mcat << GH_AW_MCP_CONFIG_789c19472588340d_EOF | "$GH_AW_NODE" "${RUNNER_TEMP}/gh-aw/actions/start_mcp_gateway.cjs"[0m
+2026-09-23T12:35:58.9236522Z [36;1m{[0m
+2026-09-23T12:35:58.9236908Z [36;1m  "mcpServers": {[0m
+2026-09-23T12:35:58.9237421Z [36;1m    "github": {[0m
+2026-09-23T12:35:58.9237872Z [36;1m      "type": "stdio",[0m
+2026-09-23T12:35:58.9238524Z [36;1m      "container": "ghcr.io/github/github-mcp-server:v1.11.0",[0m
+2026-09-23T12:35:58.9239247Z [36;1m      "env": {[0m
+2026-09-23T12:35:58.9239749Z [36;1m        "GITHUB_FEATURES": "fields_param",[0m
+2026-09-23T12:35:58.9240342Z [36;1m        "GITHUB_HOST": "${GITHUB_SERVER_URL}",[0m
+2026-09-23T12:35:58.9241080Z [36;1m        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_MCP_SERVER_TOKEN}",[0m
+2026-09-23T12:35:58.9241798Z [36;1m        "GITHUB_READ_ONLY": "1",[0m
+2026-09-23T12:35:58.9242632Z [36;1m        "GITHUB_TOOLSETS": "repos"[0m
+2026-09-23T12:35:58.9243125Z [36;1m      },[0m
+2026-09-23T12:35:58.9243516Z [36;1m      "guard-policies": {[0m
+2026-09-23T12:35:58.9243993Z [36;1m        "allow-only": {[0m
+2026-09-23T12:35:58.9244487Z [36;1m          "approval-labels": [],[0m
+2026-09-23T12:35:58.9245010Z [36;1m          "blocked-users": [],[0m
+2026-09-23T12:35:58.9245537Z [36;1m          "min-integrity": "approved",[0m
+2026-09-23T12:35:58.9246312Z [36;1m          "repos": "InnaGertruda/skills-agentic-workflows-that-read-the-room",[0m
+2026-09-23T12:35:58.9247073Z [36;1m          "trusted-users": [][0m
+2026-09-23T12:35:58.9247535Z [36;1m        }[0m
+2026-09-23T12:35:58.9247890Z [36;1m      }[0m
+2026-09-23T12:35:58.9248241Z [36;1m    },[0m
+2026-09-23T12:35:58.9248607Z [36;1m    "safeoutputs": {[0m
+2026-09-23T12:35:58.9249047Z [36;1m      "type": "stdio",[0m
+2026-09-23T12:35:58.9249581Z [36;1m      "container": "ghcr.io/github/gh-aw-node",[0m
+2026-09-23T12:35:58.9250878Z [36;1m      "mounts": ["\${GITHUB_WORKSPACE}:\${GITHUB_WORKSPACE}:rw", "${RUNNER_TEMP}/gh-aw/safeoutputs:${RUNNER_TEMP}/gh-aw/safeoutputs:rw", "/tmp/gh-aw:/tmp/gh-aw:rw"],[0m
+2026-09-23T12:35:58.9252378Z [36;1m      "args": ["-w", "\${GITHUB_WORKSPACE}"],[0m
+2026-09-23T12:35:58.9252939Z [36;1m      "entrypoint": "sh",[0m
+2026-09-23T12:35:58.9253740Z [36;1m      "entrypointArgs": ["-c", "sh ${RUNNER_TEMP}/gh-aw/safeoutputs/start_safe_outputs_mcp.sh"],[0m
+2026-09-23T12:35:58.9254578Z [36;1m      "env": {[0m
+2026-09-23T12:35:58.9254997Z [36;1m        "DEBUG": "*",[0m
+2026-09-23T12:35:58.9255499Z [36;1m        "DEFAULT_BRANCH": "\${DEFAULT_BRANCH}",[0m
+2026-09-23T12:35:58.9256216Z [36;1m        "GH_AW_ASSETS_ALLOWED_EXTS": "\${GH_AW_ASSETS_ALLOWED_EXTS}",[0m
+2026-09-23T12:35:58.9256974Z [36;1m        "GH_AW_ASSETS_BRANCH": "\${GH_AW_ASSETS_BRANCH}",[0m
+2026-09-23T12:35:58.9257681Z [36;1m        "GH_AW_ASSETS_MAX_SIZE_KB": "\${GH_AW_ASSETS_MAX_SIZE_KB}",[0m
+2026-09-23T12:35:58.9258368Z [36;1m        "GH_AW_MCP_LOG_DIR": "\${GH_AW_MCP_LOG_DIR}",[0m
+2026-09-23T12:35:58.9258993Z [36;1m        "GH_AW_SAFE_OUTPUTS": "\${GH_AW_SAFE_OUTPUTS}",[0m
+2026-09-23T12:35:58.9259774Z [36;1m        "GH_AW_SAFE_OUTPUTS_CONFIG_PATH": "\${GH_AW_SAFE_OUTPUTS_CONFIG_PATH}",[0m
+2026-09-23T12:35:58.9261193Z [36;1m        "GH_AW_SAFE_OUTPUTS_TOOLS_PATH": "\${GH_AW_SAFE_OUTPUTS_TOOLS_PATH}",[0m
+2026-09-23T12:35:58.9262582Z [36;1m        "GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST": "\${GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST}",[0m
+2026-09-23T12:35:58.9263846Z [36;1m        "GH_AW_PR_HEAD_BASE_BRANCH": "\${GH_AW_PR_HEAD_BASE_BRANCH}",[0m
+2026-09-23T12:35:58.9264622Z [36;1m        "GH_AW_PR_HEAD_BASE_SHA": "\${GH_AW_PR_HEAD_BASE_SHA}",[0m
+2026-09-23T12:35:58.9265365Z [36;1m        "GH_AW_PR_HEAD_BASE_REPO": "\${GH_AW_PR_HEAD_BASE_REPO}",[0m
+2026-09-23T12:35:58.9266171Z [36;1m        "GH_AW_PR_HEAD_BASE_PR_NUMBER": "\${GH_AW_PR_HEAD_BASE_PR_NUMBER}",[0m
+2026-09-23T12:35:58.9267000Z [36;1m        "GH_AW_PR_HEAD_BASE_REF": "\${GH_AW_PR_HEAD_BASE_REF}",[0m
+2026-09-23T12:35:58.9267729Z [36;1m        "GH_AW_PR_HEAD_REPO": "\${GH_AW_PR_HEAD_REPO}",[0m
+2026-09-23T12:35:58.9268412Z [36;1m        "GITHUB_EVENT_NAME": "\${GITHUB_EVENT_NAME}",[0m
+2026-09-23T12:35:58.9269201Z [36;1m        "GITHUB_EVENT_PATH": "\${GITHUB_EVENT_PATH}",[0m
+2026-09-23T12:35:58.9269874Z [36;1m        "GITHUB_REPOSITORY": "\${GITHUB_REPOSITORY}",[0m
+2026-09-23T12:35:58.9270504Z [36;1m        "GITHUB_SHA": "\${GITHUB_SHA}",[0m
+2026-09-23T12:35:58.9271069Z [36;1m        "GITHUB_TOKEN": "\${GITHUB_TOKEN}",[0m
+2026-09-23T12:35:58.9271701Z [36;1m        "GITHUB_WORKSPACE": "\${GITHUB_WORKSPACE}",[0m
+2026-09-23T12:35:58.9272702Z [36;1m        "RUNNER_TEMP": "\${RUNNER_TEMP}"[0m
+2026-09-23T12:35:58.9273205Z [36;1m      },[0m
+2026-09-23T12:35:58.9273597Z [36;1m      "guard-policies": {[0m
+2026-09-23T12:35:58.9274079Z [36;1m        "write-sink": {[0m
+2026-09-23T12:35:58.9274532Z [36;1m          "accept": [[0m
+2026-09-23T12:35:58.9275243Z [36;1m            "private:InnaGertruda/skills-agentic-workflows-that-read-the-room"[0m
+2026-09-23T12:35:58.9276024Z [36;1m          ],[0m
+2026-09-23T12:35:58.9276512Z [36;1m          "sink-visibility": "${GH_AW_SINK_VISIBILITY}"[0m
+2026-09-23T12:35:58.9277074Z [36;1m        }[0m
+2026-09-23T12:35:58.9277433Z [36;1m      }[0m
+2026-09-23T12:35:58.9277780Z [36;1m    }[0m
+2026-09-23T12:35:58.9278146Z [36;1m  },[0m
+2026-09-23T12:35:58.9278511Z [36;1m  "gateway": {[0m
+2026-09-23T12:35:58.9278949Z [36;1m    "port": $MCP_GATEWAY_PORT,[0m
+2026-09-23T12:35:58.9279433Z [36;1m    "domain": "${MCP_GATEWAY_DOMAIN}",[0m
+2026-09-23T12:35:58.9280033Z [36;1m    "agentId": "${MCP_GATEWAY_AGENT_ID}",[0m
+2026-09-23T12:35:58.9280632Z [36;1m    "payloadDir": "${MCP_GATEWAY_PAYLOAD_DIR}",[0m
+2026-09-23T12:35:58.9281193Z [36;1m    "startupTimeout": 120,[0m
+2026-09-23T12:35:58.9281655Z [36;1m    "opentelemetry": {[0m
+2026-09-23T12:35:58.9282440Z [36;1m      "endpoint": "${OTEL_EXPORTER_OTLP_ENDPOINT}",[0m
+2026-09-23T12:35:58.9283056Z [36;1m      "traceId": "${GITHUB_AW_OTEL_TRACE_ID}",[0m
+2026-09-23T12:35:58.9283718Z [36;1m      "spanId": "${GITHUB_AW_OTEL_PARENT_SPAN_ID}"[0m
+2026-09-23T12:35:58.9284283Z [36;1m    }[0m
+2026-09-23T12:35:58.9284645Z [36;1m  }[0m
+2026-09-23T12:35:58.9285000Z [36;1m}[0m
+2026-09-23T12:35:58.9285390Z [36;1mGH_AW_MCP_CONFIG_789c19472588340d_EOF[0m
+2026-09-23T12:35:58.9339431Z shell: /usr/bin/bash -e {0}
+2026-09-23T12:35:58.9339934Z env:
+2026-09-23T12:35:58.9340313Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:35:58.9340840Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:35:58.9343338Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:35:58.9346087Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:35:58.9346917Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:35:58.9347797Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:35:58.9348516Z   DEFAULT_BRANCH: main
+2026-09-23T12:35:58.9348939Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-09-23T12:35:58.9349413Z   GH_AW_ASSETS_BRANCH: 
+2026-09-23T12:35:58.9350200Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-09-23T12:35:58.9350768Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-09-23T12:35:58.9351388Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-09-23T12:35:58.9352490Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-09-23T12:35:58.9353006Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-09-23T12:35:58.9353447Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-09-23T12:35:58.9353900Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-09-23T12:35:58.9354326Z   GH_AW_PR_HEAD_REPO: 
+2026-09-23T12:35:58.9354752Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:35:58.9355246Z   GH_AW_WORKFLOW_ID_SANITIZED: updategithubinfo
+2026-09-23T12:35:58.9355934Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:35:58.9356631Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5c6d187e32cf3618
+2026-09-23T12:35:58.9357224Z   GITHUB_AW_OTEL_JOB_START_MS: 1790166944750
+2026-09-23T12:35:58.9357820Z   GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST: true
+2026-09-23T12:35:58.9358607Z   GH_AW_SAFE_OUTPUTS: /home/runner/work/_temp/gh-aw/safeoutputs/outputs.jsonl
+2026-09-23T12:35:58.9359661Z   GH_AW_SAFE_OUTPUTS_CONFIG_PATH: /home/runner/work/_temp/gh-aw/safeoutputs/config.json
+2026-09-23T12:35:58.9360719Z   GH_AW_SAFE_OUTPUTS_TOOLS_PATH: /home/runner/work/_temp/gh-aw/safeoutputs/tools.json
+2026-09-23T12:35:58.9361528Z   GH_AW_SINK_VISIBILITY: public
+2026-09-23T12:35:58.9367046Z   GITHUB_MCP_SERVER_TOKEN: ***
+2026-09-23T12:35:58.9371979Z   GITHUB_TOKEN: ***
+2026-09-23T12:35:58.9372649Z ##[endgroup]
+2026-09-23T12:35:58.9958881Z [info] === MCP Gateway Startup ===
+2026-09-23T12:35:58.9959670Z [info] Engine: copilot
+2026-09-23T12:35:58.9960257Z [info] Runner temp: /home/runner/work/_temp
+2026-09-23T12:35:58.9960816Z [info] Gateway port: 8080
+2026-09-23T12:35:58.9961162Z [info] Gateway domain: awmg-mcpg
+2026-09-23T12:35:58.9961487Z [info] 
+2026-09-23T12:35:58.9963559Z [info] Reading MCP configuration from stdin...
+2026-09-23T12:35:58.9965622Z [info] ⏱️  TIMING: Configuration read from stdin took 0ms
+2026-09-23T12:35:58.9966308Z [info] 
+2026-09-23T12:35:58.9967491Z [info] -------START MCP CONFIG-----------
+2026-09-23T12:35:58.9968121Z [info] {
+2026-09-23T12:35:58.9968370Z   "mcpServers": {
+2026-09-23T12:35:58.9968638Z     "github": {
+2026-09-23T12:35:58.9968909Z       "type": "stdio",
+2026-09-23T12:35:58.9969317Z       "container": "ghcr.io/github/github-mcp-server:v1.11.0",
+2026-09-23T12:35:58.9970012Z       "env": {
+2026-09-23T12:35:58.9970352Z         "GITHUB_FEATURES": "fields_param",
+2026-09-23T12:35:58.9970677Z         "GITHUB_HOST": "https://github.com",
+2026-09-23T12:35:58.9974028Z         "GITHUB_PERSONAL_ACCESS_TOKEN": "***",
+2026-09-23T12:35:58.9974380Z         "GITHUB_READ_ONLY": "1",
+2026-09-23T12:35:58.9974903Z         "GITHUB_TOOLSETS": "repos"
+2026-09-23T12:35:58.9975347Z       },
+2026-09-23T12:35:58.9975671Z       "guard-policies": {
+2026-09-23T12:35:58.9976081Z         "allow-only": {
+2026-09-23T12:35:58.9976474Z           "approval-labels": [],
+2026-09-23T12:35:58.9976920Z           "blocked-users": [],
+2026-09-23T12:35:58.9977374Z           "min-integrity": "approved",
+2026-09-23T12:35:58.9978072Z           "repos": "InnaGertruda/skills-agentic-workflows-that-read-the-room",
+2026-09-23T12:35:58.9978767Z           "trusted-users": []
+2026-09-23T12:35:58.9979205Z         }
+2026-09-23T12:35:58.9979507Z       }
+2026-09-23T12:35:58.9979803Z     },
+2026-09-23T12:35:58.9980121Z     "safeoutputs": {
+2026-09-23T12:35:58.9980487Z       "type": "stdio",
+2026-09-23T12:35:58.9980899Z       "container": "ghcr.io/github/gh-aw-node",
+2026-09-23T12:35:58.9982454Z       "mounts": ["${GITHUB_WORKSPACE}:${GITHUB_WORKSPACE}:rw", "/home/runner/work/_temp/gh-aw/safeoutputs:/home/runner/work/_temp/gh-aw/safeoutputs:rw", "/tmp/gh-aw:/tmp/gh-aw:rw"],
+2026-09-23T12:35:58.9983417Z       "args": ["-w", "${GITHUB_WORKSPACE}"],
+2026-09-23T12:35:58.9983731Z       "entrypoint": "sh",
+2026-09-23T12:35:58.9984186Z       "entrypointArgs": ["-c", "sh /home/runner/work/_temp/gh-aw/safeoutputs/start_safe_outputs_mcp.sh"],
+2026-09-23T12:35:58.9984660Z       "env": {
+2026-09-23T12:35:58.9984872Z         "DEBUG": "*",
+2026-09-23T12:35:58.9985420Z         "DEFAULT_BRANCH": "${DEFAULT_BRANCH}",
+2026-09-23T12:35:58.9985786Z         "GH_AW_ASSETS_ALLOWED_EXTS": "${GH_AW_ASSETS_ALLOWED_EXTS}",
+2026-09-23T12:35:58.9986319Z         "GH_AW_ASSETS_BRANCH": "${GH_AW_ASSETS_BRANCH}",
+2026-09-23T12:35:58.9986692Z         "GH_AW_ASSETS_MAX_SIZE_KB": "${GH_AW_ASSETS_MAX_SIZE_KB}",
+2026-09-23T12:35:58.9987057Z         "GH_AW_MCP_LOG_DIR": "${GH_AW_MCP_LOG_DIR}",
+2026-09-23T12:35:58.9987388Z         "GH_AW_SAFE_OUTPUTS": "${GH_AW_SAFE_OUTPUTS}",
+2026-09-23T12:35:58.9987786Z         "GH_AW_SAFE_OUTPUTS_CONFIG_PATH": "${GH_AW_SAFE_OUTPUTS_CONFIG_PATH}",
+2026-09-23T12:35:58.9988262Z         "GH_AW_SAFE_OUTPUTS_TOOLS_PATH": "${GH_AW_SAFE_OUTPUTS_TOOLS_PATH}",
+2026-09-23T12:35:58.9988786Z         "GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST": "${GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST}",
+2026-09-23T12:35:58.9989284Z         "GH_AW_PR_HEAD_BASE_BRANCH": "${GH_AW_PR_HEAD_BASE_BRANCH}",
+2026-09-23T12:35:58.9989672Z         "GH_AW_PR_HEAD_BASE_SHA": "${GH_AW_PR_HEAD_BASE_SHA}",
+2026-09-23T12:35:58.9990051Z         "GH_AW_PR_HEAD_BASE_REPO": "${GH_AW_PR_HEAD_BASE_REPO}",
+2026-09-23T12:35:58.9990462Z         "GH_AW_PR_HEAD_BASE_PR_NUMBER": "${GH_AW_PR_HEAD_BASE_PR_NUMBER}",
+2026-09-23T12:35:58.9990934Z         "GH_AW_PR_HEAD_BASE_REF": "${GH_AW_PR_HEAD_BASE_REF}",
+2026-09-23T12:35:58.9991281Z         "GH_AW_PR_HEAD_REPO": "${GH_AW_PR_HEAD_REPO}",
+2026-09-23T12:35:58.9991614Z         "GITHUB_EVENT_NAME": "${GITHUB_EVENT_NAME}",
+2026-09-23T12:35:58.9991940Z         "GITHUB_EVENT_PATH": "${GITHUB_EVENT_PATH}",
+2026-09-23T12:35:58.9992527Z         "GITHUB_REPOSITORY": "${GITHUB_REPOSITORY}",
+2026-09-23T12:35:58.9992835Z         "GITHUB_SHA": "${GITHUB_SHA}",
+2026-09-23T12:35:58.9993116Z         "GITHUB_TOKEN": "${GITHUB_TOKEN}",
+2026-09-23T12:35:58.9993562Z         "GITHUB_WORKSPACE": "${GITHUB_WORKSPACE}",
+2026-09-23T12:35:58.9994077Z         "RUNNER_TEMP": "${RUNNER_TEMP}"
+2026-09-23T12:35:58.9994466Z       },
+2026-09-23T12:35:58.9994678Z       "guard-policies": {
+2026-09-23T12:35:58.9994926Z         "write-sink": {
+2026-09-23T12:35:58.9995148Z           "accept": [
+2026-09-23T12:35:58.9995508Z             "private:InnaGertruda/skills-agentic-workflows-that-read-the-room"
+2026-09-23T12:35:58.9995918Z           ],
+2026-09-23T12:35:58.9996140Z           "sink-visibility": "public"
+2026-09-23T12:35:58.9996400Z         }
+2026-09-23T12:35:58.9996583Z       }
+2026-09-23T12:35:58.9996769Z     }
+2026-09-23T12:35:58.9996948Z   },
+2026-09-23T12:35:58.9997132Z   "gateway": {
+2026-09-23T12:35:58.9997351Z     "port": 8080,
+2026-09-23T12:35:58.9997572Z     "domain": "awmg-mcpg",
+2026-09-23T12:35:58.9998020Z     "agentId": "***",
+2026-09-23T12:35:58.9998297Z     "payloadDir": "/tmp/gh-aw/mcp-payloads",
+2026-09-23T12:35:58.9998614Z     "startupTimeout": 120,
+2026-09-23T12:35:58.9998868Z     "opentelemetry": {
+2026-09-23T12:35:58.9999101Z       "endpoint": "",
+2026-09-23T12:35:58.9999359Z       "traceId": "4e23b47abbd8fef42f9033b59438c291",
+2026-09-23T12:35:58.9999724Z       "spanId": "5c6d187e32cf3618"
+2026-09-23T12:35:59.0000053Z     }
+2026-09-23T12:35:59.0000295Z   }
+2026-09-23T12:35:59.0000495Z }
+2026-09-23T12:35:59.0000595Z 
+2026-09-23T12:35:59.0000712Z [info] -------END MCP CONFIG-----------
+2026-09-23T12:35:59.0000989Z [info] 
+2026-09-23T12:35:59.0001221Z [info] Validating gateway configuration...
+2026-09-23T12:35:59.0001533Z [info] Configuration validated successfully
+2026-09-23T12:35:59.0002020Z [info] ⏱️  TIMING: Configuration validation took 1ms
+2026-09-23T12:35:59.0002660Z [info] 
+2026-09-23T12:35:59.0002965Z [info] Cleaning up any stale awmg-mcpg container from a previous run...
+2026-09-23T12:35:59.0143242Z Removed stale awmg-mcpg container
+2026-09-23T12:35:59.0149782Z [info] 
+2026-09-23T12:35:59.0150071Z [info] Starting gateway container...
+2026-09-23T12:35:59.0150364Z [info] 
+2026-09-23T12:35:59.0190668Z [info] Gateway started with PID: 4286
+2026-09-23T12:35:59.0191617Z [info] ⏱️  TIMING: Gateway container launch took 4ms
+2026-09-23T12:35:59.0192926Z [info] Verifying gateway process is running...
+2026-09-23T12:35:59.0193991Z [info] Gateway process confirmed running (PID: 4286)
+2026-09-23T12:35:59.0194573Z [info] 
+2026-09-23T12:35:59.0194978Z [info] Waiting for gateway to initialize...
+2026-09-23T12:36:04.0245326Z [info] Checking if gateway process is still alive after initialization...
+2026-09-23T12:36:04.0246501Z [info] Gateway process is still running (PID: 4286)
+2026-09-23T12:36:04.0247234Z [info] 
+2026-09-23T12:36:04.0247775Z [info] Waiting for gateway to be ready...
+2026-09-23T12:36:04.0249428Z [info] Health endpoint: http://localhost:8080/health
+2026-09-23T12:36:04.0250507Z [info] (Note: MCP_GATEWAY_DOMAIN is 'awmg-mcpg' for container access)
+2026-09-23T12:36:04.0252644Z [info] Retrying up to 150 times with exponential backoff (250ms initial delay, capped at 1000ms, ~149s cumulative retry delay excluding request time)
+2026-09-23T12:36:04.0254287Z [info] 
+2026-09-23T12:36:04.0254771Z [info] === Health Check Progress ===
+2026-09-23T12:36:04.0255407Z [info] Attempt 1/150 (0s elapsed)...
+2026-09-23T12:36:04.0447443Z [warning] MCP gateway health check failed (attempt 1/150): read ECONNRESET
+2026-09-23T12:36:04.0448292Z [info] Retry attempt 1/149 for MCP gateway health check after 500ms delay
+2026-09-23T12:36:04.5543241Z [warning] MCP gateway health check failed (attempt 2/150): read ECONNRESET
+2026-09-23T12:36:04.5544382Z [info] Retry attempt 2/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:05.5574867Z [warning] MCP gateway health check failed (attempt 3/150): read ECONNRESET
+2026-09-23T12:36:05.5575621Z [info] Retry attempt 3/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:06.5598591Z [warning] MCP gateway health check failed (attempt 4/150): read ECONNRESET
+2026-09-23T12:36:06.5599313Z [info] Retry attempt 4/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:07.5625600Z [warning] MCP gateway health check failed (attempt 5/150): read ECONNRESET
+2026-09-23T12:36:07.5626381Z [info] Retry attempt 5/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:08.5648712Z [warning] MCP gateway health check failed (attempt 6/150): read ECONNRESET
+2026-09-23T12:36:08.5649487Z [info] Retry attempt 6/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:09.5680792Z [warning] MCP gateway health check failed (attempt 7/150): read ECONNRESET
+2026-09-23T12:36:09.5681710Z [info] Retry attempt 7/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:10.5686773Z [warning] MCP gateway health check failed (attempt 8/150): 
+2026-09-23T12:36:10.5687622Z [info] Retry attempt 8/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:11.5714430Z [warning] MCP gateway health check failed (attempt 9/150): 
+2026-09-23T12:36:11.5715406Z [info] Retry attempt 9/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:12.5734030Z [warning] MCP gateway health check failed (attempt 10/150): 
+2026-09-23T12:36:12.5735308Z [info] Retry attempt 10/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:13.5741086Z [info] Attempt 11/150 (9s elapsed)...
+2026-09-23T12:36:13.5749788Z [warning] MCP gateway health check failed (attempt 11/150): 
+2026-09-23T12:36:13.5750936Z [info] Retry attempt 11/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:14.5755948Z [warning] MCP gateway health check failed (attempt 12/150): 
+2026-09-23T12:36:14.5756800Z [info] Retry attempt 12/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:15.5771400Z [warning] MCP gateway health check failed (attempt 13/150): 
+2026-09-23T12:36:15.5772372Z [info] Retry attempt 13/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:16.5777960Z [warning] MCP gateway health check failed (attempt 14/150): 
+2026-09-23T12:36:16.5778676Z [info] Retry attempt 14/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:17.5794246Z [warning] MCP gateway health check failed (attempt 15/150): 
+2026-09-23T12:36:18.5810731Z [info] Retry attempt 15/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:18.5811849Z [warning] MCP gateway health check failed (attempt 16/150): 
+2026-09-23T12:36:18.5812821Z [info] Retry attempt 16/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:19.5826619Z [warning] MCP gateway health check failed (attempt 17/150): 
+2026-09-23T12:36:19.5827423Z [info] Retry attempt 17/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:20.5832403Z [warning] MCP gateway health check failed (attempt 18/150): 
+2026-09-23T12:36:20.5833597Z [info] Retry attempt 18/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:21.5847332Z [warning] MCP gateway health check failed (attempt 19/150): 
+2026-09-23T12:36:21.5848193Z [info] Retry attempt 19/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:22.5853002Z [warning] MCP gateway health check failed (attempt 20/150): 
+2026-09-23T12:36:22.5853991Z [info] Retry attempt 20/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:23.5870129Z [info] Attempt 21/150 (19s elapsed)...
+2026-09-23T12:36:23.5879530Z [warning] MCP gateway health check failed (attempt 21/150): 
+2026-09-23T12:36:23.5880531Z [info] Retry attempt 21/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:24.5894417Z [warning] MCP gateway health check failed (attempt 22/150): 
+2026-09-23T12:36:24.5895516Z [info] Retry attempt 22/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:25.5910705Z [warning] MCP gateway health check failed (attempt 23/150): 
+2026-09-23T12:36:25.5911478Z [info] Retry attempt 23/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:26.5915579Z [warning] MCP gateway health check failed (attempt 24/150): 
+2026-09-23T12:36:26.5916504Z [info] Retry attempt 24/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:27.5930209Z [warning] MCP gateway health check failed (attempt 25/150): 
+2026-09-23T12:36:27.5930951Z [info] Retry attempt 25/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:28.5935634Z [warning] MCP gateway health check failed (attempt 26/150): 
+2026-09-23T12:36:28.5936300Z [info] Retry attempt 26/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:29.5950288Z [warning] MCP gateway health check failed (attempt 27/150): 
+2026-09-23T12:36:29.5950999Z [info] Retry attempt 27/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:30.5955810Z [warning] MCP gateway health check failed (attempt 28/150): 
+2026-09-23T12:36:30.5956677Z [info] Retry attempt 28/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:31.5970326Z [warning] MCP gateway health check failed (attempt 29/150): 
+2026-09-23T12:36:31.5971080Z [info] Retry attempt 29/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:32.5975666Z [warning] MCP gateway health check failed (attempt 30/150): 
+2026-09-23T12:36:32.5976317Z [info] Retry attempt 30/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:33.5981663Z [info] Attempt 31/150 (29s elapsed)...
+2026-09-23T12:36:33.5990971Z [warning] MCP gateway health check failed (attempt 31/150): 
+2026-09-23T12:36:33.5991634Z [info] Retry attempt 31/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:34.5998173Z [warning] MCP gateway health check failed (attempt 32/150): 
+2026-09-23T12:36:34.5998893Z [info] Retry attempt 32/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:35.6012813Z [warning] MCP gateway health check failed (attempt 33/150): 
+2026-09-23T12:36:35.6013687Z [info] Retry attempt 33/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:36.6018206Z [warning] MCP gateway health check failed (attempt 34/150): 
+2026-09-23T12:36:36.6019346Z [info] Retry attempt 34/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:37.6032709Z [warning] MCP gateway health check failed (attempt 35/150): 
+2026-09-23T12:36:37.6033631Z [info] Retry attempt 35/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:38.6039605Z [warning] MCP gateway health check failed (attempt 36/150): 
+2026-09-23T12:36:38.6040639Z [info] Retry attempt 36/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:39.6053987Z [warning] MCP gateway health check failed (attempt 37/150): 
+2026-09-23T12:36:39.6054769Z [info] Retry attempt 37/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:40.6070812Z [warning] MCP gateway health check failed (attempt 38/150): 
+2026-09-23T12:36:40.6071679Z [info] Retry attempt 38/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:41.6085397Z [warning] MCP gateway health check failed (attempt 39/150): 
+2026-09-23T12:36:41.6086833Z [info] Retry attempt 39/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:42.6101794Z [warning] MCP gateway health check failed (attempt 40/150): 
+2026-09-23T12:36:42.6102930Z [info] Retry attempt 40/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:43.6107349Z [info] Attempt 41/150 (39s elapsed)...
+2026-09-23T12:36:43.6117308Z [warning] MCP gateway health check failed (attempt 41/150): 
+2026-09-23T12:36:43.6118295Z [info] Retry attempt 41/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:44.6126818Z [warning] MCP gateway health check failed (attempt 42/150): 
+2026-09-23T12:36:44.6127883Z [info] Retry attempt 42/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:45.6151226Z [warning] MCP gateway health check failed (attempt 43/150): 
+2026-09-23T12:36:45.6152727Z [info] Retry attempt 43/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:46.6157087Z [warning] MCP gateway health check failed (attempt 44/150): 
+2026-09-23T12:36:46.6158286Z [info] Retry attempt 44/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:47.6172304Z [warning] MCP gateway health check failed (attempt 45/150): 
+2026-09-23T12:36:47.6173347Z [info] Retry attempt 45/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:48.6178383Z [warning] MCP gateway health check failed (attempt 46/150): 
+2026-09-23T12:36:48.6179280Z [info] Retry attempt 46/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:49.6193727Z [warning] MCP gateway health check failed (attempt 47/150): 
+2026-09-23T12:36:49.6194692Z [info] Retry attempt 47/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:50.6212027Z [warning] MCP gateway health check failed (attempt 48/150): 
+2026-09-23T12:36:50.6213054Z [info] Retry attempt 48/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:51.6227336Z [warning] MCP gateway health check failed (attempt 49/150): 
+2026-09-23T12:36:51.6228116Z [info] Retry attempt 49/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:52.6243051Z [warning] MCP gateway health check failed (attempt 50/150): 
+2026-09-23T12:36:52.6243774Z [info] Retry attempt 50/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:53.6248822Z [info] Attempt 51/150 (49s elapsed)...
+2026-09-23T12:36:53.6257740Z [warning] MCP gateway health check failed (attempt 51/150): 
+2026-09-23T12:36:53.6258810Z [info] Retry attempt 51/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:54.6263892Z [warning] MCP gateway health check failed (attempt 52/150): 
+2026-09-23T12:36:54.6264725Z [info] Retry attempt 52/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:55.6289980Z [warning] MCP gateway health check failed (attempt 53/150): 
+2026-09-23T12:36:55.6290842Z [info] Retry attempt 53/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:56.6296164Z [warning] MCP gateway health check failed (attempt 54/150): 
+2026-09-23T12:36:56.6296941Z [info] Retry attempt 54/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:57.6311903Z [warning] MCP gateway health check failed (attempt 55/150): 
+2026-09-23T12:36:57.6313268Z [info] Retry attempt 55/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:58.6317017Z [warning] MCP gateway health check failed (attempt 56/150): 
+2026-09-23T12:36:58.6318316Z [info] Retry attempt 56/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:36:59.6332724Z [warning] MCP gateway health check failed (attempt 57/150): 
+2026-09-23T12:36:59.6333776Z [info] Retry attempt 57/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:00.6339165Z [warning] MCP gateway health check failed (attempt 58/150): 
+2026-09-23T12:37:00.6340143Z [info] Retry attempt 58/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:01.6354123Z [warning] MCP gateway health check failed (attempt 59/150): 
+2026-09-23T12:37:01.6355312Z [info] Retry attempt 59/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:02.6370370Z [warning] MCP gateway health check failed (attempt 60/150): 
+2026-09-23T12:37:02.6371536Z [info] Retry attempt 60/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:03.6375888Z [info] Attempt 61/150 (59s elapsed)...
+2026-09-23T12:37:03.6387421Z [warning] MCP gateway health check failed (attempt 61/150): 
+2026-09-23T12:37:03.6388684Z [info] Retry attempt 61/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:04.6405647Z [warning] MCP gateway health check failed (attempt 62/150): 
+2026-09-23T12:37:04.6406393Z [info] Retry attempt 62/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:05.6430636Z [warning] MCP gateway health check failed (attempt 63/150): 
+2026-09-23T12:37:05.6431586Z [info] Retry attempt 63/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:06.6437004Z [warning] MCP gateway health check failed (attempt 64/150): 
+2026-09-23T12:37:06.6437728Z [info] Retry attempt 64/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:07.6451723Z [warning] MCP gateway health check failed (attempt 65/150): 
+2026-09-23T12:37:07.6452767Z [info] Retry attempt 65/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:08.6456904Z [warning] MCP gateway health check failed (attempt 66/150): 
+2026-09-23T12:37:08.6457613Z [info] Retry attempt 66/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:09.6481788Z [warning] MCP gateway health check failed (attempt 67/150): 
+2026-09-23T12:37:09.6483076Z [info] Retry attempt 67/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:10.6487825Z [warning] MCP gateway health check failed (attempt 68/150): 
+2026-09-23T12:37:10.6488890Z [info] Retry attempt 68/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:11.6505004Z [warning] MCP gateway health check failed (attempt 69/150): 
+2026-09-23T12:37:11.6505930Z [info] Retry attempt 69/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:12.6521103Z [warning] MCP gateway health check failed (attempt 70/150): 
+2026-09-23T12:37:12.6522389Z [info] Retry attempt 70/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:13.6526570Z [info] Attempt 71/150 (69s elapsed)...
+2026-09-23T12:37:13.6535303Z [warning] MCP gateway health check failed (attempt 71/150): 
+2026-09-23T12:37:13.6536248Z [info] Retry attempt 71/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:14.6552521Z [warning] MCP gateway health check failed (attempt 72/150): 
+2026-09-23T12:37:14.6553239Z [info] Retry attempt 72/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:15.6567517Z [warning] MCP gateway health check failed (attempt 73/150): 
+2026-09-23T12:37:15.6568827Z [info] Retry attempt 73/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:16.6584391Z [warning] MCP gateway health check failed (attempt 74/150): 
+2026-09-23T12:37:16.6585575Z [info] Retry attempt 74/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:17.6609749Z [warning] MCP gateway health check failed (attempt 75/150): 
+2026-09-23T12:37:17.6610968Z [info] Retry attempt 75/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:18.6616502Z [warning] MCP gateway health check failed (attempt 76/150): 
+2026-09-23T12:37:18.6617451Z [info] Retry attempt 76/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:19.6640701Z [warning] MCP gateway health check failed (attempt 77/150): 
+2026-09-23T12:37:19.6641556Z [info] Retry attempt 77/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:20.6646630Z [warning] MCP gateway health check failed (attempt 78/150): 
+2026-09-23T12:37:20.6647412Z [info] Retry attempt 78/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:21.6670167Z [warning] MCP gateway health check failed (attempt 79/150): 
+2026-09-23T12:37:21.6671029Z [info] Retry attempt 79/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:22.6675540Z [warning] MCP gateway health check failed (attempt 80/150): 
+2026-09-23T12:37:22.6676256Z [info] Retry attempt 80/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:23.6690603Z [info] Attempt 81/150 (79s elapsed)...
+2026-09-23T12:37:23.6701018Z [warning] MCP gateway health check failed (attempt 81/150): 
+2026-09-23T12:37:23.6701791Z [info] Retry attempt 81/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:24.6706582Z [warning] MCP gateway health check failed (attempt 82/150): 
+2026-09-23T12:37:24.6707435Z [info] Retry attempt 82/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:25.6733362Z [warning] MCP gateway health check failed (attempt 83/150): 
+2026-09-23T12:37:25.6734392Z [info] Retry attempt 83/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:26.6739396Z [warning] MCP gateway health check failed (attempt 84/150): 
+2026-09-23T12:37:26.6740594Z [info] Retry attempt 84/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:27.6754849Z [warning] MCP gateway health check failed (attempt 85/150): 
+2026-09-23T12:37:27.6755563Z [info] Retry attempt 85/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:28.6771776Z [warning] MCP gateway health check failed (attempt 86/150): 
+2026-09-23T12:37:28.6772928Z [info] Retry attempt 86/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:29.6786099Z [warning] MCP gateway health check failed (attempt 87/150): 
+2026-09-23T12:37:29.6786846Z [info] Retry attempt 87/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:30.6800649Z [warning] MCP gateway health check failed (attempt 88/150): 
+2026-09-23T12:37:30.6801371Z [info] Retry attempt 88/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:31.6814928Z [warning] MCP gateway health check failed (attempt 89/150): 
+2026-09-23T12:37:31.6815709Z [info] Retry attempt 89/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:32.6830898Z [warning] MCP gateway health check failed (attempt 90/150): 
+2026-09-23T12:37:32.6831611Z [info] Retry attempt 90/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:33.6836268Z [info] Attempt 91/150 (89s elapsed)...
+2026-09-23T12:37:33.6844181Z [warning] MCP gateway health check failed (attempt 91/150): 
+2026-09-23T12:37:33.6845074Z [info] Retry attempt 91/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:34.6860994Z [warning] MCP gateway health check failed (attempt 92/150): 
+2026-09-23T12:37:34.6861765Z [info] Retry attempt 92/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:35.6876353Z [warning] MCP gateway health check failed (attempt 93/150): 
+2026-09-23T12:37:35.6877167Z [info] Retry attempt 93/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:36.6892027Z [warning] MCP gateway health check failed (attempt 94/150): 
+2026-09-23T12:37:36.6893082Z [info] Retry attempt 94/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:37.6905740Z [warning] MCP gateway health check failed (attempt 95/150): 
+2026-09-23T12:37:37.6906591Z [info] Retry attempt 95/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:38.6921204Z [warning] MCP gateway health check failed (attempt 96/150): 
+2026-09-23T12:37:38.6921886Z [info] Retry attempt 96/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:39.6936124Z [warning] MCP gateway health check failed (attempt 97/150): 
+2026-09-23T12:37:39.6937004Z [info] Retry attempt 97/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:40.6952499Z [warning] MCP gateway health check failed (attempt 98/150): 
+2026-09-23T12:37:40.6953319Z [info] Retry attempt 98/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:41.6966221Z [warning] MCP gateway health check failed (attempt 99/150): 
+2026-09-23T12:37:41.6966941Z [info] Retry attempt 99/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:42.6983273Z [warning] MCP gateway health check failed (attempt 100/150): 
+2026-09-23T12:37:42.6984173Z [info] Retry attempt 100/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:43.6989837Z [info] Attempt 101/150 (99s elapsed)...
+2026-09-23T12:37:43.6999466Z [warning] MCP gateway health check failed (attempt 101/150): 
+2026-09-23T12:37:43.7000255Z [info] Retry attempt 101/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:44.7016864Z [warning] MCP gateway health check failed (attempt 102/150): 
+2026-09-23T12:37:44.7017739Z [info] Retry attempt 102/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:45.7041221Z [warning] MCP gateway health check failed (attempt 103/150): 
+2026-09-23T12:37:45.7042490Z [info] Retry attempt 103/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:46.7048467Z [warning] MCP gateway health check failed (attempt 104/150): 
+2026-09-23T12:37:46.7049415Z [info] Retry attempt 104/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:47.7074431Z [warning] MCP gateway health check failed (attempt 105/150): 
+2026-09-23T12:37:47.7075538Z [info] Retry attempt 105/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:48.7091996Z [warning] MCP gateway health check failed (attempt 106/150): 
+2026-09-23T12:37:48.7093494Z [info] Retry attempt 106/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:49.7107257Z [warning] MCP gateway health check failed (attempt 107/150): 
+2026-09-23T12:37:49.7108124Z [info] Retry attempt 107/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:50.7123643Z [warning] MCP gateway health check failed (attempt 108/150): 
+2026-09-23T12:37:50.7124505Z [info] Retry attempt 108/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:51.7148243Z [warning] MCP gateway health check failed (attempt 109/150): 
+2026-09-23T12:37:51.7149130Z [info] Retry attempt 109/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:52.7164035Z [warning] MCP gateway health check failed (attempt 110/150): 
+2026-09-23T12:37:52.7165218Z [info] Retry attempt 110/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:53.7180310Z [info] Attempt 111/150 (109s elapsed)...
+2026-09-23T12:37:53.7189322Z [warning] MCP gateway health check failed (attempt 111/150): 
+2026-09-23T12:37:53.7190582Z [info] Retry attempt 111/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:54.7196346Z [warning] MCP gateway health check failed (attempt 112/150): 
+2026-09-23T12:37:54.7197048Z [info] Retry attempt 112/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:55.7210033Z [warning] MCP gateway health check failed (attempt 113/150): 
+2026-09-23T12:37:55.7210707Z [info] Retry attempt 113/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:56.7226294Z [warning] MCP gateway health check failed (attempt 114/150): 
+2026-09-23T12:37:56.7227947Z [info] Retry attempt 114/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:57.7241701Z [warning] MCP gateway health check failed (attempt 115/150): 
+2026-09-23T12:37:57.7242929Z [info] Retry attempt 115/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:58.7237308Z [warning] MCP gateway health check failed (attempt 116/150): 
+2026-09-23T12:37:58.7237982Z [info] Retry attempt 116/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:37:59.7252036Z [warning] MCP gateway health check failed (attempt 117/150): 
+2026-09-23T12:37:59.7253597Z [info] Retry attempt 117/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:00.7247204Z [warning] MCP gateway health check failed (attempt 118/150): 
+2026-09-23T12:38:00.7248192Z [info] Retry attempt 118/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:01.7262784Z [warning] MCP gateway health check failed (attempt 119/150): 
+2026-09-23T12:38:01.7263735Z [info] Retry attempt 119/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:02.7257618Z [warning] MCP gateway health check failed (attempt 120/150): 
+2026-09-23T12:38:02.7258526Z [info] Retry attempt 120/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:03.7263076Z [info] Attempt 121/150 (119s elapsed)...
+2026-09-23T12:38:03.7272014Z [warning] MCP gateway health check failed (attempt 121/150): 
+2026-09-23T12:38:03.7273054Z [info] Retry attempt 121/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:04.7268807Z [warning] MCP gateway health check failed (attempt 122/150): 
+2026-09-23T12:38:04.7269528Z [info] Retry attempt 122/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:05.7283481Z [warning] MCP gateway health check failed (attempt 123/150): 
+2026-09-23T12:38:05.7284140Z [info] Retry attempt 123/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:06.7278665Z [warning] MCP gateway health check failed (attempt 124/150): 
+2026-09-23T12:38:06.7279366Z [info] Retry attempt 124/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:07.7293993Z [warning] MCP gateway health check failed (attempt 125/150): 
+2026-09-23T12:38:07.7295227Z [info] Retry attempt 125/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:08.7298857Z [warning] MCP gateway health check failed (attempt 126/150): 
+2026-09-23T12:38:08.7299938Z [info] Retry attempt 126/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:09.7313293Z [warning] MCP gateway health check failed (attempt 127/150): 
+2026-09-23T12:38:09.7314956Z [info] Retry attempt 127/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:10.7308160Z [warning] MCP gateway health check failed (attempt 128/150): 
+2026-09-23T12:38:10.7309106Z [info] Retry attempt 128/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:11.7323269Z [warning] MCP gateway health check failed (attempt 129/150): 
+2026-09-23T12:38:11.7324181Z [info] Retry attempt 129/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:12.7317046Z [warning] MCP gateway health check failed (attempt 130/150): 
+2026-09-23T12:38:12.7318190Z [info] Retry attempt 130/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:13.7332809Z [info] Attempt 131/150 (129s elapsed)...
+2026-09-23T12:38:13.7341449Z [warning] MCP gateway health check failed (attempt 131/150): 
+2026-09-23T12:38:13.7342319Z [info] Retry attempt 131/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:14.7337188Z [warning] MCP gateway health check failed (attempt 132/150): 
+2026-09-23T12:38:14.7337908Z [info] Retry attempt 132/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:15.7351753Z [warning] MCP gateway health check failed (attempt 133/150): 
+2026-09-23T12:38:15.7352804Z [info] Retry attempt 133/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:16.7356737Z [warning] MCP gateway health check failed (attempt 134/150): 
+2026-09-23T12:38:16.7357432Z [info] Retry attempt 134/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:17.7370814Z [warning] MCP gateway health check failed (attempt 135/150): 
+2026-09-23T12:38:17.7371473Z [info] Retry attempt 135/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:18.7375873Z [warning] MCP gateway health check failed (attempt 136/150): 
+2026-09-23T12:38:18.7376536Z [info] Retry attempt 136/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:19.7390012Z [warning] MCP gateway health check failed (attempt 137/150): 
+2026-09-23T12:38:19.7391208Z [info] Retry attempt 137/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:20.7394982Z [warning] MCP gateway health check failed (attempt 138/150): 
+2026-09-23T12:38:20.7396036Z [info] Retry attempt 138/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:21.7408826Z [warning] MCP gateway health check failed (attempt 139/150): 
+2026-09-23T12:38:21.7409634Z [info] Retry attempt 139/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:22.7412991Z [warning] MCP gateway health check failed (attempt 140/150): 
+2026-09-23T12:38:22.7413832Z [info] Retry attempt 140/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:23.7408782Z [info] Attempt 141/150 (139s elapsed)...
+2026-09-23T12:38:23.7417814Z [warning] MCP gateway health check failed (attempt 141/150): 
+2026-09-23T12:38:23.7418786Z [info] Retry attempt 141/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:24.7422770Z [warning] MCP gateway health check failed (attempt 142/150): 
+2026-09-23T12:38:24.7423560Z [info] Retry attempt 142/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:25.7429356Z [warning] MCP gateway health check failed (attempt 143/150): 
+2026-09-23T12:38:25.7430130Z [info] Retry attempt 143/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:26.7433178Z [warning] MCP gateway health check failed (attempt 144/150): 
+2026-09-23T12:38:26.7434099Z [info] Retry attempt 144/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:27.7437306Z [warning] MCP gateway health check failed (attempt 145/150): 
+2026-09-23T12:38:27.7438026Z [info] Retry attempt 145/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:28.7442777Z [warning] MCP gateway health check failed (attempt 146/150): 
+2026-09-23T12:38:28.7443690Z [info] Retry attempt 146/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:29.7446923Z [warning] MCP gateway health check failed (attempt 147/150): 
+2026-09-23T12:38:29.7447669Z [info] Retry attempt 147/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:30.7451429Z [warning] MCP gateway health check failed (attempt 148/150): 
+2026-09-23T12:38:30.7452531Z [info] Retry attempt 148/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:31.7455116Z [warning] MCP gateway health check failed (attempt 149/150): 
+2026-09-23T12:38:31.7455886Z [info] Retry attempt 149/149 for MCP gateway health check after 1000ms delay
+2026-09-23T12:38:32.7468353Z [warning] MCP gateway health check failed after 149 retry attempts: 
+2026-09-23T12:38:32.7470840Z [info] === End Health Check Progress ===
+2026-09-23T12:38:32.7471488Z [info] 
+2026-09-23T12:38:32.7471905Z [info] Final HTTP code: 0
+2026-09-23T12:38:32.7472689Z [info] Total attempts: 150
+2026-09-23T12:38:32.7473297Z [info] Health response body: (empty)
+2026-09-23T12:38:32.7473933Z [error] 
+2026-09-23T12:38:32.7474473Z [error] ERROR: Gateway failed to become ready
+2026-09-23T12:38:32.7475251Z [error] Last HTTP code: 0
+2026-09-23T12:38:32.7475883Z [error] Last health response: (empty)
+2026-09-23T12:38:32.7476563Z [error] 
+2026-09-23T12:38:32.7477137Z [error] Checking if gateway process is still alive...
+2026-09-23T12:38:32.7477992Z [error] Gateway process (PID: 4286) has exited
+2026-09-23T12:38:32.7478496Z [error] 
+2026-09-23T12:38:32.7478845Z [error] Docker container status:
+2026-09-23T12:38:32.7626833Z CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+2026-09-23T12:38:32.7632927Z [error] 
+2026-09-23T12:38:32.7633547Z [error] Gateway startup diagnostics:
+2026-09-23T12:38:32.7656738Z ##[group]Gateway stderr
+2026-09-23T12:38:32.7657299Z [error] Gateway stdout: (empty)
+2026-09-23T12:38:32.7663613Z ::stop-commands::***
+2026-09-23T12:38:32.7663976Z [INFO] Starting MCP Gateway in containerized mode...
+2026-09-23T12:38:32.7664411Z [INFO] Auto-detected baked-in WASM guards at /guards
+2026-09-23T12:38:32.7664833Z [INFO] MCP_GATEWAY_WASM_GUARDS_DIR=/guards
+2026-09-23T12:38:32.7665649Z [INFO] Running in containerized environment
+2026-09-23T12:38:32.7666052Z [INFO] Container ID: 9c7587ff25c7...
+2026-09-23T12:38:32.7666529Z [INFO] Required environment variables are set
+2026-09-23T12:38:32.7667356Z [INFO] Detecting host IP for container networking...
+2026-09-23T12:38:32.7667748Z [INFO] Method 1 (primary interface): 172.17.0.2
+2026-09-23T12:38:32.7668093Z [INFO] Using host IP: 172.17.0.2
+2026-09-23T12:38:32.7668441Z [INFO] host.docker.internal already exists in /etc/hosts
+2026-09-23T12:38:32.7668803Z [INFO] Gateway will listen on 0.0.0.0:8080
+2026-09-23T12:38:32.7669129Z [INFO] Log directory: /tmp/gh-aw/mcp-logs/
+2026-09-23T12:38:32.7669687Z [INFO] Command: ./awmg --routed --listen 0.0.0.0:8080 --config-stdin --validate-env --log-dir /tmp/gh-aw/mcp-logs/
+2026-09-23T12:38:32.7670266Z [INFO] Waiting for JSON configuration on stdin...
+2026-09-23T12:38:32.7670574Z [INFO] 
+2026-09-23T12:38:32.7670853Z [INFO] IMPORTANT: Configuration must be provided via stdin.
+2026-09-23T12:38:32.7671403Z [INFO] No default configuration is used in containerized mode.
+2026-09-23T12:38:32.7671896Z [INFO] 
+2026-09-23T12:38:32.7673001Z config:feature Registered defaults setter: total=1 +120µs
+2026-09-23T12:38:32.7673508Z config:feature Registered defaults setter: total=2 +21µs
+2026-09-23T12:38:32.7673951Z config:feature Registered stdin converter: total=1 +3µs
+2026-09-23T12:38:32.7674482Z proxy:router buildRouteDispatch: indexed 50 routes into 17 dispatch buckets (catch-all=1) +38ms
+2026-09-23T12:38:32.7675128Z proxy:router Route dispatch table built: routes=50, buckets=17 +28µs
+2026-09-23T12:38:32.7675700Z guard:wasm Checking for baked-in container guard at /guards/github/00-github-guard.wasm +263ms
+2026-09-23T12:38:32.7676391Z guard:wasm Found baked-in container guard: /guards/github/00-github-guard.wasm +771µs
+2026-09-23T12:38:32.7676996Z cmd:root Auto-detected guard: /guards/github/00-github-guard.wasm +807µs
+2026-09-23T12:38:32.7677908Z cmd:root WASM cache dir resolved from default (logDir="/tmp/gh-aw/mcp-logs/"): "/tmp/gh-aw/wazero-cache" +40µs
+2026-09-23T12:38:32.7678640Z cmd:root Registering 6 flag groups +3ms
+2026-09-23T12:38:32.7679262Z cmd:root Registering core flags +15µs
+2026-09-23T12:38:32.7680254Z cmd:root Core flags registered, marked routed/unified mutually exclusive and config/config-stdin required +14µs
+2026-09-23T12:38:32.7681115Z cmd:root WASM cache dir resolved from default (logDir="/tmp/gh-aw/mcp-logs/"): "/tmp/gh-aw/wazero-cache" +20µs
+2026-09-23T12:38:32.7681763Z envutil:envutil GetEnvInt: MCP_GATEWAY_PAYLOAD_SIZE_THRESHOLD=524288 +481ms
+2026-09-23T12:38:32.7682650Z cmd:root Flag group registration complete +26µs
+2026-09-23T12:38:32.7683362Z cmd:root Registering flag completion functions +8µs
+2026-09-23T12:38:32.7684114Z main:main Starting MCP Gateway application +1µs
+2026-09-23T12:38:32.7684955Z version:version BuildVersionString: mainVersion="v0.4.18", gitCommit="", buildDate="" +345ms
+2026-09-23T12:38:32.7685837Z version:version vcsCommitFromBuildInfo: vcs.revision not found in build settings +22µs
+2026-09-23T12:38:32.7686506Z version:version vcsTimeFromBuildInfo: vcs.time not found in build settings +19µs
+2026-09-23T12:38:32.7687050Z version:version BuildVersionString: result="v0.4.18" +3µs
+2026-09-23T12:38:32.7687466Z main:main Built version string: v0.4.18 +56µs
+2026-09-23T12:38:32.7687864Z version:version Setting gateway version: v0.4.18 +6µs
+2026-09-23T12:38:32.7688514Z main:main Executing root command +6µs
+2026-09-23T12:38:32.7689144Z 2026/09/23 12:36:03 Logging level: DEBUG=* (from environment)
+2026-09-23T12:38:32.7690012Z 2026/09/23 12:36:03 Logging to file: /tmp/gh-aw/mcp-logs/mcp-gateway.log
+2026-09-23T12:38:32.7690960Z 2026/09/23 12:36:03 Initialized per-serverID logging in directory: /tmp/gh-aw/mcp-logs/
+2026-09-23T12:38:32.7691920Z 2026/09/23 12:36:03 Tools logging to file: /tmp/gh-aw/mcp-logs/tools.json
+2026-09-23T12:38:32.7693237Z 2026/09/23 12:36:03 Observed URL domains logging to file: /tmp/gh-aw/mcp-logs/observed-url-domains.json
+2026-09-23T12:38:32.7694650Z 2026/09/23 12:36:03 Initializing JSONL logger: dir=/tmp/gh-aw/mcp-logs/, file=rpc-messages.jsonl
+2026-09-23T12:38:32.7695629Z cmd:root Starting MCPG with config: stdin, listen: 0.0.0.0:8080 +8ms
+2026-09-23T12:38:32.7697169Z cmd:root WASM cache dir resolved from default (logDir="/tmp/gh-aw/mcp-logs/"): "/tmp/gh-aw/wazero-cache" +467µs
+2026-09-23T12:38:32.7698705Z cmd:root Configuring WASM compilation cache: resolvedDir="/tmp/gh-aw/wazero-cache", flagChanged=false +475µs
+2026-09-23T12:38:32.7699780Z guard:wasm Configuring global compilation cache: dir="/tmp/gh-aw/wazero-cache" +13ms
+2026-09-23T12:38:32.7700849Z guard:wasm Creating disk-backed compilation cache: dir=/tmp/gh-aw/wazero-cache +433µs
+2026-09-23T12:38:32.7701781Z guard:wasm Global compilation cache replaced successfully +121ms
+2026-09-23T12:38:32.7703049Z cmd:root WASM compilation cache configured: mode=disk, dir="/tmp/gh-aw/wazero-cache" +122ms
+2026-09-23T12:38:32.7704064Z 2026/09/23 12:36:03 WASM compilation cache directory: /tmp/gh-aw/wazero-cache
+2026-09-23T12:38:32.7704833Z 2026/09/23 12:36:03 Reading configuration from stdin...
+2026-09-23T12:38:32.7705507Z config:config Loading configuration from stdin JSON +402ms
+2026-09-23T12:38:32.7706276Z config:config Read 2651 bytes from stdin +728µs
+2026-09-23T12:38:32.7707042Z config:config_stdin Checking 2 server(s) for 'local' type normalization +403ms
+2026-09-23T12:38:32.7707908Z config:expand Expanding variables: context=raw JSON data +404ms
+2026-09-23T12:38:32.7708878Z config:expand Expanded variable: GITHUB_WORKSPACE (found in environment) +387µs
+2026-09-23T12:38:32.7709984Z config:expand Expanded variable: GITHUB_WORKSPACE (found in environment) +393µs
+2026-09-23T12:38:32.7711080Z config:expand Expanded variable: GITHUB_WORKSPACE (found in environment) +382µs
+2026-09-23T12:38:32.7712433Z config:expand Expanded variable: DEFAULT_BRANCH (found in environment) +365µs
+2026-09-23T12:38:32.7713612Z config:expand Expanded variable: GH_AW_ASSETS_ALLOWED_EXTS (found in environment) +415µs
+2026-09-23T12:38:32.7714780Z config:expand Expanded variable: GH_AW_ASSETS_BRANCH (found in environment) +452µs
+2026-09-23T12:38:32.7715903Z config:expand Expanded variable: GH_AW_ASSETS_MAX_SIZE_KB (found in environment) +379µs
+2026-09-23T12:38:32.7717036Z config:expand Expanded variable: GH_AW_MCP_LOG_DIR (found in environment) +431µs
+2026-09-23T12:38:32.7718171Z config:expand Expanded variable: GH_AW_SAFE_OUTPUTS (found in environment) +398µs
+2026-09-23T12:38:32.7719372Z config:expand Expanded variable: GH_AW_SAFE_OUTPUTS_CONFIG_PATH (found in environment) +386µs
+2026-09-23T12:38:32.7720638Z config:expand Expanded variable: GH_AW_SAFE_OUTPUTS_TOOLS_PATH (found in environment) +450µs
+2026-09-23T12:38:32.7721965Z config:expand Expanded variable: GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST (found in environment) +410µs
+2026-09-23T12:38:32.7723473Z config:expand Expanded variable: GH_AW_PR_HEAD_BASE_BRANCH (found in environment) +442µs
+2026-09-23T12:38:32.7724629Z config:expand Expanded variable: GH_AW_PR_HEAD_BASE_SHA (found in environment) +418µs
+2026-09-23T12:38:32.7725787Z config:expand Expanded variable: GH_AW_PR_HEAD_BASE_REPO (found in environment) +444µs
+2026-09-23T12:38:32.7726963Z config:expand Expanded variable: GH_AW_PR_HEAD_BASE_PR_NUMBER (found in environment) +392µs
+2026-09-23T12:38:32.7728158Z config:expand Expanded variable: GH_AW_PR_HEAD_BASE_REF (found in environment) +400µs
+2026-09-23T12:38:32.7729309Z config:expand Expanded variable: GH_AW_PR_HEAD_REPO (found in environment) +473µs
+2026-09-23T12:38:32.7730431Z config:expand Expanded variable: GITHUB_EVENT_NAME (found in environment) +381µs
+2026-09-23T12:38:32.7731539Z config:expand Expanded variable: GITHUB_EVENT_PATH (found in environment) +367µs
+2026-09-23T12:38:32.7732846Z config:expand Expanded variable: GITHUB_REPOSITORY (found in environment) +391µs
+2026-09-23T12:38:32.7733921Z config:expand Expanded variable: GITHUB_SHA (found in environment) +414µs
+2026-09-23T12:38:32.7734957Z config:expand Expanded variable: GITHUB_TOKEN (found in environment) +408µs
+2026-09-23T12:38:32.7736255Z config:expand Expanded variable: GITHUB_WORKSPACE (found in environment) +604µs
+2026-09-23T12:38:32.7737314Z config:expand Expanded variable: RUNNER_TEMP (found in environment) +406µs
+2026-09-23T12:38:32.7738756Z config:expand Variable expansion completed: context=raw JSON data, undefined_count=0 +379µs
+2026-09-23T12:38:32.7739967Z config:config_stdin Stripped gateway extension fields for schema validation: 2 servers processed +11ms
+2026-09-23T12:38:32.7741145Z config:validation_schema Starting JSON schema validation: data_size=3268 bytes +421ms
+2026-09-23T12:38:32.7742445Z config:validation_schema Compiling JSON schema for the first time +526µs
+2026-09-23T12:38:32.7743341Z config:validation_schema Schema compiled and cached successfully +23ms
+2026-09-23T12:38:32.7744367Z config:validation_schema Schema compilation/retrieval took: 23.965833ms +423µs
+2026-09-23T12:38:32.7745297Z config:validation_schema JSON parsing took: 55.533µs +779µs
+2026-09-23T12:38:32.7746144Z config:validation_schema Schema validation took: 61.985µs +529µs
+2026-09-23T12:38:32.7747187Z config:validation_schema Total validation completed successfully in 26.449887ms +654µs
+2026-09-23T12:38:32.7748057Z config:config Parsed stdin config with 2 servers +45ms
+2026-09-23T12:38:32.7748862Z config:validation_gateway Validating string patterns: server_count=2 +449ms
+2026-09-23T12:38:32.7749908Z config:validation_gateway Validating server: name=github, type=stdio +400µs
+2026-09-23T12:38:32.7750771Z config:config IsStdioServerType: type="stdio", result=true +1ms
+2026-09-23T12:38:32.7751781Z config:validation_gateway Validating server: name=safeoutputs, type=stdio +811µs
+2026-09-23T12:38:32.7752956Z config:config IsStdioServerType: type="stdio", result=true +784µs
+2026-09-23T12:38:32.7753863Z config:validation_gateway Validating gateway configuration +761µs
+2026-09-23T12:38:32.7754615Z config:validation_rules Validating gateway port +451ms
+2026-09-23T12:38:32.7755588Z config:validation_rules Validating port range: port=8080, jsonPath=gateway.port +381µs
+2026-09-23T12:38:32.7756592Z config:validation_rules Validating startup timeout +419µs
+2026-09-23T12:38:32.7757886Z config:validation_rules Validating positive timeout: field=startupTimeout, value=120, jsonPath=gateway.startupTimeout +403µs
+2026-09-23T12:38:32.7759224Z config:validation_gateway Validating payload directory: /tmp/gh-aw/mcp-payloads +2ms
+2026-09-23T12:38:32.7760786Z config:validation_rules Validating absolute path: field=payloadDir, value=/tmp/gh-aw/mcp-payloads, jsonPath=gateway.payloadDir +850µs
+2026-09-23T12:38:32.7762397Z config:validation_rules Valid Unix absolute path: /tmp/gh-aw/mcp-payloads +788µs
+2026-09-23T12:38:32.7763302Z config:validation_gateway Gateway config validation passed +1ms
+2026-09-23T12:38:32.7764206Z config:validation_gateway Validating gateway configuration +383µs
+2026-09-23T12:38:32.7764942Z config:validation_rules Validating gateway port +1ms
+2026-09-23T12:38:32.7765898Z config:validation_rules Validating port range: port=8080, jsonPath=gateway.port +355µs
+2026-09-23T12:38:32.7766896Z config:validation_rules Validating startup timeout +466µs
+2026-09-23T12:38:32.7768190Z config:validation_rules Validating positive timeout: field=startupTimeout, value=120, jsonPath=gateway.startupTimeout +411µs
+2026-09-23T12:38:32.7769517Z config:validation_gateway Validating payload directory: /tmp/gh-aw/mcp-payloads +2ms
+2026-09-23T12:38:32.7771069Z config:validation_rules Validating absolute path: field=payloadDir, value=/tmp/gh-aw/mcp-payloads, jsonPath=gateway.payloadDir +867µs
+2026-09-23T12:38:32.7772695Z config:validation_rules Valid Unix absolute path: /tmp/gh-aw/mcp-payloads +477µs
+2026-09-23T12:38:32.7773595Z config:validation_gateway Gateway config validation passed +1ms
+2026-09-23T12:38:32.7774369Z config:config_stdin Converting stdin config: 2 servers +43ms
+2026-09-23T12:38:32.7775140Z config:config MCP_GATEWAY_TOOL_TIMEOUT not set in environment +8ms
+2026-09-23T12:38:32.7776231Z config:config_stdin Gateway configured: port=8080, toolTimeout=60, startupTimeout=120 +987µs
+2026-09-23T12:38:32.7777334Z config:feature Applying 2 default setter(s) +460ms
+2026-09-23T12:38:32.7778044Z config:feature All default setters applied +660µs
+2026-09-23T12:38:32.7778957Z config:config Effective container runtime name: "docker" (config="") +2ms
+2026-09-23T12:38:32.7779916Z config:config Effective container runtime command: "docker" +402µs
+2026-09-23T12:38:32.7780825Z config:validation_server Validating server config: name=github, type=stdio +462ms
+2026-09-23T12:38:32.7781830Z config:config NormalizeServerType: type "stdio" unchanged +793µs
+2026-09-23T12:38:32.7782900Z config:config IsStdioServerType: type="stdio", result=true +406µs
+2026-09-23T12:38:32.7783829Z config:validation_server Server config validation passed: name=github, type=stdio +1ms
+2026-09-23T12:38:32.7784847Z config:config_stdin Server "github": expanding 5 environment variable(s) +4ms
+2026-09-23T12:38:32.7785752Z config:expand Expanding env variables for server: github, count=5 +50ms
+2026-09-23T12:38:32.7786973Z config:expand Expanding variables: context=jsonPath=mcpServers.github.env.GITHUB_FEATURES +397µs
+2026-09-23T12:38:32.7788564Z config:expand Variable expansion completed: context=jsonPath=mcpServers.github.env.GITHUB_FEATURES, undefined_count=0 +446µs
+2026-09-23T12:38:32.7790082Z config:expand Expanding variables: context=jsonPath=mcpServers.github.env.GITHUB_HOST +430µs
+2026-09-23T12:38:32.7791601Z config:expand Variable expansion completed: context=jsonPath=mcpServers.github.env.GITHUB_HOST, undefined_count=0 +470µs
+2026-09-23T12:38:32.7793386Z config:expand Expanding variables: context=jsonPath=mcpServers.github.env.GITHUB_PERSONAL_ACCESS_TOKEN +452µs
+2026-09-23T12:38:32.7795161Z config:expand Variable expansion completed: context=jsonPath=mcpServers.github.env.GITHUB_PERSONAL_ACCESS_TOKEN, undefined_count=0 +403µs
+2026-09-23T12:38:32.7796783Z config:expand Expanding variables: context=jsonPath=mcpServers.github.env.GITHUB_READ_ONLY +472µs
+2026-09-23T12:38:32.7798381Z config:expand Variable expansion completed: context=jsonPath=mcpServers.github.env.GITHUB_READ_ONLY, undefined_count=0 +410µs
+2026-09-23T12:38:32.7799933Z config:expand Expanding variables: context=jsonPath=mcpServers.github.env.GITHUB_TOOLSETS +421µs
+2026-09-23T12:38:32.7801535Z config:expand Variable expansion completed: context=jsonPath=mcpServers.github.env.GITHUB_TOOLSETS, undefined_count=0 +392µs
+2026-09-23T12:38:32.7803091Z config:expand Env variable expansion completed for server: github +428µs
+2026-09-23T12:38:32.7803938Z config:config_stdin Converting server "github": type=stdio +5ms
+2026-09-23T12:38:32.7805317Z config:config_stdin Server "github": configured stdio container=ghcr.io/github/github-mcp-server:v1.11.0, env_vars=5, mounts=0 +377µs
+2026-09-23T12:38:32.7806829Z config:config Configured stdio MCP server: name=github, container=ghcr.io/github/github-mcp-server:v1.11.0 +7ms
+2026-09-23T12:38:32.7808039Z config:validation_server Validating server config: name=safeoutputs, type=stdio +7ms
+2026-09-23T12:38:32.7809080Z config:config NormalizeServerType: type "stdio" unchanged +793µs
+2026-09-23T12:38:32.7809989Z config:config IsStdioServerType: type="stdio", result=true +408µs
+2026-09-23T12:38:32.7810956Z config:validation_server Validating mounts for server: name=safeoutputs, mount_count=3 +1ms
+2026-09-23T12:38:32.7813924Z config:validation_rules Validating mount format: mount=/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room:/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room:rw, jsonPath=mcpServers.safeoutputs, index=0 +14ms
+2026-09-23T12:38:32.7816510Z mountspec:mountspec Parsing mount spec: parts=3 +620ms
+2026-09-23T12:38:32.7818294Z config:validation_rules Validating mount format: mount=/home/runner/work/_temp/gh-aw/safeoutputs:/home/runner/work/_temp/gh-aw/safeoutputs:rw, jsonPath=mcpServers.safeoutputs, index=1 +984µs
+2026-09-23T12:38:32.7819828Z mountspec:mountspec Parsing mount spec: parts=3 +1ms
+2026-09-23T12:38:32.7821278Z config:validation_rules Validating mount format: mount=/tmp/gh-aw:/tmp/gh-aw:rw, jsonPath=mcpServers.safeoutputs, index=2 +986µs
+2026-09-23T12:38:32.7822671Z mountspec:mountspec Parsing mount spec: parts=3 +761µs
+2026-09-23T12:38:32.7823720Z config:validation_server Server config validation passed: name=safeoutputs, type=stdio +3ms
+2026-09-23T12:38:32.7824789Z config:config_stdin Server "safeoutputs": expanding 23 environment variable(s) +5ms
+2026-09-23T12:38:32.7825769Z config:expand Expanding env variables for server: safeoutputs, count=23 +6ms
+2026-09-23T12:38:32.7827204Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST +381µs
+2026-09-23T12:38:32.7829183Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_POLICY_ALLOW_CREATE_PULL_REQUEST, undefined_count=0 +450µs
+2026-09-23T12:38:32.7830965Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_REPO +406µs
+2026-09-23T12:38:32.7832863Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_REPO, undefined_count=0 +426µs
+2026-09-23T12:38:32.7834548Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_EVENT_PATH +411µs
+2026-09-23T12:38:32.7836236Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_EVENT_PATH, undefined_count=0 +405µs
+2026-09-23T12:38:32.7837760Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.RUNNER_TEMP +1ms
+2026-09-23T12:38:32.7839363Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.RUNNER_TEMP, undefined_count=0 +584µs
+2026-09-23T12:38:32.7841043Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_BRANCH +466µs
+2026-09-23T12:38:32.7843005Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_BRANCH, undefined_count=0 +471µs
+2026-09-23T12:38:32.7844805Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_PR_NUMBER +506µs
+2026-09-23T12:38:32.7846643Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_PR_NUMBER, undefined_count=0 +405µs
+2026-09-23T12:38:32.7848385Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_REF +400µs
+2026-09-23T12:38:32.7850127Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_REF, undefined_count=0 +411µs
+2026-09-23T12:38:32.7851798Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_WORKSPACE +428µs
+2026-09-23T12:38:32.7853663Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_WORKSPACE, undefined_count=0 +434µs
+2026-09-23T12:38:32.7855220Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.DEBUG +478µs
+2026-09-23T12:38:32.7856752Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.DEBUG, undefined_count=0 +450µs
+2026-09-23T12:38:32.7858314Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.DEFAULT_BRANCH +429µs
+2026-09-23T12:38:32.7859968Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.DEFAULT_BRANCH, undefined_count=0 +385µs
+2026-09-23T12:38:32.7861666Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_ALLOWED_EXTS +456µs
+2026-09-23T12:38:32.7863547Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_ALLOWED_EXTS, undefined_count=0 +401µs
+2026-09-23T12:38:32.7864534Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS +422µs
+2026-09-23T12:38:32.7865468Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS, undefined_count=0 +578µs
+2026-09-23T12:38:32.7866667Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS_TOOLS_PATH +530µs
+2026-09-23T12:38:32.7868172Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS_TOOLS_PATH, undefined_count=0 +430µs
+2026-09-23T12:38:32.7869949Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_EVENT_NAME +539µs
+2026-09-23T12:38:32.7871787Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_EVENT_NAME, undefined_count=0 +401µs
+2026-09-23T12:38:32.7873807Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_REPOSITORY +435µs
+2026-09-23T12:38:32.7875540Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_REPOSITORY, undefined_count=0 +407µs
+2026-09-23T12:38:32.7877332Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_BRANCH +429µs
+2026-09-23T12:38:32.7879146Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_BRANCH, undefined_count=0 +455µs
+2026-09-23T12:38:32.7880950Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_MAX_SIZE_KB +433µs
+2026-09-23T12:38:32.7882552Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_ASSETS_MAX_SIZE_KB, undefined_count=0 +513µs
+2026-09-23T12:38:32.7883550Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_SHA +443µs
+2026-09-23T12:38:32.7884525Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_SHA, undefined_count=0 +464µs
+2026-09-23T12:38:32.7885422Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_SHA +476µs
+2026-09-23T12:38:32.7886291Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_SHA, undefined_count=0 +394µs
+2026-09-23T12:38:32.7887179Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_TOKEN +478µs
+2026-09-23T12:38:32.7887987Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GITHUB_TOKEN, undefined_count=0 +2ms
+2026-09-23T12:38:32.7888906Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_REPO +536µs
+2026-09-23T12:38:32.7890472Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_PR_HEAD_BASE_REPO, undefined_count=0 +582µs
+2026-09-23T12:38:32.7891516Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_MCP_LOG_DIR +494µs
+2026-09-23T12:38:32.7892791Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_MCP_LOG_DIR, undefined_count=0 +480µs
+2026-09-23T12:38:32.7893787Z config:expand Expanding variables: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS_CONFIG_PATH +439µs
+2026-09-23T12:38:32.7894823Z config:expand Variable expansion completed: context=jsonPath=mcpServers.safeoutputs.env.GH_AW_SAFE_OUTPUTS_CONFIG_PATH, undefined_count=0 +444µs
+2026-09-23T12:38:32.7895677Z config:expand Env variable expansion completed for server: safeoutputs +448µs
+2026-09-23T12:38:32.7896192Z config:config_stdin Converting server "safeoutputs": type=stdio +24ms
+2026-09-23T12:38:32.7896758Z config:config_stdin Server "safeoutputs": using custom entrypoint "sh" +430µs
+2026-09-23T12:38:32.7897325Z config:config_stdin Server "safeoutputs": added 3 volume mount(s) +380µs
+2026-09-23T12:38:32.7897925Z config:config_stdin Server "safeoutputs": adding 2 extra Docker runtime arg(s) +398µs
+2026-09-23T12:38:32.7898530Z config:config_stdin Server "safeoutputs": adding 2 entrypoint arg(s) +602µs
+2026-09-23T12:38:32.7899314Z config:config_stdin Server "safeoutputs": configured stdio container=ghcr.io/github/gh-aw-node, env_vars=23, mounts=3 +498µs
+2026-09-23T12:38:32.7900300Z config:config Configured stdio MCP server: name=safeoutputs, container=ghcr.io/github/gh-aw-node +31ms
+2026-09-23T12:38:32.7900951Z config:feature Applying 1 stdin converter(s) +43ms
+2026-09-23T12:38:32.7901362Z config:feature All stdin converters applied +367µs
+2026-09-23T12:38:32.7901770Z config:validation_gateway Validating guard policies: count=0 +46ms
+2026-09-23T12:38:32.7902631Z config:config GetAgentIDs: gateway.agentIds not set, falling back to singular effective agent ID +1ms
+2026-09-23T12:38:32.7903278Z config:agent_policy No per-agent policies configured; skipping validation +506ms
+2026-09-23T12:38:32.7903902Z config:config Converted stdin config to internal format with 2 servers +992µs
+2026-09-23T12:38:32.7904355Z cmd:root Configuration loaded with 2 servers +105ms
+2026-09-23T12:38:32.7904691Z 2026/09/23 12:36:03 Loaded 2 MCP server(s)
+2026-09-23T12:38:32.7905158Z config:config Effective container runtime name: "docker" (config="") +902µs
+2026-09-23T12:38:32.7905703Z config:config Effective container runtime command: "docker" +472µs
+2026-09-23T12:38:32.7906211Z cmd:root Validating execution environment with container runtime docker... +1ms
+2026-09-23T12:38:32.7906736Z config:validation_env Starting execution environment validation +508ms
+2026-09-23T12:38:32.7907173Z sys:container Detecting container environment +656ms
+2026-09-23T12:38:32.7907591Z sys:container Container detected via /.dockerenv +371µs
+2026-09-23T12:38:32.7908046Z sys:container Scanning 2 cgroup file(s) for container ID +411µs
+2026-09-23T12:38:32.7908590Z sys:container No container ID found in cgroup file: path=/proc/1/cgroup +759µs
+2026-09-23T12:38:32.7909186Z sys:container No container ID found in cgroup file: path=/proc/self/cgroup +508µs
+2026-09-23T12:38:32.7909724Z sys:container No container ID found in any cgroup file +403µs
+2026-09-23T12:38:32.7910234Z config:validation_env Containerization check: isContainerized=true, containerID= +3ms
+2026-09-23T12:38:32.7910845Z sys:docker Checking Docker socket accessibility: socketPath=/var/run/docker.sock +659ms
+2026-09-23T12:38:32.7911334Z sys:docker Docker daemon check: accessible=true +4.6s
+2026-09-23T12:38:32.7911800Z config:validation_env Validation complete: valid=true, errors=0, warnings=0 +4.6s
+2026-09-23T12:38:32.7912482Z 2026/09/23 12:36:08 Environment validation passed
+2026-09-23T12:38:32.7913230Z cmd:root Resolving guard policy override: cliChanged=false, cliGuardPolicyChanged=false, allowOnlyPublic=false, owner="", repo="", minIntegrity="" +4.6s
+2026-09-23T12:38:32.7914312Z config:guard_policy ResolveGuardPolicyOverride: cliChanged=false, hasCLIPolicyJSON=false, allowOnlyPublic=false, owner="", repo="", minIntegrity="" +5.1s
+2026-09-23T12:38:32.7915239Z config:guard_policy ResolveGuardPolicyOverride: no guard policy configured (nil) +371µs
+2026-09-23T12:38:32.7915734Z cmd:root No guard policy override configured +1ms
+2026-09-23T12:38:32.7916178Z cmd:root Guard policy resolved: hasOverride=false, source= +531µs
+2026-09-23T12:38:32.7916638Z difc:sink_server_ids Setting sink server IDs: input_count=0 +5.3s
+2026-09-23T12:38:32.7917182Z difc:sink_server_ids No sink server IDs provided, clearing configuration +366µs
+2026-09-23T12:38:32.7917777Z 2026/09/23 12:36:08 Guards sink server ID logging enrichment disabled (no sink server IDs configured)
+2026-09-23T12:38:32.7918307Z 2026/09/23 12:36:08 Parallel server launching enabled (default)
+2026-09-23T12:38:32.7918693Z cmd:root Server mode: routed, guards mode:  +1ms
+2026-09-23T12:38:32.7919174Z cmd:root Applying tracing overrides: shouldInitTracingConfig=true +346µs
+2026-09-23T12:38:32.7919765Z cmd:root Gateway tracing config was nil, initializing empty TracingConfig +367µs
+2026-09-23T12:38:32.7920382Z cmd:root Tracing overrides applied: endpointConfigured=false, serviceName="" +466µs
+2026-09-23T12:38:32.7920894Z cmd:root Initializing tracing provider +541µs
+2026-09-23T12:38:32.7921357Z tracing:provider resolveServiceName: using default service name: "mcp-gateway" +4.9s
+2026-09-23T12:38:32.7922417Z tracing:provider Registering global W3C TraceContext+Baggage text map propagator +379µs
+2026-09-23T12:38:32.7923069Z tracing:provider Tracing disabled: no OTLP endpoint configured +394µs
+2026-09-23T12:38:32.7923654Z cmd:root Tracing provider initialized successfully +1ms
+2026-09-23T12:38:32.7924130Z 2026/09/23 12:36:08 OpenTelemetry tracing disabled (no OTLP endpoint configured)
+2026-09-23T12:38:32.7924726Z cmd:root Creating unified MCP server: mode=routed, servers=2 +1ms
+2026-09-23T12:38:32.7925387Z server:unified Creating new unified server: sequentialLaunch=false, servers=2 +4.9s
+2026-09-23T12:38:32.7925924Z launcher:launcher Creating new launcher with 2 configured servers +5.0s
+2026-09-23T12:38:32.7926362Z sys:container Detecting container environment +4.6s
+2026-09-23T12:38:32.7926797Z sys:container Container detected via /.dockerenv +387µs
+2026-09-23T12:38:32.7927258Z sys:container Scanning 2 cgroup file(s) for container ID +378µs
+2026-09-23T12:38:32.7927808Z sys:container No container ID found in cgroup file: path=/proc/1/cgroup +437µs
+2026-09-23T12:38:32.7928423Z sys:container No container ID found in cgroup file: path=/proc/self/cgroup +398µs
+2026-09-23T12:38:32.7928964Z sys:container No container ID found in any cgroup file +359µs
+2026-09-23T12:38:32.7929416Z launcher:launcher Container detection: runningInContainer=true +2ms
+2026-09-23T12:38:32.7929879Z 2026/09/23 12:36:08 [LAUNCHER] Detected running inside a container
+2026-09-23T12:38:32.7930546Z config:config Resolved gateway config after defaulting: port=8080, startupTimeout=120, toolTimeout=60, keepaliveInterval=1500 +4.6s
+2026-09-23T12:38:32.7931213Z config:feature Applying 2 default setter(s) +4.6s
+2026-09-23T12:38:32.7931733Z config:config_tracing Applying default tracing service name: mcp-gateway +5.1s
+2026-09-23T12:38:32.7932625Z config:feature All default setters applied +835µs
+2026-09-23T12:38:32.7945389Z launcher:launcher Using startup timeout: 2m0s +1ms
+2026-09-23T12:38:32.7946102Z launcher:pool Creating new session connection pool: idleTimeout=6h0m0s, cleanupInterval=5m0s, maxErrors=10 +5.0s
+2026-09-23T12:38:32.7946816Z launcher:pool Cleanup goroutine started +521µs
+2026-09-23T12:38:32.7947341Z launcher:mount_policy Mount policy overridden by MCP_GATEWAY_ALLOWED_MOUNT_ROOTS: 6 root(s) +5.0s
+2026-09-23T12:38:32.7948155Z server:unified Payload configuration: dir=/tmp/gh-aw/mcp-payloads, pathPrefix=, sizeThreshold=524288 bytes (512.00 KB) +6ms
+2026-09-23T12:38:32.7948885Z difc:agent Creating agent registry with defaults: secrecyTags=0, integrityTags=0 +5.3s
+2026-09-23T12:38:32.7949393Z difc:capabilities Creating new capabilities set +5.3s
+2026-09-23T12:38:32.7950170Z launcher:launcher Retrieved server IDs: count=2, ids=[github safeoutputs] +2ms
+2026-09-23T12:38:32.7950842Z server:system_tools Creating new SysServer with 2 servers: [github safeoutputs] +4.9s
+2026-09-23T12:38:32.7951709Z server:tool_registry_helpers Built allowed tool sets: 0 server(s) with tool restrictions +4.9s
+2026-09-23T12:38:32.7952645Z server:circuit_breaker Creating circuit breaker: serverID=safeoutputs, threshold=3, cooldown=1m0s +4.9s
+2026-09-23T12:38:32.7953470Z server:circuit_breaker Created circuit breaker for server safeoutputs: threshold=0, cooldown=0s +420µs
+2026-09-23T12:38:32.7954241Z server:circuit_breaker Creating circuit breaker: serverID=github, threshold=3, cooldown=1m0s +390µs
+2026-09-23T12:38:32.7955463Z server:circuit_breaker Created circuit breaker for server github: threshold=0, cooldown=0s +379µs
+2026-09-23T12:38:32.7956161Z server:circuit_breaker buildCircuitBreakers: created 2 circuit breakers +394µs
+2026-09-23T12:38:32.7956622Z guard:registry Creating new guard registry +5.1s
+2026-09-23T12:38:32.7957016Z server:http_server Creating SDK server: name=awmg-unified +4.9s
+2026-09-23T12:38:32.7957516Z launcher:launcher Retrieved server IDs: count=2, ids=[github safeoutputs] +4ms
+2026-09-23T12:38:32.7958422Z guard:wasm Checking for baked-in container guard at /guards/github/00-github-guard.wasm +4.7s
+2026-09-23T12:38:32.7959487Z guard:wasm Found baked-in container guard: /guards/github/00-github-guard.wasm +412µs
+2026-09-23T12:38:32.7960569Z guard:wasm Creating WASM guard: name=github, path=/guards/github/00-github-guard.wasm +370µs
+2026-09-23T12:38:32.7961343Z guard:wasm Creating WASM guard from bytes: name=github, size=312202 +54ms
+2026-09-23T12:38:32.7961830Z guard:wasm Instantiating WASM host functions: guard=github +60ms
+2026-09-23T12:38:32.7962929Z guard:wasm WASM host functions instantiated: guard=github (call_backend, host_log) +574µs
+2026-09-23T12:38:32.7963482Z guard:wasm WASM guard created successfully: name=github +189ms
+2026-09-23T12:38:32.7963968Z envutil:github Looking up GitHub token: [REDACTED] 4 candidate env vars +5.7s
+2026-09-23T12:38:32.7964543Z envutil:github GitHub token found: source=GITHUB_MCP_SERVER_TOKEN +399µs
+2026-09-23T12:38:32.7965128Z envutil:github Looking up GitHub token: [REDACTED] 4 candidate env vars +654µs
+2026-09-23T12:38:32.7965699Z envutil:github GitHub token found: source=GITHUB_MCP_SERVER_TOKEN +553µs
+2026-09-23T12:38:32.7966185Z envutil:github GitHub API URL using default:  +382µs
+2026-09-23T12:38:32.7966705Z envutil:github Deriving API URL from server URL: https://github.com +381µs
+2026-09-23T12:38:32.7967363Z envutil:github GitHub.com detected, using default API URL: https://api.github.com +377µs
+2026-09-23T12:38:32.7968161Z envutil:github GitHub API URL derived from GITHUB_SERVER_URL=https://github.com: https://api.github.com +407µs
+2026-09-23T12:38:32.7969137Z githubhttp:visibility Fetching repo visibility: nwo=InnaGertruda/skills-agentic-workflows-that-read-the-room, apiBaseURL=https://api.github.com +5.4s
+2026-09-23T12:38:32.7970261Z githubhttp:client GitHub GET: baseURL="https://api.github.com", path="/repos/InnaGertruda/skills-agentic-workflows-that-read-the-room", hasAuth=true +5.4s
+2026-09-23T12:38:32.7971470Z githubhttp:client Applying GitHub API headers: method="GET", path="/repos/InnaGertruda/skills-agentic-workflows-that-read-the-room", hasAuth=true +410µs
+2026-09-23T12:38:32.7973001Z githubhttp:client GitHub GET response: path="/repos/InnaGertruda/skills-agentic-workflows-that-read-the-room", status=200 +1.1s
+2026-09-23T12:38:32.7974073Z githubhttp:visibility Repo visibility resolved: nwo=InnaGertruda/skills-agentic-workflows-that-read-the-room, visibility=public +1.1s
+2026-09-23T12:38:32.7975119Z server:guard_init resolveWorkflowRepoVisibility: cached repo visibility for InnaGertruda/skills-agentic-workflows-that-read-the-room: public +6.3s
+2026-09-23T12:38:32.7975951Z config:guard_policy ParseServerGuardPolicy: serverID=github, keyCount=1 +1.4s
+2026-09-23T12:38:32.7976651Z config:guard_policy ParsePolicyMap: hasAllowOnly=true, hasWriteSink=false, keyCount=1 +423µs
+2026-09-23T12:38:32.7977261Z config:guard_policy Parsing guard policy JSON: len=169 +429µs
+2026-09-23T12:38:32.7977781Z config:guard_policy UnmarshalJSON: parsing guard policy, keys=1 +401µs
+2026-09-23T12:38:32.7978362Z config:guard_policy UnmarshalJSON: parsing allow-only policy, fields=5 +404µs
+2026-09-23T12:38:32.7979077Z config:guard_policy UnmarshalJSON: allow-only policy parsed, repos=string, minIntegrity=approved +390µs
+2026-09-23T12:38:32.7979769Z config:guard_policy UnmarshalJSON: guard policy type is allow-only +422µs
+2026-09-23T12:38:32.7980407Z config:guard_policy ValidateGuardPolicy: delegating to allow-only normalization +450µs
+2026-09-23T12:38:32.7981275Z config:guard_policy ValidateAndNormalizeIntegrityField: field=allow-only.min-integrity, raw="approved", optional=false +373µs
+2026-09-23T12:38:32.7982697Z config:guard_policy NormalizeIntegrityLevel: input="approved", normalized="approved", optional=false +599µs
+2026-09-23T12:38:32.7983708Z config:guard_policy ValidateAndNormalizeIntegrityField: normalized field=allow-only.min-integrity to "approved" +412µs
+2026-09-23T12:38:32.7984549Z config:guard_policy Normalizing guard policy: integrity=approved, reposType=string +411µs
+2026-09-23T12:38:32.7985411Z config:guard_policy ValidateAndNormalizeIntegrityField: field=allow-only.disapproval-integrity, raw="", optional=true +416µs
+2026-09-23T12:38:32.7986460Z config:guard_policy NormalizeIntegrityLevel: input="", normalized="", optional=true +421µs
+2026-09-23T12:38:32.7987298Z config:guard_policy ValidateAndNormalizeIntegrityField: normalized field=allow-only.disapproval-integrity to "" +382µs
+2026-09-23T12:38:32.7988453Z config:guard_policy ValidateAndNormalizeIntegrityField: field=allow-only.endorser-min-integrity, raw="", optional=true +391µs
+2026-09-23T12:38:32.7989294Z config:guard_policy NormalizeIntegrityLevel: input="", normalized="", optional=true +458µs
+2026-09-23T12:38:32.7990136Z config:guard_policy ValidateAndNormalizeIntegrityField: normalized field=allow-only.endorser-min-integrity to "" +482µs
+2026-09-23T12:38:32.7990804Z server:guard_init Resolving guard policy: serverID=github +8ms
+2026-09-23T12:38:32.7991386Z config:guard_policy ParseServerGuardPolicy: serverID=github, keyCount=1 +1ms
+2026-09-23T12:38:32.7992054Z config:guard_policy ParsePolicyMap: hasAllowOnly=true, hasWriteSink=false, keyCount=1 +371µs
+2026-09-23T12:38:32.7993807Z config:guard_policy Parsing guard policy JSON: len=169 +393µs
+2026-09-23T12:38:32.7994337Z config:guard_policy UnmarshalJSON: parsing guard policy, keys=1 +365µs
+2026-09-23T12:38:32.7994924Z config:guard_policy UnmarshalJSON: parsing allow-only policy, fields=5 +939µs
+2026-09-23T12:38:32.7995638Z config:guard_policy UnmarshalJSON: allow-only policy parsed, repos=string, minIntegrity=approved +723µs
+2026-09-23T12:38:32.7996314Z config:guard_policy UnmarshalJSON: guard policy type is allow-only +464µs
+2026-09-23T12:38:32.7996946Z config:guard_policy ValidateGuardPolicy: delegating to allow-only normalization +425µs
+2026-09-23T12:38:32.7997917Z config:guard_policy ValidateAndNormalizeIntegrityField: field=allow-only.min-integrity, raw="approved", optional=false +478µs
+2026-09-23T12:38:32.7998861Z config:guard_policy NormalizeIntegrityLevel: input="approved", normalized="approved", optional=false +831µs
+2026-09-23T12:38:32.7999754Z config:guard_policy ValidateAndNormalizeIntegrityField: normalized field=allow-only.min-integrity to "approved" +476µs
+2026-09-23T12:38:32.8000577Z config:guard_policy Normalizing guard policy: integrity=approved, reposType=string +438µs
+2026-09-23T12:38:32.8001437Z config:guard_policy ValidateAndNormalizeIntegrityField: field=allow-only.disapproval-integrity, raw="", optional=true +449µs
+2026-09-23T12:38:32.8002559Z config:guard_policy NormalizeIntegrityLevel: input="", normalized="", optional=true +469µs
+2026-09-23T12:38:32.8003407Z config:guard_policy ValidateAndNormalizeIntegrityField: normalized field=allow-only.disapproval-integrity to "" +420µs
+2026-09-23T12:38:32.8004721Z config:guard_policy ValidateAndNormalizeIntegrityField: field=allow-only.endorser-min-integrity, raw="", optional=true +432µs
+2026-09-23T12:38:32.8005753Z config:guard_policy NormalizeIntegrityLevel: input="", normalized="", optional=true +395µs
+2026-09-23T12:38:32.8007011Z config:guard_policy ValidateAndNormalizeIntegrityField: normalized field=allow-only.endorser-min-integrity to "" +390µs
+2026-09-23T12:38:32.8007657Z cmd:root Shutting down tracing provider +1.4s
+2026-09-23T12:38:32.8008086Z cmd:root Tracing provider shut down successfully +391µs
+2026-09-23T12:38:32.8008539Z guard:wasm Closing global compilation cache +1.1s
+2026-09-23T12:38:32.8009289Z guard:wasm Global compilation cache closed +383µs
+2026-09-23T12:38:32.8009937Z launcher:pool Context cancelled, stopping cleanup +1.4s
+2026-09-23T12:38:32.8011213Z failed to create unified server: failed to register guard for server "github": invalid server guard policy: allow-only.repos string must be 'all' or 'public'
+2026-09-23T12:38:32.8013251Z ::***::
+2026-09-23T12:38:32.8013930Z ##[endgroup]
+2026-09-23T12:38:32.8014305Z [error] 
+2026-09-23T12:38:32.8014775Z [error] Checking network connectivity to gateway port...
+2026-09-23T12:38:32.8076922Z Port 8080 does not appear to be listening
+2026-09-23T12:38:32.8081794Z [error] ERROR: Gateway failed to become ready
+2026-09-23T12:38:32.8155255Z ##[error]Process completed with exit code 1.

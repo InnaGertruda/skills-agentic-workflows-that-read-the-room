@@ -1,0 +1,41 @@
+﻿2026-09-23T13:04:32.7372039Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T13:04:32.7372483Z with:
+2026-09-23T13:04:32.7373728Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'generate_observability_summary.cjs'));
+await main(core);
+
+2026-09-23T13:04:32.7377862Z   github-token: ***
+2026-09-23T13:04:32.7378112Z   debug: false
+2026-09-23T13:04:32.7378344Z   user-agent: actions/github-script
+2026-09-23T13:04:32.7378636Z   result-encoding: json
+2026-09-23T13:04:32.7378867Z   retries: 0
+2026-09-23T13:04:32.7379109Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T13:04:32.7379424Z env:
+2026-09-23T13:04:32.7379629Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:04:32.7379919Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:04:32.7381139Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:04:32.7382080Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:04:32.7382375Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:04:32.7382692Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:04:32.7382944Z   DEFAULT_BRANCH: main
+2026-09-23T13:04:32.7383177Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-09-23T13:04:32.7383432Z   GH_AW_ASSETS_BRANCH: 
+2026-09-23T13:04:32.7383663Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-09-23T13:04:32.7383957Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-09-23T13:04:32.7384281Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-09-23T13:04:32.7384533Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-09-23T13:04:32.7384789Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-09-23T13:04:32.7385035Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-09-23T13:04:32.7385280Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-09-23T13:04:32.7385581Z   GH_AW_PR_HEAD_REPO: 
+2026-09-23T13:04:32.7385816Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:04:32.7386089Z   GH_AW_WORKFLOW_ID_SANITIZED: updategithubinfo
+2026-09-23T13:04:32.7386470Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:04:32.7386845Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 7d8a91ed6b5765c4
+2026-09-23T13:04:32.7387478Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168612689
+2026-09-23T13:04:32.7387840Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-09-23T13:04:32.7388152Z ##[endgroup]
+2026-09-23T13:04:32.8455822Z Generated observability summary in step summary

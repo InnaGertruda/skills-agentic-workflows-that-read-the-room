@@ -1,0 +1,56 @@
+﻿2026-09-23T12:35:31.3274458Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T12:35:31.3276250Z with:
+2026-09-23T12:35:31.3298321Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+
+const substitutePlaceholders = require(path.join(actionsDir, 'substitute_placeholders.cjs'));
+
+// Call the substitution function
+return await substitutePlaceholders({
+  file: process.env.GH_AW_PROMPT,
+  substitutions: {
+    GH_AW_EXPR_1A3A194A: process.env.GH_AW_EXPR_1A3A194A,
+    GH_AW_EXPR_463A214A: process.env.GH_AW_EXPR_463A214A,
+    GH_AW_EXPR_802A9F6A: process.env.GH_AW_EXPR_802A9F6A,
+    GH_AW_EXPR_FF1D34CE: process.env.GH_AW_EXPR_FF1D34CE,
+    GH_AW_GITHUB_ACTOR: process.env.GH_AW_GITHUB_ACTOR,
+    GH_AW_GITHUB_REPOSITORY: process.env.GH_AW_GITHUB_REPOSITORY,
+    GH_AW_GITHUB_RUN_ID: process.env.GH_AW_GITHUB_RUN_ID,
+    GH_AW_GITHUB_WORKSPACE: process.env.GH_AW_GITHUB_WORKSPACE,
+    GH_AW_MCP_CLI_SERVERS_LIST: process.env.GH_AW_MCP_CLI_SERVERS_LIST
+  }
+});
+
+2026-09-23T12:35:31.3321958Z   github-token: ***
+2026-09-23T12:35:31.3322960Z   debug: false
+2026-09-23T12:35:31.3325450Z   user-agent: actions/github-script
+2026-09-23T12:35:31.3327091Z   result-encoding: json
+2026-09-23T12:35:31.3328089Z   retries: 0
+2026-09-23T12:35:31.3329054Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T12:35:31.3331945Z env:
+2026-09-23T12:35:31.3332851Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:35:31.3333961Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:35:31.3337297Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:35:31.3340439Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:35:31.3341540Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:35:31.3342760Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:35:31.3343807Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-09-23T12:35:31.3344861Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:35:31.3346149Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:35:31.3347549Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5e5a65a0467a2627
+2026-09-23T12:35:31.3348800Z   GITHUB_AW_OTEL_JOB_START_MS: 1790166926997
+2026-09-23T12:35:31.3350187Z   GH_AW_PROMPT: /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt
+2026-09-23T12:35:31.3351554Z   GH_AW_EXPR_1A3A194A: false
+2026-09-23T12:35:31.3352650Z   GH_AW_EXPR_463A214A: false
+2026-09-23T12:35:31.3353667Z   GH_AW_EXPR_802A9F6A: false
+2026-09-23T12:35:31.3354700Z   GH_AW_EXPR_FF1D34CE: 
+2026-09-23T12:35:31.3355807Z   GH_AW_GITHUB_ACTOR: InnaGertruda
+2026-09-23T12:35:31.3357341Z   GH_AW_GITHUB_REPOSITORY: InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:31.3358935Z   GH_AW_GITHUB_RUN_ID: 35861368570
+2026-09-23T12:35:31.3361020Z   GH_AW_GITHUB_WORKSPACE: /home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:31.3364248Z   GH_AW_MCP_CLI_SERVERS_LIST: - `github` — run `github --help` to see available tools
+- `safeoutputs` — run `safeoutputs --help` to see available tools
+2026-09-23T12:35:31.3366583Z ##[endgroup]
+2026-09-23T12:35:31.4787764Z [substitutePlaceholders] /home/runner/work/_temp/gh-aw/aw-prompts/prompt.txt (9 substitution(s))

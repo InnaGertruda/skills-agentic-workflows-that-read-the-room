@@ -1,0 +1,29 @@
+﻿2026-09-23T13:05:09.8480942Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T13:05:09.8481424Z with:
+2026-09-23T13:05:09.8482441Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'parse_token_usage.cjs'));
+await main();
+
+2026-09-23T13:05:09.8485239Z   github-token: ***
+2026-09-23T13:05:09.8485704Z   debug: false
+2026-09-23T13:05:09.8486081Z   user-agent: actions/github-script
+2026-09-23T13:05:09.8486439Z   result-encoding: json
+2026-09-23T13:05:09.8486764Z   retries: 0
+2026-09-23T13:05:09.8487071Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T13:05:09.8487446Z env:
+2026-09-23T13:05:09.8487777Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:05:09.8488110Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:05:09.8488990Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:05:09.8489898Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:05:09.8490303Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:05:09.8490682Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:05:09.8491000Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:05:09.8491394Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:05:09.8491802Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 01328b9d54ed9922
+2026-09-23T13:05:09.8492206Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168685492
+2026-09-23T13:05:09.8492606Z   GH_AW_TOKEN_USAGE_SUMMARY_TITLE: Threat Detection Token Usage
+2026-09-23T13:05:09.8493001Z ##[endgroup]
+2026-09-23T13:05:09.9375307Z No token usage data found, skipping summary

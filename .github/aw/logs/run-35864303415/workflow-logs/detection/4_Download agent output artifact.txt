@@ -1,0 +1,38 @@
+﻿2026-09-23T13:04:47.0136074Z ##[group]Run actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+2026-09-23T13:04:47.0136618Z with:
+2026-09-23T13:04:47.0136956Z   pattern: {agent,agent-output-fallback}
+2026-09-23T13:04:47.0137420Z   merge-multiple: true
+2026-09-23T13:04:47.0137756Z   path: /tmp/gh-aw/
+2026-09-23T13:04:47.0138244Z   repository: InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T13:04:47.0138762Z   run-id: 35864303415
+2026-09-23T13:04:47.0139099Z   skip-decompress: false
+2026-09-23T13:04:47.0139454Z   digest-mismatch: error
+2026-09-23T13:04:47.0139783Z env:
+2026-09-23T13:04:47.0140244Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:04:47.0140648Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:04:47.0141716Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:04:47.0142729Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:04:47.0143266Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:04:47.0143675Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:04:47.0144074Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:04:47.0144498Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:04:47.0144967Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 01328b9d54ed9922
+2026-09-23T13:04:47.0145451Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168685492
+2026-09-23T13:04:47.0146036Z ##[endgroup]
+2026-09-23T13:04:47.3547823Z Found 3 artifact(s)
+2026-09-23T13:04:47.3548934Z Filtering artifacts by pattern '{agent,agent-output-fallback}'
+2026-09-23T13:04:47.3577241Z Preparing to download the following artifacts:
+2026-09-23T13:04:47.3578109Z - agent (ID: 10752045855, Size: 106645, Expected Digest: sha256:e89cca532a07101d73e1a23d0537f70ad5ced79b71f51b6784dabfba6510fd7f)
+2026-09-23T13:04:47.3579439Z - agent-output-fallback (ID: 10752010873, Size: 170, Expected Digest: sha256:2e54217c2fbff13c9c4c481e9739dcc2cbb77cdfd69598b735a6606075730e73)
+2026-09-23T13:04:47.8129623Z Redirecting to blob download url: https://productionresultssa4.blob.core.windows.net/actions-results/e90cd9f0-e1ff-4abe-9795-a632e68a08c5/workflow-job-run-8cb65dfc-f13d-5f64-a046-ff65903173ed/artifacts/daa0da78a4f899948f184de1c2267d4cff63de5d280692a88333f56508605a86.zip
+2026-09-23T13:04:47.8130743Z Starting download of artifact to: /tmp/gh-aw
+2026-09-23T13:04:47.8336456Z Redirecting to blob download url: https://productionresultssa4.blob.core.windows.net/actions-results/e90cd9f0-e1ff-4abe-9795-a632e68a08c5/workflow-job-run-8cb65dfc-f13d-5f64-a046-ff65903173ed/artifacts/d4f0bc5a29de06b510f9aa428f1eedba926012b591fef7a518e776a7c9bd1824.zip
+2026-09-23T13:04:47.8338256Z Starting download of artifact to: /tmp/gh-aw
+2026-09-23T13:04:48.0411990Z (node:3355) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-09-23T13:04:48.0413569Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-23T13:04:48.0443545Z SHA256 digest of downloaded artifact is 2e54217c2fbff13c9c4c481e9739dcc2cbb77cdfd69598b735a6606075730e73
+2026-09-23T13:04:48.0444423Z Artifact download completed successfully.
+2026-09-23T13:04:48.1581351Z SHA256 digest of downloaded artifact is e89cca532a07101d73e1a23d0537f70ad5ced79b71f51b6784dabfba6510fd7f
+2026-09-23T13:04:48.1582001Z Artifact download completed successfully.
+2026-09-23T13:04:48.1582453Z Total of 2 artifact(s) downloaded
+2026-09-23T13:04:48.1586969Z Download artifact has finished successfully

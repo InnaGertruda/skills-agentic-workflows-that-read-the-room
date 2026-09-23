@@ -1,0 +1,36 @@
+﻿2026-09-23T13:04:41.0278587Z Current runner version: '2.337.0'
+2026-09-23T13:04:41.0299593Z ##[group]Runner Image Provisioner
+2026-09-23T13:04:41.0300467Z Hosted Compute Agent
+2026-09-23T13:04:41.0301002Z Version: 20260828.587
+2026-09-23T13:04:41.0301627Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-23T13:04:41.0302332Z Build Date: 2026-08-28T16:44:25Z
+2026-09-23T13:04:41.0302973Z Worker ID: {7dbffad3-0f9b-43a9-aab3-a1955dba7d99}
+2026-09-23T13:04:41.0303654Z Azure Region: westus3
+2026-09-23T13:04:41.0304220Z ##[endgroup]
+2026-09-23T13:04:41.0305360Z ##[group]Operating System
+2026-09-23T13:04:41.0306181Z Ubuntu
+2026-09-23T13:04:41.0306692Z 24.04.5
+2026-09-23T13:04:41.0307184Z LTS
+2026-09-23T13:04:41.0307666Z ##[endgroup]
+2026-09-23T13:04:41.0308235Z ##[group]Runner Image
+2026-09-23T13:04:41.0308818Z Image: ubuntu-24.04
+2026-09-23T13:04:41.0309347Z Version: 20260920.314.1
+2026-09-23T13:04:41.0310325Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260920.314/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-23T13:04:41.0311899Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260920.314
+2026-09-23T13:04:41.0312799Z ##[endgroup]
+2026-09-23T13:04:41.0313907Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T13:04:41.0315851Z Contents: read
+2026-09-23T13:04:41.0316457Z Metadata: read
+2026-09-23T13:04:41.0317044Z ##[endgroup]
+2026-09-23T13:04:41.0319131Z Secret source: Actions
+2026-09-23T13:04:41.0320051Z Cache mode: write
+2026-09-23T13:04:41.0320709Z Prepare workflow directory
+2026-09-23T13:04:41.0771904Z Prepare all required actions
+2026-09-23T13:04:41.0814619Z Getting action download info
+2026-09-23T13:04:41.3994033Z Download action repository 'github/gh-aw-actions@5e508589e03a7757a7e05b26e834292f5445bfb6' (SHA:5e508589e03a7757a7e05b26e834292f5445bfb6)
+2026-09-23T13:04:42.2836915Z Download action repository 'actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c' (SHA:3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c)
+2026-09-23T13:04:43.0596970Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-09-23T13:04:43.1026987Z Download action repository 'actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3' (SHA:3a2844b7e9c422d3c10d287c895573f7108da1b3)
+2026-09-23T13:04:43.6479572Z Download action repository 'actions/setup-node@820762786026740c76f36085b0efc47a31fe5020' (SHA:820762786026740c76f36085b0efc47a31fe5020)
+2026-09-23T13:04:43.7450086Z Download action repository 'actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+2026-09-23T13:04:43.9286183Z Complete job name: detection
