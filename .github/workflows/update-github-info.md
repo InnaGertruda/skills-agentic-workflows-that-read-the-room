@@ -37,6 +37,8 @@ Keep the repository's GitHub information current and propose the changes in a pu
 4. Use `web-fetch` to read `https://awesome-copilot.github.com/workflows/`.
 5. Use the GitHub repository API tools to read any repository guidance or reference files needed to understand the format and scope of `site/content/github-info.md`. Do not use terminal, CLI, or sandboxed commands for this repository guidance.
 
+For the three external sources above, call `web-fetch` directly and inspect its returned content. Do not use shell, `curl`, temporary files, or any other tool as a substitute for `web-fetch`.
+
 ## Update and review
 
 Use the research to update `site/content/github-info.md` with accurate, concise, relevant GitHub information. Preserve the existing file's structure and style, avoid unsupported claims, and make only focused changes. Review the resulting content for correctness, clarity, and consistency with the repository guidance.
