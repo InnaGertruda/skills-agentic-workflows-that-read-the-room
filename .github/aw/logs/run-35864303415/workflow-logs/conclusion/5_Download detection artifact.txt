@@ -1,0 +1,25 @@
+﻿2026-09-23T13:06:10.1166688Z ##[group]Run actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+2026-09-23T13:06:10.1189412Z with:
+2026-09-23T13:06:10.1190157Z   name: detection
+2026-09-23T13:06:10.1190727Z   path: /tmp/gh-aw/threat-detection/
+2026-09-23T13:06:10.1191373Z   merge-multiple: false
+2026-09-23T13:06:10.1192131Z   repository: InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T13:06:10.1192961Z   run-id: 35864303415
+2026-09-23T13:06:10.1193492Z   skip-decompress: false
+2026-09-23T13:06:10.1194050Z   digest-mismatch: error
+2026-09-23T13:06:10.1194567Z env:
+2026-09-23T13:06:10.1195043Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:06:10.1196441Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:06:10.1198303Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:06:10.1200133Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:06:10.1200816Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:06:10.1201651Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:06:10.1202253Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:06:10.1202922Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:06:10.1203728Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: a5a9fe6c102ebaf3
+2026-09-23T13:06:10.1204463Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168768773
+2026-09-23T13:06:10.1205391Z ##[endgroup]
+2026-09-23T13:06:10.2934136Z Downloading single artifact
+2026-09-23T13:06:10.5368018Z ##[error]Unable to download artifact(s): Artifact not found for name: detection
+        Please ensure that your artifact is not expired and the artifact was uploaded using a compatible version of toolkit/upload-artifact.
+        For more information, visit the GitHub Artifacts FAQ: https://github.com/actions/toolkit/blob/main/packages/artifact/docs/faq.md

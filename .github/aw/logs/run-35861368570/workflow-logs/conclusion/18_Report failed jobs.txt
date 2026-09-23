@@ -1,0 +1,38 @@
+﻿2026-09-23T12:39:52.6504827Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T12:39:52.6505464Z with:
+2026-09-23T12:39:52.6508497Z   github-token: ***
+2026-09-23T12:39:52.6509956Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'report_failed_jobs.cjs'));
+await main();
+
+2026-09-23T12:39:52.6511468Z   debug: false
+2026-09-23T12:39:52.6511842Z   user-agent: actions/github-script
+2026-09-23T12:39:52.6512285Z   result-encoding: json
+2026-09-23T12:39:52.6512652Z   retries: 0
+2026-09-23T12:39:52.6513039Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T12:39:52.6513520Z env:
+2026-09-23T12:39:52.6513864Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:52.6514623Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:52.6515821Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:52.6517014Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:52.6517479Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:52.6517954Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:52.6518459Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:52.6518940Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:52.6519482Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: f314a8841215b52f
+2026-09-23T12:39:52.6519967Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167181577
+2026-09-23T12:39:52.6520472Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-09-23T12:39:52.6520960Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:52.6521879Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T12:39:52.6523071Z   GH_AW_RUN_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/actions/runs/35861368570
+2026-09-23T12:39:52.6523861Z   GH_AW_REPORT_FAILED_JOBS: true
+2026-09-23T12:39:52.6524271Z ##[endgroup]
+2026-09-23T12:39:52.7705660Z Checking GitHub API rate limit before querying jobs
+2026-09-23T12:39:53.1350764Z Querying jobs for workflow run 35861368570
+2026-09-23T12:39:53.6617110Z Page 1: retrieved 5 jobs
+2026-09-23T12:39:53.6619276Z Skipping builtin job: agent (already reported by agent failure handler)
+2026-09-23T12:39:53.6621086Z Checking GitHub API rate limit after querying jobs
+2026-09-23T12:39:53.8103150Z No failed non-builtin jobs found, skipping issue creation

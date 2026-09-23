@@ -1,0 +1,401 @@
+﻿2026-09-23T12:39:14.9408952Z Current runner version: '2.337.0'
+2026-09-23T12:39:14.9447300Z ##[group]Runner Image Provisioner
+2026-09-23T12:39:14.9448229Z Hosted Compute Agent
+2026-09-23T12:39:14.9448818Z Version: 20260707.563
+2026-09-23T12:39:14.9449430Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-09-23T12:39:14.9450213Z Build Date: 2026-07-07T19:33:50Z
+2026-09-23T12:39:14.9451345Z Worker ID: {dee75442-8e9c-4c51-96f8-b79868cf3f95}
+2026-09-23T12:39:14.9452092Z Azure Region: centralus
+2026-09-23T12:39:14.9452692Z ##[endgroup]
+2026-09-23T12:39:14.9454202Z ##[group]VM Image
+2026-09-23T12:39:14.9454872Z - OS: Linux (x64)
+2026-09-23T12:39:14.9455451Z - Source: Docker
+2026-09-23T12:39:14.9456023Z - Name: ubuntu:24.04
+2026-09-23T12:39:14.9456607Z - Version: 20260728.2.1
+2026-09-23T12:39:14.9457192Z ##[endgroup]
+2026-09-23T12:39:14.9458570Z ##[group]GITHUB_TOKEN Permissions
+2026-09-23T12:39:14.9460580Z Contents: write
+2026-09-23T12:39:14.9461644Z Issues: write
+2026-09-23T12:39:14.9462193Z Metadata: read
+2026-09-23T12:39:14.9462999Z PullRequests: write
+2026-09-23T12:39:14.9463652Z ##[endgroup]
+2026-09-23T12:39:14.9465962Z Secret source: Actions
+2026-09-23T12:39:14.9466909Z Cache mode: write
+2026-09-23T12:39:14.9467873Z Prepare workflow directory
+2026-09-23T12:39:15.0389149Z Prepare all required actions
+2026-09-23T12:39:15.0464582Z Getting action download info
+2026-09-23T12:39:15.5544785Z Download action repository 'github/gh-aw-actions@5e508589e03a7757a7e05b26e834292f5445bfb6' (SHA:5e508589e03a7757a7e05b26e834292f5445bfb6)
+2026-09-23T12:39:21.2986608Z Download action repository 'actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c' (SHA:3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c)
+2026-09-23T12:39:22.6805661Z Download action repository 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1' (SHA:3d3c42e5aac5ba805825da76410c181273ba90b1)
+2026-09-23T12:39:22.7294883Z Download action repository 'actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3' (SHA:3a2844b7e9c422d3c10d287c895573f7108da1b3)
+2026-09-23T12:39:23.2575731Z Download action repository 'actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+2026-09-23T12:39:23.6181047Z Complete job name: safe_outputs
+2026-09-23T12:39:23.6795809Z ##[group]Run github/gh-aw-actions/setup@5e508589e03a7757a7e05b26e834292f5445bfb6
+2026-09-23T12:39:23.6797035Z with:
+2026-09-23T12:39:23.6797596Z   destination: /home/runner/work/_temp/gh-aw/actions
+2026-09-23T12:39:23.6798266Z   job-name: safe_outputs
+2026-09-23T12:39:23.6798827Z   trace-id: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:23.6799477Z   parent-span-id: 5e5a65a0467a2627
+2026-09-23T12:39:23.6800075Z   safe-output-artifact-client: false
+2026-09-23T12:39:23.6801209Z env:
+2026-09-23T12:39:23.6801678Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:23.6802324Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:23.6804158Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:23.6805975Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:23.6806633Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:23.6807297Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:23.6807836Z   GH_AW_AGENT_AIC: 
+2026-09-23T12:39:23.6808296Z   GH_AW_AIC: 
+2026-09-23T12:39:23.6808750Z   GH_AW_AMBIENT_CONTEXT: 
+2026-09-23T12:39:23.6809697Z   GH_AW_CALLER_WORKFLOW_ID: InnaGertruda/skills-agentic-workflows-that-read-the-room/update-github-info
+2026-09-23T12:39:23.6810987Z   GH_AW_DETECTION_CONCLUSION: warning
+2026-09-23T12:39:23.6811614Z   GH_AW_DETECTION_REASON: agent_failure
+2026-09-23T12:39:23.6812210Z   GH_AW_EFFECTIVE_TOKENS: 
+2026-09-23T12:39:23.6812729Z   GH_AW_ENGINE_ID: copilot
+2026-09-23T12:39:23.6813248Z   GH_AW_ENGINE_MODEL: auto
+2026-09-23T12:39:23.6813766Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:23.6814381Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-09-23T12:39:23.6814982Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T12:39:23.6815921Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:23.6817287Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T12:39:23.6821234Z   GH_AW_SETUP_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:23.6822703Z   GH_AW_CURRENT_WORKFLOW_REF: InnaGertruda/skills-agentic-workflows-that-read-the-room/.github/workflows/update-github-info.lock.yml@refs/heads/main
+2026-09-23T12:39:23.6824004Z   GH_AW_INFO_VERSION: 1.0.80
+2026-09-23T12:39:23.6824550Z   GH_AW_INFO_AWF_VERSION: v0.28.14
+2026-09-23T12:39:23.6825311Z   GH_AW_INFO_ENGINE_ID: copilot
+2026-09-23T12:39:23.6825846Z ##[endgroup]
+2026-09-23T12:39:25.5014943Z Successfully copied 509 files to /home/runner/work/_temp/gh-aw/actions
+2026-09-23T12:39:25.7798599Z Successfully copied 26 mcp-scripts files to /home/runner/work/_temp/gh-aw/mcp-scripts
+2026-09-23T12:39:25.9205303Z Successfully copied 88 safe-outputs files to /home/runner/work/_temp/gh-aw/safeoutputs
+2026-09-23T12:39:25.9405162Z [info] [otlp] INPUT_TRACE_ID=4e23b47abbd8fef42f9033b59438c291 (will reuse activation trace)
+2026-09-23T12:39:25.9412191Z [info] [otlp] INPUT_PARENT_SPAN_ID=5e5a65a0467a2627 (will parent setup span)
+2026-09-23T12:39:25.9418264Z [info] [otlp] no OTLP endpoints have usable credentials, skipping setup span
+2026-09-23T12:39:25.9456347Z [info] [otlp] resolved trace-id=4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:25.9461194Z [info] [otlp] trace-id=4e23b47abbd8fef42f9033b59438c291 written to GITHUB_OUTPUT
+2026-09-23T12:39:25.9466096Z [info] [otlp] span-id=ab75733be8557917 written to GITHUB_OUTPUT
+2026-09-23T12:39:25.9469325Z [info] [otlp] parent-span-id=5e5a65a0467a2627 written to GITHUB_OUTPUT
+2026-09-23T12:39:25.9472718Z [info] [otlp] GITHUB_AW_OTEL_TRACE_ID written to GITHUB_ENV
+2026-09-23T12:39:25.9475728Z [info] [otlp] GITHUB_AW_OTEL_PARENT_SPAN_ID written to GITHUB_ENV
+2026-09-23T12:39:25.9481351Z [info] [otlp] GITHUB_AW_OTEL_JOB_START_MS written to GITHUB_ENV
+2026-09-23T12:39:25.9757344Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/mask_otlp_headers.sh"
+2026-09-23T12:39:25.9758770Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/mask_otlp_headers.sh"[0m
+2026-09-23T12:39:25.9771828Z shell: /usr/bin/bash -e {0}
+2026-09-23T12:39:25.9772522Z env:
+2026-09-23T12:39:25.9773363Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:25.9774015Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:25.9776163Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:25.9778508Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:25.9779121Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:25.9780106Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:25.9781147Z   GH_AW_AGENT_AIC: 
+2026-09-23T12:39:25.9781691Z   GH_AW_AIC: 
+2026-09-23T12:39:25.9782186Z   GH_AW_AMBIENT_CONTEXT: 
+2026-09-23T12:39:25.9783529Z   GH_AW_CALLER_WORKFLOW_ID: InnaGertruda/skills-agentic-workflows-that-read-the-room/update-github-info
+2026-09-23T12:39:25.9784916Z   GH_AW_DETECTION_CONCLUSION: warning
+2026-09-23T12:39:25.9785795Z   GH_AW_DETECTION_REASON: agent_failure
+2026-09-23T12:39:25.9786467Z   GH_AW_EFFECTIVE_TOKENS: 
+2026-09-23T12:39:25.9787256Z   GH_AW_ENGINE_ID: copilot
+2026-09-23T12:39:25.9787777Z   GH_AW_ENGINE_MODEL: auto
+2026-09-23T12:39:25.9788300Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:25.9789123Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-09-23T12:39:25.9789954Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T12:39:25.9790600Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:25.9792690Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T12:39:25.9794385Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:25.9795677Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ab75733be8557917
+2026-09-23T12:39:25.9796353Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167165947
+2026-09-23T12:39:25.9797209Z ##[endgroup]
+2026-09-23T12:39:26.0108524Z ##[group]Run actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+2026-09-23T12:39:26.0109781Z with:
+2026-09-23T12:39:26.0110272Z   pattern: {agent,agent-output-fallback}
+2026-09-23T12:39:26.0111486Z   merge-multiple: true
+2026-09-23T12:39:26.0112009Z   path: /tmp/gh-aw/
+2026-09-23T12:39:26.0112988Z   repository: InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:39:26.0113785Z   run-id: 35861368570
+2026-09-23T12:39:26.0114275Z   skip-decompress: false
+2026-09-23T12:39:26.0115060Z   digest-mismatch: error
+2026-09-23T12:39:26.0115629Z env:
+2026-09-23T12:39:26.0116307Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:26.0116962Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:26.0119262Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:26.0121883Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:26.0122495Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:26.0123144Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:26.0123676Z   GH_AW_AGENT_AIC: 
+2026-09-23T12:39:26.0124418Z   GH_AW_AIC: 
+2026-09-23T12:39:26.0124878Z   GH_AW_AMBIENT_CONTEXT: 
+2026-09-23T12:39:26.0126076Z   GH_AW_CALLER_WORKFLOW_ID: InnaGertruda/skills-agentic-workflows-that-read-the-room/update-github-info
+2026-09-23T12:39:26.0127152Z   GH_AW_DETECTION_CONCLUSION: warning
+2026-09-23T12:39:26.0128031Z   GH_AW_DETECTION_REASON: agent_failure
+2026-09-23T12:39:26.0128709Z   GH_AW_EFFECTIVE_TOKENS: 
+2026-09-23T12:39:26.0129498Z   GH_AW_ENGINE_ID: copilot
+2026-09-23T12:39:26.0130033Z   GH_AW_ENGINE_MODEL: auto
+2026-09-23T12:39:26.0130554Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:26.0131758Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-09-23T12:39:26.0132368Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T12:39:26.0133248Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:26.0134650Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T12:39:26.0136722Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:26.0137492Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ab75733be8557917
+2026-09-23T12:39:26.0138166Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167165947
+2026-09-23T12:39:26.0138764Z ##[endgroup]
+2026-09-23T12:39:26.4591700Z Found 3 artifact(s)
+2026-09-23T12:39:26.4602925Z Filtering artifacts by pattern '{agent,agent-output-fallback}'
+2026-09-23T12:39:26.4650339Z Preparing to download the following artifacts:
+2026-09-23T12:39:26.4657007Z - agent-output-fallback (ID: 10750617075, Size: 170, Expected Digest: sha256:94d259c91ac1693decda9b84ec1c547e7659d1cae736fa6eae46c671be73035f)
+2026-09-23T12:39:26.4664434Z - agent (ID: 10750562093, Size: 15352, Expected Digest: sha256:56eb005bd73710812f3b8d2c8e1e1cbe2a612b34c55e211c7f0c6b3a9c5e796d)
+2026-09-23T12:39:26.7975692Z Redirecting to blob download url: https://productionresultssa10.blob.core.windows.net/actions-results/5a4f91f0-3500-47c4-bb8f-58a91a533f4a/workflow-job-run-836a66c6-e77d-53e6-ac92-3152ed8a9575/artifacts/d4f0bc5a29de06b510f9aa428f1eedba926012b591fef7a518e776a7c9bd1824.zip
+2026-09-23T12:39:26.7978958Z Starting download of artifact to: /tmp/gh-aw
+2026-09-23T12:39:26.8227896Z Redirecting to blob download url: https://productionresultssa10.blob.core.windows.net/actions-results/5a4f91f0-3500-47c4-bb8f-58a91a533f4a/workflow-job-run-836a66c6-e77d-53e6-ac92-3152ed8a9575/artifacts/daa0da78a4f899948f184de1c2267d4cff63de5d280692a88333f56508605a86.zip
+2026-09-23T12:39:26.8233451Z Starting download of artifact to: /tmp/gh-aw
+2026-09-23T12:39:26.9152688Z (node:1519) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-09-23T12:39:26.9156683Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-23T12:39:26.9406457Z SHA256 digest of downloaded artifact is 56eb005bd73710812f3b8d2c8e1e1cbe2a612b34c55e211c7f0c6b3a9c5e796d
+2026-09-23T12:39:26.9411785Z Artifact download completed successfully.
+2026-09-23T12:39:26.9419490Z SHA256 digest of downloaded artifact is 94d259c91ac1693decda9b84ec1c547e7659d1cae736fa6eae46c671be73035f
+2026-09-23T12:39:26.9423934Z Artifact download completed successfully.
+2026-09-23T12:39:26.9427191Z Total of 2 artifact(s) downloaded
+2026-09-23T12:39:26.9457674Z Download artifact has finished successfully
+2026-09-23T12:39:26.9591638Z ##[group]Run mkdir -p /tmp/gh-aw/
+2026-09-23T12:39:26.9592399Z [36;1mmkdir -p /tmp/gh-aw/[0m
+2026-09-23T12:39:26.9593069Z [36;1mfind "/tmp/gh-aw/" -type f -print[0m
+2026-09-23T12:39:26.9593839Z [36;1mif [ -f "/tmp/gh-aw/agent_output.json" ]; then[0m
+2026-09-23T12:39:26.9595377Z [36;1m  echo "GH_AW_AGENT_OUTPUT=/tmp/gh-aw/agent_output.json" >> "$GITHUB_OUTPUT"[0m
+2026-09-23T12:39:26.9596434Z [36;1mfi[0m
+2026-09-23T12:39:26.9602710Z shell: /usr/bin/bash -e {0}
+2026-09-23T12:39:26.9603296Z env:
+2026-09-23T12:39:26.9603785Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:26.9604429Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:26.9606308Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:26.9608141Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:26.9608819Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:26.9609507Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:26.9610069Z   GH_AW_AGENT_AIC: 
+2026-09-23T12:39:26.9610565Z   GH_AW_AIC: 
+2026-09-23T12:39:26.9611334Z   GH_AW_AMBIENT_CONTEXT: 
+2026-09-23T12:39:26.9612331Z   GH_AW_CALLER_WORKFLOW_ID: InnaGertruda/skills-agentic-workflows-that-read-the-room/update-github-info
+2026-09-23T12:39:26.9613413Z   GH_AW_DETECTION_CONCLUSION: warning
+2026-09-23T12:39:26.9614036Z   GH_AW_DETECTION_REASON: agent_failure
+2026-09-23T12:39:26.9614657Z   GH_AW_EFFECTIVE_TOKENS: 
+2026-09-23T12:39:26.9615202Z   GH_AW_ENGINE_ID: copilot
+2026-09-23T12:39:26.9615744Z   GH_AW_ENGINE_MODEL: auto
+2026-09-23T12:39:26.9616286Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:26.9616822Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-09-23T12:39:26.9617418Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T12:39:26.9618070Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:26.9619494Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T12:39:26.9621198Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:26.9621982Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ab75733be8557917
+2026-09-23T12:39:26.9622697Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167165947
+2026-09-23T12:39:26.9623316Z ##[endgroup]
+2026-09-23T12:39:26.9694264Z /tmp/gh-aw/github_rate_limits.jsonl
+2026-09-23T12:39:26.9695318Z /tmp/gh-aw/aw-prompts/prompt.txt
+2026-09-23T12:39:26.9741769Z /tmp/gh-aw/mcp-logs/observed-url-domains.json
+2026-09-23T12:39:26.9742565Z /tmp/gh-aw/mcp-logs/rpc-messages.jsonl
+2026-09-23T12:39:26.9743267Z /tmp/gh-aw/mcp-logs/github.log
+2026-09-23T12:39:26.9743867Z /tmp/gh-aw/mcp-logs/tools.json
+2026-09-23T12:39:26.9744460Z /tmp/gh-aw/mcp-logs/mcp-gateway.log
+2026-09-23T12:39:26.9745075Z /tmp/gh-aw/mcp-logs/gateway.md
+2026-09-23T12:39:26.9745656Z /tmp/gh-aw/agent_output.json
+2026-09-23T12:39:26.9746224Z /tmp/gh-aw/otel.jsonl
+2026-09-23T12:39:26.9842647Z ##[group]Run actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+2026-09-23T12:39:26.9845006Z with:
+2026-09-23T12:39:26.9845496Z   name: agent
+2026-09-23T12:39:26.9845987Z   path: /tmp/gh-aw/
+2026-09-23T12:39:26.9846804Z   merge-multiple: false
+2026-09-23T12:39:26.9847798Z   repository: InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:39:26.9848651Z   run-id: 35861368570
+2026-09-23T12:39:26.9849193Z   skip-decompress: false
+2026-09-23T12:39:26.9849752Z   digest-mismatch: error
+2026-09-23T12:39:26.9850268Z env:
+2026-09-23T12:39:26.9851010Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:26.9851656Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:26.9853474Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:26.9855220Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:26.9855900Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:26.9856580Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:26.9857142Z   GH_AW_AGENT_AIC: 
+2026-09-23T12:39:26.9857627Z   GH_AW_AIC: 
+2026-09-23T12:39:26.9858100Z   GH_AW_AMBIENT_CONTEXT: 
+2026-09-23T12:39:26.9859080Z   GH_AW_CALLER_WORKFLOW_ID: InnaGertruda/skills-agentic-workflows-that-read-the-room/update-github-info
+2026-09-23T12:39:26.9860122Z   GH_AW_DETECTION_CONCLUSION: warning
+2026-09-23T12:39:26.9860926Z   GH_AW_DETECTION_REASON: agent_failure
+2026-09-23T12:39:26.9861560Z   GH_AW_EFFECTIVE_TOKENS: 
+2026-09-23T12:39:26.9862109Z   GH_AW_ENGINE_ID: copilot
+2026-09-23T12:39:26.9862658Z   GH_AW_ENGINE_MODEL: auto
+2026-09-23T12:39:26.9863198Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:26.9863742Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-09-23T12:39:26.9864330Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T12:39:26.9864970Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:26.9866374Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T12:39:26.9867876Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:26.9868676Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ab75733be8557917
+2026-09-23T12:39:26.9869494Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167165947
+2026-09-23T12:39:26.9870121Z ##[endgroup]
+2026-09-23T12:39:27.1629993Z Downloading single artifact
+2026-09-23T12:39:27.3664971Z Preparing to download the following artifacts:
+2026-09-23T12:39:27.3669189Z - agent (ID: 10750562093, Size: 15352, Expected Digest: sha256:56eb005bd73710812f3b8d2c8e1e1cbe2a612b34c55e211c7f0c6b3a9c5e796d)
+2026-09-23T12:39:27.8558506Z (node:1535) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-09-23T12:39:27.8562761Z Redirecting to blob download url: https://productionresultssa10.blob.core.windows.net/actions-results/5a4f91f0-3500-47c4-bb8f-58a91a533f4a/workflow-job-run-836a66c6-e77d-53e6-ac92-3152ed8a9575/artifacts/d4f0bc5a29de06b510f9aa428f1eedba926012b591fef7a518e776a7c9bd1824.zip
+2026-09-23T12:39:27.8567363Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-23T12:39:27.8568758Z Starting download of artifact to: /tmp/gh-aw
+2026-09-23T12:39:27.8904923Z SHA256 digest of downloaded artifact is 56eb005bd73710812f3b8d2c8e1e1cbe2a612b34c55e211c7f0c6b3a9c5e796d
+2026-09-23T12:39:27.8908077Z Artifact download completed successfully.
+2026-09-23T12:39:27.8909195Z Total of 1 artifact(s) downloaded
+2026-09-23T12:39:27.8909864Z Download artifact has finished successfully
+2026-09-23T12:39:27.9108900Z ##[group]Run # Derive GH_HOST from GITHUB_SERVER_URL so the gh CLI targets the correct
+2026-09-23T12:39:27.9111376Z [36;1m# Derive GH_HOST from GITHUB_SERVER_URL so the gh CLI targets the correct[0m
+2026-09-23T12:39:27.9112985Z [36;1m# GitHub instance (GHES/GHEC). On github.com this is a harmless no-op.[0m
+2026-09-23T12:39:27.9114356Z [36;1mGH_HOST="${GITHUB_SERVER_URL#https://}"[0m
+2026-09-23T12:39:27.9115122Z [36;1mGH_HOST="${GH_HOST#http://}"[0m
+2026-09-23T12:39:27.9116285Z [36;1mecho "GH_HOST=${GH_HOST}" >> "$GITHUB_ENV"[0m
+2026-09-23T12:39:27.9128028Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-09-23T12:39:27.9129249Z env:
+2026-09-23T12:39:27.9129833Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:27.9131213Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:27.9133929Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:27.9136146Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:27.9137251Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:27.9138360Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:27.9139022Z   GH_AW_AGENT_AIC: 
+2026-09-23T12:39:27.9139590Z   GH_AW_AIC: 
+2026-09-23T12:39:27.9140538Z   GH_AW_AMBIENT_CONTEXT: 
+2026-09-23T12:39:27.9142170Z   GH_AW_CALLER_WORKFLOW_ID: InnaGertruda/skills-agentic-workflows-that-read-the-room/update-github-info
+2026-09-23T12:39:27.9143683Z   GH_AW_DETECTION_CONCLUSION: warning
+2026-09-23T12:39:27.9144765Z   GH_AW_DETECTION_REASON: agent_failure
+2026-09-23T12:39:27.9145473Z   GH_AW_EFFECTIVE_TOKENS: 
+2026-09-23T12:39:27.9146109Z   GH_AW_ENGINE_ID: copilot
+2026-09-23T12:39:27.9147122Z   GH_AW_ENGINE_MODEL: auto
+2026-09-23T12:39:27.9148098Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:27.9148721Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-09-23T12:39:27.9149396Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T12:39:27.9150548Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:27.9152601Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T12:39:27.9154902Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:27.9155795Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ab75733be8557917
+2026-09-23T12:39:27.9156986Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167165947
+2026-09-23T12:39:27.9158029Z ##[endgroup]
+2026-09-23T12:39:27.9421542Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T12:39:27.9423345Z with:
+2026-09-23T12:39:27.9431186Z   github-token: ***
+2026-09-23T12:39:27.9435533Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'process_safe_outputs.cjs'));
+await main();
+
+2026-09-23T12:39:27.9439224Z   debug: false
+2026-09-23T12:39:27.9440380Z   user-agent: actions/github-script
+2026-09-23T12:39:27.9441270Z   result-encoding: json
+2026-09-23T12:39:27.9442468Z   retries: 0
+2026-09-23T12:39:27.9443635Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T12:39:27.9444364Z env:
+2026-09-23T12:39:27.9445465Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:27.9446767Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:27.9449934Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:27.9453291Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:27.9453989Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:27.9455363Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:27.9456607Z   GH_AW_AGENT_AIC: 
+2026-09-23T12:39:27.9457143Z   GH_AW_AIC: 
+2026-09-23T12:39:27.9458295Z   GH_AW_AMBIENT_CONTEXT: 
+2026-09-23T12:39:27.9460025Z   GH_AW_CALLER_WORKFLOW_ID: InnaGertruda/skills-agentic-workflows-that-read-the-room/update-github-info
+2026-09-23T12:39:27.9461939Z   GH_AW_DETECTION_CONCLUSION: warning
+2026-09-23T12:39:27.9463244Z   GH_AW_DETECTION_REASON: agent_failure
+2026-09-23T12:39:27.9464540Z   GH_AW_EFFECTIVE_TOKENS: 
+2026-09-23T12:39:27.9465145Z   GH_AW_ENGINE_ID: copilot
+2026-09-23T12:39:27.9466314Z   GH_AW_ENGINE_MODEL: auto
+2026-09-23T12:39:27.9466924Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:27.9468482Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-09-23T12:39:27.9469792Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T12:39:27.9471276Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:27.9473466Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T12:39:27.9476276Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:27.9477330Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ab75733be8557917
+2026-09-23T12:39:27.9478476Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167165947
+2026-09-23T12:39:27.9479749Z   GH_HOST: github.com
+2026-09-23T12:39:27.9481089Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-09-23T12:39:27.9481817Z   GH_AW_COMMENT_ID: 
+2026-09-23T12:39:27.9483318Z   GH_AW_ALLOWED_DOMAINS: awesome-copilot.github.com,github.blog,github.com
+2026-09-23T12:39:27.9484865Z   GITHUB_SERVER_URL: https://github.com
+2026-09-23T12:39:27.9485577Z   GITHUB_API_URL: https://api.github.com
+2026-09-23T12:39:27.9496976Z   GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: {"create_pull_request":{"draft":true,"max":1,"max_patch_files":100,"max_patch_size":4096,"protect_top_level_dot_folders":true,"protected_files":["package.json","bun.lockb","bunfig.toml","deno.json","deno.jsonc","deno.lock","global.json","NuGet.Config","Directory.Packages.props","mix.exs","mix.lock","go.mod","go.sum","stack.yaml","stack.yaml.lock","pom.xml","build.gradle","build.gradle.kts","settings.gradle","settings.gradle.kts","gradle.properties","package-lock.json","yarn.lock","pnpm-lock.yaml","npm-shrinkwrap.json","requirements.txt","Pipfile","Pipfile.lock","pyproject.toml","setup.py","setup.cfg","Gemfile","Gemfile.lock","uv.lock","CODEOWNERS","DESIGN.md","README.md","CONTRIBUTING.md","CHANGELOG.md","SECURITY.md","CODE_OF_CONDUCT.md","AGENTS.md"],"protected_files_policy":"request_review"},"create_report_incomplete_issue":{},"missing_data":{},"missing_tool":{},"noop":{"max":1,"report-as-issue":"false"},"report_incomplete":{}}
+2026-09-23T12:39:27.9507653Z   GH_AW_CI_TRIGGER_TOKEN: 
+2026-09-23T12:39:27.9508851Z ##[endgroup]
+2026-09-23T12:39:28.1159819Z Safe Output Handler Manager starting...
+2026-09-23T12:39:28.1166558Z Loaded config from GH_AW_SAFE_OUTPUTS_HANDLER_CONFIG: {"create_pull_request":{"draft":true,"max":1,"max_patch_files":100,"max_patch_size":4096,"protect_top_level_dot_folders":true,"protected_files":["package.json","bun.lockb","bunfig.toml","deno.json","deno.jsonc","deno.lock","global.json","NuGet.Config","Directory.Packages.props","mix.exs","mix.lock","go.mod","go.sum","stack.yaml","stack.yaml.lock","pom.xml","build.gradle","build.gradle.kts","settings.gradle","settings.gradle.kts","gradle.properties","package-lock.json","yarn.lock","pnpm-lock.yaml","npm-shrinkwrap.json","requirements.txt","Pipfile","Pipfile.lock","pyproject.toml","setup.py","setup.cfg","Gemfile","Gemfile.lock","uv.lock","CODEOWNERS","DESIGN.md","README.md","CONTRIBUTING.md","CHANGELOG.md","SECURITY.md","CODE_OF_CONDUCT.md","AGENTS.md"],"protected_files_policy":"request_review"},"create_report_incomplete_issue":{},"missing_data":{},"missing_tool":{},"noop":{"max":1,"report-as-issue":"false"},"report_incomplete":{}}
+2026-09-23T12:39:28.1173680Z Agent output content length: 24
+2026-09-23T12:39:28.1174306Z Found 0 message(s) in agent output
+2026-09-23T12:39:28.1175026Z No safe-output messages available - nothing to process
+2026-09-23T12:39:28.1345665Z ##[group]Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+2026-09-23T12:39:28.1347833Z with:
+2026-09-23T12:39:28.1348614Z   name: safe-outputs-items
+2026-09-23T12:39:28.1349905Z   path: /tmp/gh-aw/safe-output-items.jsonl
+/tmp/gh-aw/temporary-id-map.json
+/tmp/gh-aw/safe-output-errors.json
+
+2026-09-23T12:39:28.1351700Z   if-no-files-found: ignore
+2026-09-23T12:39:28.1357559Z   compression-level: 6
+2026-09-23T12:39:28.1358545Z   overwrite: false
+2026-09-23T12:39:28.1359151Z   include-hidden-files: false
+2026-09-23T12:39:28.1359877Z   archive: true
+2026-09-23T12:39:28.1360426Z env:
+2026-09-23T12:39:28.1361547Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:28.1362265Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:28.1364123Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:28.1376814Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:28.1378021Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:28.1379461Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:28.1381099Z   GH_AW_AGENT_AIC: 
+2026-09-23T12:39:28.1382148Z   GH_AW_AIC: 
+2026-09-23T12:39:28.1382700Z   GH_AW_AMBIENT_CONTEXT: 
+2026-09-23T12:39:28.1384187Z   GH_AW_CALLER_WORKFLOW_ID: InnaGertruda/skills-agentic-workflows-that-read-the-room/update-github-info
+2026-09-23T12:39:28.1386185Z   GH_AW_DETECTION_CONCLUSION: warning
+2026-09-23T12:39:28.1388042Z   GH_AW_DETECTION_REASON: agent_failure
+2026-09-23T12:39:28.1391448Z   GH_AW_EFFECTIVE_TOKENS: 
+2026-09-23T12:39:28.1392680Z   GH_AW_ENGINE_ID: copilot
+2026-09-23T12:39:28.1393304Z   GH_AW_ENGINE_MODEL: auto
+2026-09-23T12:39:28.1394405Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:28.1395257Z   GH_AW_THREAT_DETECTION_AIC: 
+2026-09-23T12:39:28.1396195Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T12:39:28.1397427Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:39:28.1399375Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T12:39:28.1401993Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:28.1403343Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: ab75733be8557917
+2026-09-23T12:39:28.1404719Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167165947
+2026-09-23T12:39:28.1405918Z   GH_HOST: github.com
+2026-09-23T12:39:28.1406507Z ##[endgroup]
+2026-09-23T12:39:28.3448672Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-09-23T12:39:28.3464135Z The least common ancestor is /tmp/gh-aw. This will be the root directory of the artifact
+2026-09-23T12:39:28.3467896Z With the provided path, there will be 1 file uploaded
+2026-09-23T12:39:28.3479130Z Artifact name is valid!
+2026-09-23T12:39:28.3482911Z Root directory input is valid!
+2026-09-23T12:39:28.6154323Z Uploading artifact: safe-outputs-items.zip
+2026-09-23T12:39:28.6281583Z Beginning upload of artifact content to blob storage
+2026-09-23T12:39:28.8283567Z Uploaded bytes 162
+2026-09-23T12:39:28.8713902Z Finished uploading artifact content to blob storage!
+2026-09-23T12:39:28.8720138Z SHA256 digest of uploaded artifact is a2095b4e5eb6e97e9825f4095bb4c6ce1ac9acd7b9f1465fc3fbca0f588c364a
+2026-09-23T12:39:28.8724829Z Finalizing artifact upload
+2026-09-23T12:39:29.1528003Z Artifact safe-outputs-items successfully finalized. Artifact ID 10750447211
+2026-09-23T12:39:29.1529545Z Artifact safe-outputs-items has been successfully uploaded! Final size is 162 bytes. Artifact ID is 10750447211
+2026-09-23T12:39:29.1542119Z Artifact download URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/actions/runs/35861368570/artifacts/10750447211
+2026-09-23T12:39:29.1704361Z Post job cleanup.
+2026-09-23T12:39:29.2169923Z [info] [otlp] sending conclusion span "gh-aw.safe_outputs.conclusion" to configured endpoints
+2026-09-23T12:39:29.2223835Z [info] [otlp] conclusion span export attempted
+2026-09-23T12:39:29.2229542Z Cleaning up /tmp/gh-aw...
+2026-09-23T12:39:29.2362984Z Cleaned up /tmp/gh-aw
+2026-09-23T12:39:29.2483914Z No /tmp/awf-*-chroot-home directories found
+2026-09-23T12:39:29.2603500Z No /tmp/awf-chroot-* directories found
+2026-09-23T12:39:29.2710073Z Evaluate and set job outputs
+2026-09-23T12:39:29.2738122Z Set output 'process_safe_outputs_items_applied'
+2026-09-23T12:39:29.2741124Z Set output 'process_safe_outputs_items_cancelled'
+2026-09-23T12:39:29.2742530Z Set output 'process_safe_outputs_items_deferred'
+2026-09-23T12:39:29.2743508Z Set output 'process_safe_outputs_items_failed'
+2026-09-23T12:39:29.2744752Z Set output 'process_safe_outputs_items_skipped'
+2026-09-23T12:39:29.2745730Z Set output 'process_safe_outputs_items_succeeded'
+2026-09-23T12:39:29.2746694Z Set output 'process_safe_outputs_items_warnings'
+2026-09-23T12:39:29.2747644Z Set output 'process_safe_outputs_processed_count'
+2026-09-23T12:39:29.2748582Z Set output 'process_safe_outputs_status'
+2026-09-23T12:39:29.2749509Z Set output 'process_safe_outputs_temporary_id_map'
+2026-09-23T12:39:29.2751243Z Cleaning up orphan processes

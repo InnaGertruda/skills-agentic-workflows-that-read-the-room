@@ -1,0 +1,32 @@
+﻿2026-09-23T12:38:50.9957011Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/download_docker_images.sh" ghcr.io/github/gh-aw-firewall/agent:0.28.14@sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98 ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14@sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5 ghcr.io/github/gh-aw-firewall/squid:0.28.14@sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5
+2026-09-23T12:38:50.9960349Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/download_docker_images.sh" ghcr.io/github/gh-aw-firewall/agent:0.28.14@sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98 ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14@sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5 ghcr.io/github/gh-aw-firewall/squid:0.28.14@sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5[0m
+2026-09-23T12:38:50.9997476Z shell: /usr/bin/bash -e {0}
+2026-09-23T12:38:50.9997766Z env:
+2026-09-23T12:38:50.9997990Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:38:50.9998387Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:38:50.9999404Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:38:51.0000394Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:38:51.0000697Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:38:51.0001017Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:38:51.0001290Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:38:51.0001595Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:38:51.0001980Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: e2626d786b761c2b
+2026-09-23T12:38:51.0002310Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167129272
+2026-09-23T12:38:51.0002793Z ##[endgroup]
+2026-09-23T12:38:51.0075785Z Starting download of 3 image(s) with max 4 concurrent downloads...
+2026-09-23T12:38:51.0167244Z Attempt 1 of 3: Pulling ghcr.io/github/gh-aw-firewall/agent:0.28.14@sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98...
+2026-09-23T12:38:51.0169033Z Attempt 1 of 3: Pulling ghcr.io/github/gh-aw-firewall/squid:0.28.14@sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5...
+2026-09-23T12:38:51.0170171Z Attempt 1 of 3: Pulling ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14@sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5...
+2026-09-23T12:38:51.9275809Z ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14@sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5
+2026-09-23T12:38:51.9282615Z ghcr.io/github/gh-aw-firewall/agent:0.28.14@sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98
+2026-09-23T12:38:51.9299551Z Successfully pulled ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14@sha256:6f95e2234dd9bd6333a8ff28ccea7ecf0204acd4a09108723844dbd2bf6268c5
+2026-09-23T12:38:51.9301225Z Tagging digest-pinned image as ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14
+2026-09-23T12:38:51.9317712Z Successfully pulled ghcr.io/github/gh-aw-firewall/agent:0.28.14@sha256:f7df036c86575527b61f3f7df91c4412349a12b2a74988d929eafa2999230c98
+2026-09-23T12:38:51.9319176Z Tagging digest-pinned image as ghcr.io/github/gh-aw-firewall/agent:0.28.14
+2026-09-23T12:38:51.9327974Z ghcr.io/github/gh-aw-firewall/squid:0.28.14@sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5
+2026-09-23T12:38:51.9333649Z Successfully pulled ghcr.io/github/gh-aw-firewall/squid:0.28.14@sha256:2ce8df3abf3e9b76e9c0cf5863da41f1ab3f89b20ad14b988806ab89e7bf2cd5
+2026-09-23T12:38:51.9345867Z Tagging digest-pinned image as ghcr.io/github/gh-aw-firewall/squid:0.28.14
+2026-09-23T12:38:51.9516541Z Aliasing ghcr.io/github/gh-aw-firewall/agent:0.28.14 as ghcr.io/github/gh-aw-firewall/agent:latest
+2026-09-23T12:38:51.9518732Z Aliasing ghcr.io/github/gh-aw-firewall/squid:0.28.14 as ghcr.io/github/gh-aw-firewall/squid:latest
+2026-09-23T12:38:51.9570940Z Aliasing ghcr.io/github/gh-aw-firewall/api-proxy:0.28.14 as ghcr.io/github/gh-aw-firewall/api-proxy:latest
+2026-09-23T12:38:51.9776955Z All images downloaded successfully

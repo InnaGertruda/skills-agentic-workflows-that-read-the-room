@@ -1,0 +1,42 @@
+﻿2026-09-23T13:04:29.4898368Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T13:04:29.4898817Z with:
+2026-09-23T13:04:29.4900017Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'detect_agent_errors.cjs'));
+await main();
+
+2026-09-23T13:04:29.4903875Z   github-token: ***
+2026-09-23T13:04:29.4904121Z   debug: false
+2026-09-23T13:04:29.4904358Z   user-agent: actions/github-script
+2026-09-23T13:04:29.4904644Z   result-encoding: json
+2026-09-23T13:04:29.4904876Z   retries: 0
+2026-09-23T13:04:29.4905127Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T13:04:29.4905439Z env:
+2026-09-23T13:04:29.4905651Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:04:29.4905948Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:04:29.4906906Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:04:29.4908617Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:04:29.4908924Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:04:29.4909249Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:04:29.4909504Z   DEFAULT_BRANCH: main
+2026-09-23T13:04:29.4909753Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-09-23T13:04:29.4910002Z   GH_AW_ASSETS_BRANCH: 
+2026-09-23T13:04:29.4910235Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-09-23T13:04:29.4910528Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-09-23T13:04:29.4910853Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-09-23T13:04:29.4911103Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-09-23T13:04:29.4911368Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-09-23T13:04:29.4911652Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-09-23T13:04:29.4911903Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-09-23T13:04:29.4912139Z   GH_AW_PR_HEAD_REPO: 
+2026-09-23T13:04:29.4912359Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:04:29.4912630Z   GH_AW_WORKFLOW_ID_SANITIZED: updategithubinfo
+2026-09-23T13:04:29.4912992Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:04:29.4913365Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 7d8a91ed6b5765c4
+2026-09-23T13:04:29.4913697Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168612689
+2026-09-23T13:04:29.4914004Z   GH_AW_AGENTIC_EXECUTION_OUTCOME: failure
+2026-09-23T13:04:29.4914310Z   GH_AW_ENGINE_STEP_TIMEOUT_MINUTES: 20
+2026-09-23T13:04:29.4914578Z ##[endgroup]
+2026-09-23T13:04:29.5993739Z [detect-agent-errors] Detected model configuration error: configured model is invalid or unavailable for this engine/account

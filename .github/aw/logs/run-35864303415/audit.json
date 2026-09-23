@@ -1,0 +1,2085 @@
+{
+  "cache_source": "full",
+  "overview": {
+    "run_id": 35864303415,
+    "workflow_name": "update-github-info",
+    "status": "completed",
+    "conclusion": "failure",
+    "created_at": "2026-09-23T13:02:01Z",
+    "started_at": "2026-09-23T13:02:01Z",
+    "updated_at": "2026-09-23T13:06:25Z",
+    "duration": "4.4m",
+    "event": "workflow_dispatch",
+    "branch": "main",
+    "url": "https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/actions/runs/35864303415",
+    "logs_path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415"
+  },
+  "comparison": {
+    "baseline_found": false
+  },
+  "task_domain": {
+    "name": "code_fix",
+    "label": "Code Fix",
+    "reason": "The workflow appears oriented toward code changes or pull request review."
+  },
+  "behavior_fingerprint": {
+    "execution_style": "directed",
+    "tool_breadth": "narrow",
+    "actuation_style": "read_only",
+    "resource_profile": "lean",
+    "dispatch_mode": "standalone",
+    "agentic_fraction": 0
+  },
+  "metrics": {
+    "working_set": {
+      "measurement_state": "unavailable",
+      "cumulative_input_tokens": 0,
+      "peak_input_tokens": 0,
+      "rebuild_excess_tokens": 0,
+      "invocations": 0
+    },
+    "action_minutes": 5,
+    "error_count": 1,
+    "warning_count": 0
+  },
+  "key_findings": [
+    {
+      "category": "error",
+      "severity": "critical",
+      "title": "Workflow Failed",
+      "description": "Workflow 'update-github-info' failed with 3 error(s): ##[error]Agent execution exited with code 1\n##[error]Process completed with exit code 1.",
+      "impact": "Workflow did not complete successfully and may need intervention"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "high",
+      "action": "Review error logs to identify root cause of failure",
+      "reason": "Understanding failure causes helps prevent recurrence",
+      "example": "Check the errors field for specific error messages, or inspect the log files in logs_path"
+    }
+  ],
+  "observability_insights": [
+    {
+      "category": "execution",
+      "severity": "info",
+      "title": "Directed execution path",
+      "summary": "The run remained relatively linear with 0 turns and 0 tool types.",
+      "evidence": "turns=0 tool_types=0"
+    },
+    {
+      "category": "actuation",
+      "severity": "info",
+      "title": "Read-only posture observed",
+      "summary": "The workflow stayed in an analysis posture and did not emit any GitHub write actions.",
+      "evidence": "created_items=0 safe_items=0"
+    },
+    {
+      "category": "network",
+      "severity": "info",
+      "title": "Network policy aligned",
+      "summary": "The firewall observed 6 request(s) with 0 blocked, for a 0% block rate.",
+      "evidence": "blocked=0 total=6"
+    },
+    {
+      "category": "execution",
+      "severity": "info",
+      "title": "Log template patterns mined",
+      "summary": "Analysis identified 2 distinct event templates across 6 pipeline stages from 1 events.",
+      "evidence": "finish=1 plan=1"
+    },
+    {
+      "category": "execution",
+      "severity": "info",
+      "title": "Agent stage sequence",
+      "summary": "The observed pipeline stage sequence for this run.",
+      "evidence": "finish"
+    }
+  ],
+  "performance_metrics": {
+    "network_requests": 6
+  },
+  "engine_config": {
+    "engine_id": "copilot",
+    "engine_name": "GitHub Copilot CLI",
+    "model": "auto",
+    "version": "1.0.80",
+    "cli_version": "v0.88.8",
+    "firewall_version": "v0.28.14",
+    "trigger_event": "workflow_dispatch",
+    "repository": "InnaGertruda/skills-agentic-workflows-that-read-the-room"
+  },
+  "prompt_analysis": {
+    "prompt_size": 13169,
+    "prompt_file": "aw-prompts/prompt.txt"
+  },
+  "session_analysis": {
+    "wall_time": "4.4m",
+    "timeout_detected": false
+  },
+  "safe_output_summary": {
+    "total_items": 0,
+    "items_by_type": {},
+    "summary": "No items",
+    "temporary_id_map_status": "missing"
+  },
+  "jobs": [
+    {
+      "name": "activation",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "59.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-23T13:02:30Z",
+          "completed_at": "2026-09-23T13:02:39Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-23T13:02:39Z",
+          "completed_at": "2026-09-23T13:02:51Z"
+        },
+        {
+          "name": "Mask OTLP telemetry headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-23T13:02:51Z",
+          "completed_at": "2026-09-23T13:02:51Z"
+        },
+        {
+          "name": "Generate agentic run info",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-23T13:02:51Z",
+          "completed_at": "2026-09-23T13:02:52Z"
+        },
+        {
+          "name": "Restore daily AIC usage cache",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-23T13:02:52Z",
+          "completed_at": "2026-09-23T13:02:55Z"
+        },
+        {
+          "name": "Restore daily AIC usage cache (artifact fallback)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-09-23T13:02:55Z",
+          "completed_at": "2026-09-23T13:02:55Z"
+        },
+        {
+          "name": "Check daily workflow token guardrail",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T13:02:55Z",
+          "completed_at": "2026-09-23T13:02:58Z"
+        },
+        {
+          "name": "Validate COPILOT_GITHUB_TOKEN secret",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T13:02:58Z",
+          "completed_at": "2026-09-23T13:02:58Z"
+        },
+        {
+          "name": "Check for OAuth tokens",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-09-23T13:02:58Z",
+          "completed_at": "2026-09-23T13:02:58Z"
+        },
+        {
+          "name": "Checkout .github and .agents folders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-09-23T13:02:58Z",
+          "completed_at": "2026-09-23T13:03:15Z"
+        },
+        {
+          "name": "Save agent config folders for base branch restoration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-09-23T13:03:15Z",
+          "completed_at": "2026-09-23T13:03:15Z"
+        },
+        {
+          "name": "Check workflow lock file",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-09-23T13:03:15Z",
+          "completed_at": "2026-09-23T13:03:17Z"
+        },
+        {
+          "name": "Check compile-agentic version",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-09-23T13:03:17Z",
+          "completed_at": "2026-09-23T13:03:18Z"
+        },
+        {
+          "name": "Log runtime features",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-09-23T13:03:18Z",
+          "completed_at": "2026-09-23T13:03:18Z"
+        },
+        {
+          "name": "Create prompt with built-in context",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-09-23T13:03:18Z",
+          "completed_at": "2026-09-23T13:03:18Z"
+        },
+        {
+          "name": "Interpolate variables and render templates",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-23T13:03:18Z",
+          "completed_at": "2026-09-23T13:03:18Z"
+        },
+        {
+          "name": "Substitute placeholders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-23T13:03:18Z",
+          "completed_at": "2026-09-23T13:03:18Z"
+        },
+        {
+          "name": "Validate prompt placeholders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-09-23T13:03:18Z",
+          "completed_at": "2026-09-23T13:03:18Z"
+        },
+        {
+          "name": "Print prompt",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-09-23T13:03:18Z",
+          "completed_at": "2026-09-23T13:03:18Z"
+        },
+        {
+          "name": "Stage prompt files for artifact upload",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-09-23T13:03:18Z",
+          "completed_at": "2026-09-23T13:03:18Z"
+        },
+        {
+          "name": "Upload activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-09-23T13:03:18Z",
+          "completed_at": "2026-09-23T13:03:22Z"
+        },
+        {
+          "name": "Post Checkout .github and .agents folders",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-09-23T13:03:22Z",
+          "completed_at": "2026-09-23T13:03:24Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 42,
+          "started_at": "2026-09-23T13:03:24Z",
+          "completed_at": "2026-09-23T13:03:24Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 43,
+          "started_at": "2026-09-23T13:03:24Z",
+          "completed_at": "2026-09-23T13:03:24Z"
+        }
+      ]
+    },
+    {
+      "name": "agent",
+      "status": "completed",
+      "conclusion": "failure",
+      "duration": "1.2m",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-23T13:03:29Z",
+          "completed_at": "2026-09-23T13:03:30Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-23T13:03:30Z",
+          "completed_at": "2026-09-23T13:03:32Z"
+        },
+        {
+          "name": "Set runtime paths",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-23T13:03:32Z",
+          "completed_at": "2026-09-23T13:03:32Z"
+        },
+        {
+          "name": "Mask OTLP telemetry headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-23T13:03:32Z",
+          "completed_at": "2026-09-23T13:03:32Z"
+        },
+        {
+          "name": "Check OTLP telemetry configuration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-23T13:03:32Z",
+          "completed_at": "2026-09-23T13:03:32Z"
+        },
+        {
+          "name": "Checkout repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-09-23T13:03:32Z",
+          "completed_at": "2026-09-23T13:03:33Z"
+        },
+        {
+          "name": "Create gh-aw temp directory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T13:03:33Z",
+          "completed_at": "2026-09-23T13:03:33Z"
+        },
+        {
+          "name": "Configure gh CLI for GitHub Enterprise",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T13:03:33Z",
+          "completed_at": "2026-09-23T13:03:33Z"
+        },
+        {
+          "name": "Download activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-09-23T13:03:33Z",
+          "completed_at": "2026-09-23T13:03:34Z"
+        },
+        {
+          "name": "Configure Git credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-09-23T13:03:34Z",
+          "completed_at": "2026-09-23T13:03:34Z"
+        },
+        {
+          "name": "Checkout PR branch",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-09-23T13:03:34Z",
+          "completed_at": "2026-09-23T13:03:34Z"
+        },
+        {
+          "name": "Install GitHub Copilot CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-09-23T13:03:34Z",
+          "completed_at": "2026-09-23T13:03:45Z"
+        },
+        {
+          "name": "Install AWF binary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-09-23T13:03:45Z",
+          "completed_at": "2026-09-23T13:03:46Z"
+        },
+        {
+          "name": "Determine automatic lockdown mode for GitHub MCP Server",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-09-23T13:03:46Z",
+          "completed_at": "2026-09-23T13:03:47Z"
+        },
+        {
+          "name": "Parse integrity filter lists",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-09-23T13:03:47Z",
+          "completed_at": "2026-09-23T13:03:47Z"
+        },
+        {
+          "name": "Restore agent config folders from base branch",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 16,
+          "started_at": "2026-09-23T13:03:47Z",
+          "completed_at": "2026-09-23T13:03:47Z"
+        },
+        {
+          "name": "Restore inline sub-agents from activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-23T13:03:47Z",
+          "completed_at": "2026-09-23T13:03:47Z"
+        },
+        {
+          "name": "Restore inline skills from activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-09-23T13:03:47Z",
+          "completed_at": "2026-09-23T13:03:47Z"
+        },
+        {
+          "name": "Download container images",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-09-23T13:03:47Z",
+          "completed_at": "2026-09-23T13:03:56Z"
+        },
+        {
+          "name": "Prepare Safe Outputs Directories",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-09-23T13:03:56Z",
+          "completed_at": "2026-09-23T13:03:56Z"
+        },
+        {
+          "name": "Generate Safe Outputs Config",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-09-23T13:03:56Z",
+          "completed_at": "2026-09-23T13:03:56Z"
+        },
+        {
+          "name": "Generate Safe Outputs Tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-09-23T13:03:56Z",
+          "completed_at": "2026-09-23T13:03:56Z"
+        },
+        {
+          "name": "Start MCP Gateway",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-09-23T13:03:56Z",
+          "completed_at": "2026-09-23T13:04:02Z"
+        },
+        {
+          "name": "Mount MCP servers as CLIs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-09-23T13:04:02Z",
+          "completed_at": "2026-09-23T13:04:02Z"
+        },
+        {
+          "name": "Clean credentials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-09-23T13:04:02Z",
+          "completed_at": "2026-09-23T13:04:02Z"
+        },
+        {
+          "name": "Audit pre-agent workspace",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-09-23T13:04:02Z",
+          "completed_at": "2026-09-23T13:04:02Z"
+        },
+        {
+          "name": "Execute GitHub Copilot CLI",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 27,
+          "started_at": "2026-09-23T13:04:02Z",
+          "completed_at": "2026-09-23T13:04:29Z"
+        },
+        {
+          "name": "Detect agent errors",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-09-23T13:04:29Z",
+          "completed_at": "2026-09-23T13:04:29Z"
+        },
+        {
+          "name": "Configure Git credentials",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 29,
+          "started_at": "2026-09-23T13:04:29Z",
+          "completed_at": "2026-09-23T13:04:29Z"
+        },
+        {
+          "name": "Copy Copilot session state files to logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-09-23T13:04:29Z",
+          "completed_at": "2026-09-23T13:04:29Z"
+        },
+        {
+          "name": "Stop MCP Gateway",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-09-23T13:04:29Z",
+          "completed_at": "2026-09-23T13:04:30Z"
+        },
+        {
+          "name": "Redact secrets in logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32,
+          "started_at": "2026-09-23T13:04:30Z",
+          "completed_at": "2026-09-23T13:04:30Z"
+        },
+        {
+          "name": "Append agent step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33,
+          "started_at": "2026-09-23T13:04:30Z",
+          "completed_at": "2026-09-23T13:04:30Z"
+        },
+        {
+          "name": "Copy Safe Outputs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34,
+          "started_at": "2026-09-23T13:04:30Z",
+          "completed_at": "2026-09-23T13:04:30Z"
+        },
+        {
+          "name": "Ingest agent output",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35,
+          "started_at": "2026-09-23T13:04:30Z",
+          "completed_at": "2026-09-23T13:04:31Z"
+        },
+        {
+          "name": "Parse agent logs for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36,
+          "started_at": "2026-09-23T13:04:31Z",
+          "completed_at": "2026-09-23T13:04:31Z"
+        },
+        {
+          "name": "Parse MCP Gateway logs for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37,
+          "started_at": "2026-09-23T13:04:31Z",
+          "completed_at": "2026-09-23T13:04:31Z"
+        },
+        {
+          "name": "Print firewall logs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38,
+          "started_at": "2026-09-23T13:04:31Z",
+          "completed_at": "2026-09-23T13:04:32Z"
+        },
+        {
+          "name": "Parse token usage for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-09-23T13:04:32Z",
+          "completed_at": "2026-09-23T13:04:32Z"
+        },
+        {
+          "name": "Print AWF reflect summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40,
+          "started_at": "2026-09-23T13:04:32Z",
+          "completed_at": "2026-09-23T13:04:32Z"
+        },
+        {
+          "name": "Generate observability summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-09-23T13:04:32Z",
+          "completed_at": "2026-09-23T13:04:32Z"
+        },
+        {
+          "name": "Write agent output placeholder if missing",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 42,
+          "started_at": "2026-09-23T13:04:32Z",
+          "completed_at": "2026-09-23T13:04:32Z"
+        },
+        {
+          "name": "Upload agent output fallback artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 43,
+          "started_at": "2026-09-23T13:04:32Z",
+          "completed_at": "2026-09-23T13:04:33Z"
+        },
+        {
+          "name": "Upload agent artifacts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 44,
+          "started_at": "2026-09-23T13:04:33Z",
+          "completed_at": "2026-09-23T13:04:34Z"
+        },
+        {
+          "name": "Post Checkout repository",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 87,
+          "started_at": "2026-09-23T13:04:34Z",
+          "completed_at": "2026-09-23T13:04:34Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 88,
+          "started_at": "2026-09-23T13:04:34Z",
+          "completed_at": "2026-09-23T13:04:34Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 89,
+          "started_at": "2026-09-23T13:04:34Z",
+          "completed_at": "2026-09-23T13:04:34Z"
+        }
+      ]
+    },
+    {
+      "name": "detection",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "33.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-23T13:04:41Z",
+          "completed_at": "2026-09-23T13:04:43Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-23T13:04:43Z",
+          "completed_at": "2026-09-23T13:04:45Z"
+        },
+        {
+          "name": "Download activation artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-23T13:04:45Z",
+          "completed_at": "2026-09-23T13:04:47Z"
+        },
+        {
+          "name": "Download agent output artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-23T13:04:47Z",
+          "completed_at": "2026-09-23T13:04:48Z"
+        },
+        {
+          "name": "Setup agent output environment variable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-23T13:04:48Z",
+          "completed_at": "2026-09-23T13:04:48Z"
+        },
+        {
+          "name": "Checkout repository for patch context",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 6,
+          "started_at": "2026-09-23T13:04:48Z",
+          "completed_at": "2026-09-23T13:04:48Z"
+        },
+        {
+          "name": "Clean stale firewall files from agent artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T13:04:48Z",
+          "completed_at": "2026-09-23T13:04:48Z"
+        },
+        {
+          "name": "Download container images",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T13:04:48Z",
+          "completed_at": "2026-09-23T13:04:58Z"
+        },
+        {
+          "name": "Check if detection needed",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-09-23T13:04:58Z",
+          "completed_at": "2026-09-23T13:04:58Z"
+        },
+        {
+          "name": "Clear MCP Config for detection",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-09-23T13:04:58Z",
+          "completed_at": "2026-09-23T13:04:58Z"
+        },
+        {
+          "name": "Prepare threat detection files",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-09-23T13:04:58Z",
+          "completed_at": "2026-09-23T13:04:58Z"
+        },
+        {
+          "name": "Setup threat detection",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 12,
+          "started_at": "2026-09-23T13:04:58Z",
+          "completed_at": "2026-09-23T13:04:58Z"
+        },
+        {
+          "name": "Ensure threat-detection directory and log",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 13,
+          "started_at": "2026-09-23T13:04:58Z",
+          "completed_at": "2026-09-23T13:04:58Z"
+        },
+        {
+          "name": "Install AWF binary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-09-23T13:04:58Z",
+          "completed_at": "2026-09-23T13:04:59Z"
+        },
+        {
+          "name": "Setup Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-09-23T13:04:59Z",
+          "completed_at": "2026-09-23T13:05:02Z"
+        },
+        {
+          "name": "Install GitHub Copilot CLI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-23T13:05:02Z",
+          "completed_at": "2026-09-23T13:05:09Z"
+        },
+        {
+          "name": "Install threat-detect binary",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17,
+          "started_at": "2026-09-23T13:05:09Z",
+          "completed_at": "2026-09-23T13:05:09Z"
+        },
+        {
+          "name": "Execute threat detection with AWF",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 18,
+          "started_at": "2026-09-23T13:05:09Z",
+          "completed_at": "2026-09-23T13:05:09Z"
+        },
+        {
+          "name": "Render detection log",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 19,
+          "started_at": "2026-09-23T13:05:09Z",
+          "completed_at": "2026-09-23T13:05:09Z"
+        },
+        {
+          "name": "Copy detection firewall logs",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 20,
+          "started_at": "2026-09-23T13:05:09Z",
+          "completed_at": "2026-09-23T13:05:09Z"
+        },
+        {
+          "name": "Upload threat detection artifact",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 21,
+          "started_at": "2026-09-23T13:05:09Z",
+          "completed_at": "2026-09-23T13:05:09Z"
+        },
+        {
+          "name": "Parse threat detection token usage for step summary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-09-23T13:05:09Z",
+          "completed_at": "2026-09-23T13:05:09Z"
+        },
+        {
+          "name": "Conclude threat detection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-09-23T13:05:09Z",
+          "completed_at": "2026-09-23T13:05:09Z"
+        },
+        {
+          "name": "Post Setup Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 45,
+          "started_at": "2026-09-23T13:05:09Z",
+          "completed_at": "2026-09-23T13:05:10Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 46,
+          "started_at": "2026-09-23T13:05:10Z",
+          "completed_at": "2026-09-23T13:05:10Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 47,
+          "started_at": "2026-09-23T13:05:10Z",
+          "completed_at": "2026-09-23T13:05:10Z"
+        }
+      ]
+    },
+    {
+      "name": "safe_outputs",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "19.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-23T13:05:27Z",
+          "completed_at": "2026-09-23T13:05:33Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-23T13:05:33Z",
+          "completed_at": "2026-09-23T13:05:38Z"
+        },
+        {
+          "name": "Mask OTLP telemetry headers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-23T13:05:38Z",
+          "completed_at": "2026-09-23T13:05:38Z"
+        },
+        {
+          "name": "Download agent output artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-23T13:05:38Z",
+          "completed_at": "2026-09-23T13:05:40Z"
+        },
+        {
+          "name": "Setup agent output environment variable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-23T13:05:40Z",
+          "completed_at": "2026-09-23T13:05:40Z"
+        },
+        {
+          "name": "Download patch artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-09-23T13:05:40Z",
+          "completed_at": "2026-09-23T13:05:41Z"
+        },
+        {
+          "name": "Checkout repository",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 7,
+          "started_at": "2026-09-23T13:05:41Z",
+          "completed_at": "2026-09-23T13:05:41Z"
+        },
+        {
+          "name": "Configure Git credentials",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8,
+          "started_at": "2026-09-23T13:05:41Z",
+          "completed_at": "2026-09-23T13:05:41Z"
+        },
+        {
+          "name": "Configure GH_HOST for enterprise compatibility",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-09-23T13:05:41Z",
+          "completed_at": "2026-09-23T13:05:41Z"
+        },
+        {
+          "name": "Process Safe Outputs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-09-23T13:05:41Z",
+          "completed_at": "2026-09-23T13:05:41Z"
+        },
+        {
+          "name": "Upload Safe Outputs Items",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-09-23T13:05:41Z",
+          "completed_at": "2026-09-23T13:05:42Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-09-23T13:05:42Z",
+          "completed_at": "2026-09-23T13:05:42Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-09-23T13:05:42Z",
+          "completed_at": "2026-09-23T13:05:42Z"
+        }
+      ]
+    },
+    {
+      "name": "conclusion",
+      "status": "completed",
+      "conclusion": "success",
+      "duration": "27.0s",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-09-23T13:05:59Z",
+          "completed_at": "2026-09-23T13:06:06Z"
+        },
+        {
+          "name": "Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-09-23T13:06:06Z",
+          "completed_at": "2026-09-23T13:06:08Z"
+        },
+        {
+          "name": "Download agent output artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-09-23T13:06:08Z",
+          "completed_at": "2026-09-23T13:06:10Z"
+        },
+        {
+          "name": "Setup agent output environment variable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-09-23T13:06:10Z",
+          "completed_at": "2026-09-23T13:06:10Z"
+        },
+        {
+          "name": "Download detection artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-09-23T13:06:10Z",
+          "completed_at": "2026-09-23T13:06:10Z"
+        },
+        {
+          "name": "Download Safe Outputs Items Manifest",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-09-23T13:06:10Z",
+          "completed_at": "2026-09-23T13:06:11Z"
+        },
+        {
+          "name": "Collect usage artifact files",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-09-23T13:06:11Z",
+          "completed_at": "2026-09-23T13:06:11Z"
+        },
+        {
+          "name": "Upload usage artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-09-23T13:06:11Z",
+          "completed_at": "2026-09-23T13:06:13Z"
+        },
+        {
+          "name": "Restore daily AIC usage cache",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-09-23T13:06:13Z",
+          "completed_at": "2026-09-23T13:06:13Z"
+        },
+        {
+          "name": "Write daily AIC usage cache entry",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-09-23T13:06:13Z",
+          "completed_at": "2026-09-23T13:06:14Z"
+        },
+        {
+          "name": "Save daily AIC usage cache",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-09-23T13:06:14Z",
+          "completed_at": "2026-09-23T13:06:15Z"
+        },
+        {
+          "name": "Upload daily AIC usage cache artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-09-23T13:06:15Z",
+          "completed_at": "2026-09-23T13:06:16Z"
+        },
+        {
+          "name": "Process no-op messages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-09-23T13:06:16Z",
+          "completed_at": "2026-09-23T13:06:16Z"
+        },
+        {
+          "name": "Log detection run",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-09-23T13:06:16Z",
+          "completed_at": "2026-09-23T13:06:17Z"
+        },
+        {
+          "name": "Record missing tool",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-09-23T13:06:17Z",
+          "completed_at": "2026-09-23T13:06:18Z"
+        },
+        {
+          "name": "Record incomplete",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-09-23T13:06:18Z",
+          "completed_at": "2026-09-23T13:06:18Z"
+        },
+        {
+          "name": "Handle agent failure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-09-23T13:06:18Z",
+          "completed_at": "2026-09-23T13:06:21Z"
+        },
+        {
+          "name": "Report failed jobs",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-09-23T13:06:21Z",
+          "completed_at": "2026-09-23T13:06:22Z"
+        },
+        {
+          "name": "Post Setup Scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36,
+          "started_at": "2026-09-23T13:06:22Z",
+          "completed_at": "2026-09-23T13:06:22Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37,
+          "started_at": "2026-09-23T13:06:22Z",
+          "completed_at": "2026-09-23T13:06:22Z"
+        }
+      ]
+    }
+  ],
+  "downloaded_files": [
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/.downloaded-artifacts/all",
+      "size": 0,
+      "description": ""
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/agent-stdio.log",
+      "size": 11209,
+      "description": "Agent standard output/error logs"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/agent_output.json",
+      "size": 24,
+      "description": "Validated safe outputs"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/agentic-workflow-usage-cache.jsonl",
+      "size": 350,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/aw-prompts/prompt-import-tree.json",
+      "size": 14202,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/aw-prompts/prompt-template.txt",
+      "size": 12340,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/aw-prompts/prompt.txt",
+      "size": 13169,
+      "description": "Input prompt for AI agent"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/aw_info.json",
+      "size": 906,
+      "description": "Engine configuration and workflow metadata"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/awf-config.json",
+      "size": 5039,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/github_rate_limits.jsonl",
+      "size": 386,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/jobs.json",
+      "size": 27067,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/mcp-logs/gateway.md",
+      "size": 2395,
+      "description": "Markdown documentation"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/mcp-logs/github.log",
+      "size": 2354,
+      "description": "Log file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/mcp-logs/mcp-gateway.log",
+      "size": 224070,
+      "description": "Log file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/mcp-logs/observed-url-domains.json",
+      "size": 2,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/mcp-logs/rpc-messages.jsonl",
+      "size": 38336,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/mcp-logs/safeoutputs/server.log",
+      "size": 14860,
+      "description": "Log file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/mcp-logs/safeoutputs.log",
+      "size": 19120,
+      "description": "Log file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/mcp-logs/tools.json",
+      "size": 5157,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/models.json",
+      "size": 15078,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/otel.jsonl",
+      "size": 3672,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/pre-agent-audit.txt",
+      "size": 48910,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/run_summary.json",
+      "size": 53769,
+      "description": "Cached summary of workflow run analysis"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/safe-output-items.jsonl",
+      "size": 0,
+      "description": "Created items manifest (audit trail)"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/agent/logs/process-1790168663444-390.log",
+      "size": 80033,
+      "description": "Log file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/audit/awf-resolved-config.json",
+      "size": 9552,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/audit/docker-compose.redacted.yml",
+      "size": 25885,
+      "description": ""
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/audit/image-manifest.json",
+      "size": 531,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/audit/policy-manifest.json",
+      "size": 3157,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/audit/squid.conf",
+      "size": 6766,
+      "description": ""
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/logs/access.log",
+      "size": 1576,
+      "description": "Log file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/logs/api-proxy-logs/models.json",
+      "size": 22043,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/logs/api-proxy-logs/otel.jsonl",
+      "size": 606,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/logs/api-proxy-logs/token-usage.jsonl",
+      "size": 0,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/logs/audit.jsonl",
+      "size": 3137,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/sandbox/firewall/logs/cache.log",
+      "size": 2762,
+      "description": "Log file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/usage/activity/summary.json",
+      "size": 608,
+      "description": "JSON data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/usage/agent/token_usage.jsonl",
+      "size": 0,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/usage/detection/token_usage.jsonl",
+      "size": 0,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/usage/github_rate_limits.jsonl",
+      "size": 586,
+      "description": "JSON Lines data file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/0_conclusion.txt",
+      "size": 55438,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/1_safe_outputs.txt",
+      "size": 34645,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/2_detection.txt",
+      "size": 38784,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/3_agent.txt",
+      "size": 342949,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/4_activation.txt",
+      "size": 91678,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/10_Checkout .github and .agents folders.txt",
+      "size": 15451,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/11_Save agent config folders for base branch restoration.txt",
+      "size": 1629,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/12_Check workflow lock file.txt",
+      "size": 3661,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/13_Check compile-agentic version.txt",
+      "size": 2212,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/15_Create prompt with built-in context.txt",
+      "size": 4988,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/16_Interpolate variables and render templates.txt",
+      "size": 10128,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/17_Substitute placeholders.txt",
+      "size": 3588,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/18_Validate prompt placeholders.txt",
+      "size": 1723,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/19_Print prompt.txt",
+      "size": 18538,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/1_Set up job.txt",
+      "size": 2228,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/20_Stage prompt files for artifact upload.txt",
+      "size": 1328,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/21_Upload activation artifact.txt",
+      "size": 3134,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/2_Setup Scripts.txt",
+      "size": 2673,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/3_Mask OTLP telemetry headers.txt",
+      "size": 1275,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/41_Post Checkout .github and .agents folders.txt",
+      "size": 1813,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/42_Post Setup Scripts.txt",
+      "size": 494,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/43_Complete job.txt",
+      "size": 804,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/4_Generate agentic run info.txt",
+      "size": 5730,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/5_Restore daily AIC usage cache.txt",
+      "size": 2251,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/6_Restore daily AIC usage cache (artifact fallback).txt",
+      "size": 2273,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/7_Check daily workflow token guardrail.txt",
+      "size": 2523,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/8_Validate COPILOT_GITHUB_TOKEN secret.txt",
+      "size": 1851,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/9_Check for OAuth tokens.txt",
+      "size": 1449,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/activation/system.txt",
+      "size": 629,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/10_Configure Git credentials.txt",
+      "size": 2258,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/12_Install GitHub Copilot CLI.txt",
+      "size": 5215,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/13_Install AWF binary.txt",
+      "size": 2892,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/14_Determine automatic lockdown mode for GitHub MCP Server.txt",
+      "size": 3535,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/15_Parse integrity filter lists.txt",
+      "size": 2323,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/17_Restore inline sub-agents from activation artifact.txt",
+      "size": 2277,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/18_Restore inline skills from activation artifact.txt",
+      "size": 2205,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/19_Download container images.txt",
+      "size": 7358,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/1_Set up job.txt",
+      "size": 2571,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/20_Prepare Safe Outputs Directories.txt",
+      "size": 2062,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/21_Generate Safe Outputs Config.txt",
+      "size": 3829,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/22_Generate Safe Outputs Tools.txt",
+      "size": 5518,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/23_Start MCP Gateway.txt",
+      "size": 25074,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/24_Mount MCP servers as CLIs.txt",
+      "size": 3955,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/25_Clean credentials.txt",
+      "size": 2450,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/26_Audit pre-agent workspace.txt",
+      "size": 2050,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/27_Execute GitHub Copilot CLI.txt",
+      "size": 31648,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/28_Detect agent errors.txt",
+      "size": 2820,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/2_Setup Scripts.txt",
+      "size": 3694,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/30_Copy Copilot session state files to logs.txt",
+      "size": 2181,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/31_Stop MCP Gateway.txt",
+      "size": 2589,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/32_Redact secrets in logs.txt",
+      "size": 3629,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/33_Append agent step summary.txt",
+      "size": 1951,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/34_Copy Safe Outputs.txt",
+      "size": 2082,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/35_Ingest agent output.txt",
+      "size": 5042,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/36_Parse agent logs for step summary.txt",
+      "size": 2773,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/37_Parse MCP Gateway logs for step summary.txt",
+      "size": 155088,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/38_Print firewall logs.txt",
+      "size": 4443,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/39_Parse token usage for step summary.txt",
+      "size": 2676,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/3_Set runtime paths.txt",
+      "size": 2601,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/40_Print AWF reflect summary.txt",
+      "size": 2727,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/41_Generate observability summary.txt",
+      "size": 2697,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/42_Write agent output placeholder if missing.txt",
+      "size": 2131,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/43_Upload agent output fallback artifact.txt",
+      "size": 3648,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/44_Upload agent artifacts.txt",
+      "size": 3899,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/4_Mask OTLP telemetry headers.txt",
+      "size": 1935,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/5_Check OTLP telemetry configuration.txt",
+      "size": 2085,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/6_Checkout repository.txt",
+      "size": 13698,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/7_Create gh-aw temp directory.txt",
+      "size": 2042,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/87_Post Checkout repository.txt",
+      "size": 1953,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/88_Post Setup Scripts.txt",
+      "size": 489,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/89_Complete job.txt",
+      "size": 1243,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/8_Configure gh CLI for GitHub Enterprise.txt",
+      "size": 2173,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/9_Download activation artifact.txt",
+      "size": 3569,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/agent/system.txt",
+      "size": 765,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/10_Write daily AIC usage cache entry.txt",
+      "size": 2466,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/11_Save daily AIC usage cache.txt",
+      "size": 1758,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/12_Upload daily AIC usage cache artifact.txt",
+      "size": 2626,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/13_Process no-op messages.txt",
+      "size": 2813,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/14_Log detection run.txt",
+      "size": 3151,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/15_Record missing tool.txt",
+      "size": 2248,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/16_Record incomplete.txt",
+      "size": 2266,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/17_Handle agent failure.txt",
+      "size": 8892,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/18_Report failed jobs.txt",
+      "size": 2819,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/1_Set up job.txt",
+      "size": 2323,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/2_Setup Scripts.txt",
+      "size": 2975,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/36_Post Setup Scripts.txt",
+      "size": 494,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/37_Complete job.txt",
+      "size": 119,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/3_Download agent output artifact.txt",
+      "size": 3697,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/4_Setup agent output environment variable.txt",
+      "size": 3393,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/5_Download detection artifact.txt",
+      "size": 1971,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/6_Download Safe Outputs Items Manifest.txt",
+      "size": 2934,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/7_Collect usage artifact files.txt",
+      "size": 3176,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/8_Upload usage artifact.txt",
+      "size": 3187,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/9_Restore daily AIC usage cache.txt",
+      "size": 2187,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/conclusion/system.txt",
+      "size": 1397,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/14_Install AWF binary.txt",
+      "size": 2168,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/15_Setup Node.js.txt",
+      "size": 1609,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/16_Install GitHub Copilot CLI.txt",
+      "size": 4491,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/1_Set up job.txt",
+      "size": 2740,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/22_Parse threat detection token usage for step summary.txt",
+      "size": 1965,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/23_Conclude threat detection.txt",
+      "size": 1668,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/2_Setup Scripts.txt",
+      "size": 2974,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/3_Download activation artifact.txt",
+      "size": 2845,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/45_Post Setup Node.js.txt",
+      "size": 50,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/46_Post Setup Scripts.txt",
+      "size": 493,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/47_Complete job.txt",
+      "size": 301,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/4_Download agent output artifact.txt",
+      "size": 3697,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/5_Setup agent output environment variable.txt",
+      "size": 6431,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/7_Clean stale firewall files from agent artifact.txt",
+      "size": 1258,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/8_Download container images.txt",
+      "size": 4251,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/9_Check if detection needed.txt",
+      "size": 1888,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/detection/system.txt",
+      "size": 742,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/10_Process Safe Outputs.txt",
+      "size": 5563,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/11_Upload Safe Outputs Items.txt",
+      "size": 3896,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/1_Set up job.txt",
+      "size": 2287,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/22_Post Setup Scripts.txt",
+      "size": 496,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/23_Complete job.txt",
+      "size": 892,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/2_Setup Scripts.txt",
+      "size": 3945,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/3_Mask OTLP telemetry headers.txt",
+      "size": 2179,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/4_Download agent output artifact.txt",
+      "size": 4665,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/5_Setup agent output environment variable.txt",
+      "size": 4361,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/6_Download patch artifact.txt",
+      "size": 3804,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/9_Configure GH_HOST for enterprise compatibility.txt",
+      "size": 2587,
+      "description": "Text file"
+    },
+    {
+      "path": "/workspaces/skills-agentic-workflows-that-read-the-room/.github/aw/logs/run-35864303415/workflow-logs/safe_outputs/system.txt",
+      "size": 820,
+      "description": "Text file"
+    }
+  ],
+  "github_rate_limit_usage": {
+    "total_requests_made": 2,
+    "core_consumed": 1,
+    "core_consumed_source": "response_headers_delta",
+    "core_remaining": 4977,
+    "core_limit": 5000,
+    "resources": [
+      {
+        "resource": "core",
+        "requests_made": 2,
+        "quota_consumed": 1,
+        "final_remaining": 4977,
+        "limit": 5000
+      }
+    ]
+  },
+  "firewall_analysis": {
+    "allowed_domains": [
+      "api.githubcopilot.com:443"
+    ],
+    "total_requests": 6,
+    "allowed_requests": 6,
+    "blocked_requests": 0,
+    "requests_by_domain": {
+      "api.githubcopilot.com:443": {
+        "allowed": 6,
+        "blocked": 0
+      }
+    }
+  },
+  "policy_analysis": {
+    "policy_summary": "9 rules, SSL Bump disabled, DLP disabled",
+    "rule_hits": [],
+    "total_requests": 0,
+    "allowed_count": 0,
+    "denied_count": 0,
+    "unique_domains": 0
+  },
+  "errors": [
+    {
+      "type": "step_failure",
+      "message": "##[error]Agent execution exited with code 1\n##[error]Process completed with exit code 1.",
+      "file": "agent"
+    },
+    {
+      "type": "step_failure",
+      "message": "##[error]Agent execution exited with code 1\n##[error]Process completed with exit code 1.",
+      "file": "agent/Execute GitHub Copilot CLI"
+    },
+    {
+      "type": "step_failure",
+      "message": "##[error]Unable to download artifact(s): Artifact not found for name: detection",
+      "file": "conclusion/Download detection artifact"
+    }
+  ]
+}

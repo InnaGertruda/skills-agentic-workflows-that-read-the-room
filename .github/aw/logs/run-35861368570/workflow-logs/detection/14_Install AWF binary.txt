@@ -1,0 +1,25 @@
+﻿2026-09-23T12:38:51.9971626Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/install_awf_binary.sh" v0.28.14 --rootless
+2026-09-23T12:38:51.9972295Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/install_awf_binary.sh" v0.28.14 --rootless[0m
+2026-09-23T12:38:52.0007684Z shell: /usr/bin/bash -e {0}
+2026-09-23T12:38:52.0007978Z env:
+2026-09-23T12:38:52.0008218Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:38:52.0008551Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:38:52.0009646Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:38:52.0010725Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:38:52.0011046Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:38:52.0011409Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:38:52.0011702Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:38:52.0012033Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:38:52.0012503Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: e2626d786b761c2b
+2026-09-23T12:38:52.0012858Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167129272
+2026-09-23T12:38:52.0013173Z ##[endgroup]
+2026-09-23T12:38:52.0107701Z Installing awf with checksum verification (version: v0.28.14, os: Linux, arch: x86_64)
+2026-09-23T12:38:52.0134083Z Cleaning up stale AWF chroot directories...
+2026-09-23T12:38:52.0407656Z Downloading checksums from 'https://github.com/github/gh-aw-firewall/releases/download/v0.28.14/checksums.txt'...
+2026-09-23T12:38:52.2552866Z Node.js >= 20 detected (v22.23.2), using lightweight bundle...
+2026-09-23T12:38:52.2554446Z Downloading bundle from 'https://github.com/github/gh-aw-firewall/releases/download/v0.28.14/awf-bundle.js'...
+2026-09-23T12:38:52.4669583Z Verifying SHA256 checksum for awf-bundle.js...
+2026-09-23T12:38:52.4768386Z ✓ Checksum verification passed for awf-bundle.js
+2026-09-23T12:38:52.4821826Z ✓ Installed awf bundle to /home/runner/.local/lib/awf/awf-bundle.js
+2026-09-23T12:38:52.8006202Z 0.28.14
+2026-09-23T12:38:52.8077946Z ✓ AWF installation complete

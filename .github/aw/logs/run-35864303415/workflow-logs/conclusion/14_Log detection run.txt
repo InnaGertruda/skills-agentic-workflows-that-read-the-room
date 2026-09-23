@@ -1,0 +1,41 @@
+﻿2026-09-23T13:06:16.6549596Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T13:06:16.6551372Z with:
+2026-09-23T13:06:16.6560454Z   github-token: ***
+2026-09-23T13:06:16.6564936Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'handle_detection_runs.cjs'));
+await main();
+
+2026-09-23T13:06:16.6569854Z   debug: false
+2026-09-23T13:06:16.6570946Z   user-agent: actions/github-script
+2026-09-23T13:06:16.6572203Z   result-encoding: json
+2026-09-23T13:06:16.6573286Z   retries: 0
+2026-09-23T13:06:16.6574410Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T13:06:16.6576014Z env:
+2026-09-23T13:06:16.6577020Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:06:16.6578340Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:06:16.6581923Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:06:16.6585737Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:06:16.6587066Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:06:16.6588689Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:06:16.6589915Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:06:16.6591292Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:06:16.6592901Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: a5a9fe6c102ebaf3
+2026-09-23T13:06:16.6594373Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168768773
+2026-09-23T13:06:16.6596042Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-09-23T13:06:16.6597499Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T13:06:16.6600290Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T13:06:16.6604025Z   GH_AW_RUN_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/actions/runs/35864303415
+2026-09-23T13:06:16.6606463Z   GH_AW_DETECTION_CONCLUSION: warning
+2026-09-23T13:06:16.6607774Z   GH_AW_DETECTION_REASON: agent_failure
+2026-09-23T13:06:16.6609035Z ##[endgroup]
+2026-09-23T13:06:16.8111207Z Detection conclusion: warning
+2026-09-23T13:06:16.8134444Z Detection reason: agent_failure
+2026-09-23T13:06:16.8137618Z Workflow name: update-github-info
+2026-09-23T13:06:16.8141036Z Run URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/actions/runs/35864303415
+2026-09-23T13:06:16.8146976Z Detection problem detected (warning), posting to tracking issue
+2026-09-23T13:06:16.8152047Z Searching for detection runs issue: "[aw] Detection Runs"
+2026-09-23T13:06:17.3097065Z Found existing detection runs issue #6: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/issues/6
+2026-09-23T13:06:17.9657952Z ✓ Posted detection run comment to issue #6

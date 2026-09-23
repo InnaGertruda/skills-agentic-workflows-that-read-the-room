@@ -1,0 +1,91 @@
+﻿2026-09-23T12:35:27.0634058Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T12:35:27.0636012Z with:
+2026-09-23T12:35:27.0640668Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'generate_aw_info.cjs'));
+await main(core, context);
+
+2026-09-23T12:35:27.0655285Z   github-token: ***
+2026-09-23T12:35:27.0656466Z   debug: false
+2026-09-23T12:35:27.0657981Z   user-agent: actions/github-script
+2026-09-23T12:35:27.0659133Z   result-encoding: json
+2026-09-23T12:35:27.0660780Z   retries: 0
+2026-09-23T12:35:27.0661818Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T12:35:27.0663027Z env:
+2026-09-23T12:35:27.0663938Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:35:27.0665115Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:35:27.0669031Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:35:27.0673045Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:35:27.0674229Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:35:27.0675477Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:35:27.0677138Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-09-23T12:35:27.0678352Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:35:27.0679582Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:35:27.0681019Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5e5a65a0467a2627
+2026-09-23T12:35:27.0682320Z   GITHUB_AW_OTEL_JOB_START_MS: 1790166926997
+2026-09-23T12:35:27.0683508Z   GH_AW_INFO_ENGINE_ID: copilot
+2026-09-23T12:35:27.0684637Z   GH_AW_INFO_ENGINE_NAME: GitHub Copilot CLI
+2026-09-23T12:35:27.0685976Z   GH_AW_INFO_MODEL: auto
+2026-09-23T12:35:27.0692230Z   GH_AW_INFO_VERSION: 1.0.80
+2026-09-23T12:35:27.0693597Z   GH_AW_INFO_AGENT_VERSION: 1.0.80
+2026-09-23T12:35:27.0694976Z   GH_AW_INFO_CLI_VERSION: v0.88.8
+2026-09-23T12:35:27.0696423Z   GH_AW_INFO_WORKFLOW_NAME: update-github-info
+2026-09-23T12:35:27.0697708Z   GH_AW_INFO_EXPERIMENTAL: false
+2026-09-23T12:35:27.0698881Z   GH_AW_INFO_SUPPORTS_TOOLS_ALLOWLIST: true
+2026-09-23T12:35:27.0700075Z   GH_AW_INFO_STAGED: false
+2026-09-23T12:35:27.0701826Z   GH_AW_INFO_ALLOWED_DOMAINS: ["github.blog","github.com","awesome-copilot.github.com"]
+2026-09-23T12:35:27.0704079Z   GH_AW_INFO_FIREWALL_ENABLED: true
+2026-09-23T12:35:27.0705263Z   GH_AW_INFO_AWF_VERSION: v0.28.14
+2026-09-23T12:35:27.0706613Z   GH_AW_INFO_AWMG_VERSION: 
+2026-09-23T12:35:27.0707686Z   GH_AW_INFO_FIREWALL_TYPE: squid
+2026-09-23T12:35:27.0708993Z   GH_AW_INFO_AGENT_RUNTIME: 
+2026-09-23T12:35:27.0710060Z   GH_AW_COMPILED_STRICT: true
+2026-09-23T12:35:27.0711080Z ##[endgroup]
+2026-09-23T12:35:27.2525446Z Starting context variable validation...
+2026-09-23T12:35:27.2534804Z ✓ github.event.repository.id is valid: 1375762249
+2026-09-23T12:35:27.2541273Z ✓ github.event.sender.id is valid: 118191096
+2026-09-23T12:35:27.2545141Z Validated 2 context variables
+2026-09-23T12:35:27.2550464Z ✅ All context variables validated successfully
+2026-09-23T12:35:27.2556305Z Lockdown mode not explicitly enabled, skipping validation
+2026-09-23T12:35:27.2573165Z Repository visibility: unknown
+2026-09-23T12:35:27.2579235Z Compiled with strict mode: true
+2026-09-23T12:35:27.2594071Z Generated merged models.json at: /tmp/gh-aw/models.json
+2026-09-23T12:35:27.2602442Z Generated aw_info.json at: /tmp/gh-aw/aw_info.json
+2026-09-23T12:35:27.2606828Z {
+2026-09-23T12:35:27.2607837Z   "engine_id": "copilot",
+2026-09-23T12:35:27.2609108Z   "engine_name": "GitHub Copilot CLI",
+2026-09-23T12:35:27.2651057Z   "model": "auto",
+2026-09-23T12:35:27.2652057Z   "version": "1.0.80",
+2026-09-23T12:35:27.2653013Z   "agent_version": "1.0.80",
+2026-09-23T12:35:27.2654081Z   "workflow_name": "update-github-info",
+2026-09-23T12:35:27.2655890Z   "experimental": false,
+2026-09-23T12:35:27.2656901Z   "supports_tools_allowlist": true,
+2026-09-23T12:35:27.2658908Z   "cache_memory": false,
+2026-09-23T12:35:27.2659883Z   "run_id": 35861368570,
+2026-09-23T12:35:27.2660809Z   "run_number": 2,
+2026-09-23T12:35:27.2661667Z   "run_attempt": "1",
+2026-09-23T12:35:27.2662990Z   "repository": "InnaGertruda/skills-agentic-workflows-that-read-the-room",
+2026-09-23T12:35:27.2664514Z   "ref": "refs/heads/main",
+2026-09-23T12:35:27.2671494Z   "sha": "9ddf4c53558c369304172478f3bbcd6c39488f07",
+2026-09-23T12:35:27.2672911Z   "actor": "InnaGertruda",
+2026-09-23T12:35:27.2673956Z   "event_name": "workflow_dispatch",
+2026-09-23T12:35:27.2675013Z   "target_repo": "",
+2026-09-23T12:35:27.2676407Z   "staged": false,
+2026-09-23T12:35:27.2677281Z   "allowed_domains": [
+2026-09-23T12:35:27.2678174Z     "github.blog",
+2026-09-23T12:35:27.2679036Z     "github.com",
+2026-09-23T12:35:27.2679945Z     "awesome-copilot.github.com"
+2026-09-23T12:35:27.2682292Z   ],
+2026-09-23T12:35:27.2683177Z   "firewall_enabled": true,
+2026-09-23T12:35:27.2684153Z   "awf_version": "v0.28.14",
+2026-09-23T12:35:27.2701398Z   "awmg_version": "",
+2026-09-23T12:35:27.2702438Z   "agent_runtime": "",
+2026-09-23T12:35:27.2703347Z   "steps": {
+2026-09-23T12:35:27.2704195Z     "firewall": "squid"
+2026-09-23T12:35:27.2705084Z   },
+2026-09-23T12:35:27.2716407Z   "created_at": "2026-09-23T12:35:27.258Z",
+2026-09-23T12:35:27.2717657Z   "cli_version": "v0.88.8"
+2026-09-23T12:35:27.2718595Z }
+2026-09-23T12:35:27.2719549Z Generated workflow overview in step summary

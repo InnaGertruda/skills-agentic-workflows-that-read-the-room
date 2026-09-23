@@ -1,0 +1,31 @@
+﻿2026-09-23T13:06:14.0114894Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T13:06:14.0117054Z with:
+2026-09-23T13:06:14.0127005Z   github-token: ***
+2026-09-23T13:06:14.0132483Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context);
+const { main } = require(path.join(actionsDir, 'write_daily_aic_usage_cache.cjs'));
+await main();
+
+2026-09-23T13:06:14.0138141Z   debug: false
+2026-09-23T13:06:14.0139235Z   user-agent: actions/github-script
+2026-09-23T13:06:14.0140549Z   result-encoding: json
+2026-09-23T13:06:14.0141655Z   retries: 0
+2026-09-23T13:06:14.0142843Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T13:06:14.0144266Z env:
+2026-09-23T13:06:14.0145439Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:06:14.0146816Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:06:14.0150750Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:06:14.0154708Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:06:14.0156229Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:06:14.0157696Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:06:14.0158930Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:06:14.0160342Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:06:14.0162021Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: a5a9fe6c102ebaf3
+2026-09-23T13:06:14.0163520Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168768773
+2026-09-23T13:06:14.0164866Z ##[endgroup]
+2026-09-23T13:06:14.1527515Z [daily-aic-cache] Scanning usage JSONL files: {"dir":"/tmp/gh-aw/usage","count":3,"files":["/tmp/gh-aw/usage/github_rate_limits.jsonl","/tmp/gh-aw/usage/agent/token_usage.jsonl","/tmp/gh-aw/usage/detection/token_usage.jsonl"]}
+2026-09-23T13:06:14.1559487Z [daily-aic-cache] Computed AIC for current run: {"runId":35864303415,"aic":0}
+2026-09-23T13:06:14.1568800Z [daily-aic-cache] Loaded existing cache entries: {"path":"/tmp/gh-aw/agentic-workflow-usage-cache.jsonl","total":4,"kept":4,"pruned":0}
+2026-09-23T13:06:14.1577978Z [daily-aic-cache] Wrote cache entry: {"runId":35864303415,"aic":0,"path":"/tmp/gh-aw/agentic-workflow-usage-cache.jsonl"}

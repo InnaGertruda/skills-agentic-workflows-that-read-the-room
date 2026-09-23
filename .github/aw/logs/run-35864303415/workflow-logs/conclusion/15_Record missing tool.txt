@@ -1,0 +1,32 @@
+﻿2026-09-23T13:06:17.9908332Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T13:06:17.9910020Z with:
+2026-09-23T13:06:17.9918923Z   github-token: ***
+2026-09-23T13:06:17.9923260Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'missing_tool.cjs'));
+await main();
+
+2026-09-23T13:06:17.9927960Z   debug: false
+2026-09-23T13:06:17.9929014Z   user-agent: actions/github-script
+2026-09-23T13:06:17.9938131Z   result-encoding: json
+2026-09-23T13:06:17.9939370Z   retries: 0
+2026-09-23T13:06:17.9940486Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T13:06:17.9941903Z env:
+2026-09-23T13:06:17.9942849Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:06:17.9944118Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:06:17.9949321Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:06:17.9958390Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:06:17.9961810Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:06:17.9966685Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:06:17.9967941Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:06:17.9969279Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:06:17.9970842Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: a5a9fe6c102ebaf3
+2026-09-23T13:06:17.9974296Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168768773
+2026-09-23T13:06:17.9975986Z   GH_AW_AGENT_OUTPUT: /tmp/gh-aw/agent_output.json
+2026-09-23T13:06:17.9979379Z   GH_AW_MISSING_TOOL_CREATE_ISSUE: true
+2026-09-23T13:06:17.9981702Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T13:06:17.9986730Z   GH_AW_WORKFLOW_SOURCE_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/blob/main/.github/workflows/update-github-info.md
+2026-09-23T13:06:17.9989438Z ##[endgroup]
+2026-09-23T13:06:18.2702284Z Max count: unlimited

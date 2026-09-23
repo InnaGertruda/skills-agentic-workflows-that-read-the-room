@@ -1,0 +1,47 @@
+﻿2026-09-23T12:39:44.4249051Z ##[group]Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+2026-09-23T12:39:44.4249874Z with:
+2026-09-23T12:39:44.4250309Z   name: usage
+2026-09-23T12:39:44.4253058Z   path: /tmp/gh-aw/usage/aw_info.json
+/tmp/gh-aw/usage/aw-info.jsonl
+/tmp/gh-aw/usage/agent_usage.json
+/tmp/gh-aw/usage/agent_usage.jsonl
+/tmp/gh-aw/usage/detection_usage.jsonl
+/tmp/gh-aw/usage/evals.jsonl
+/tmp/gh-aw/usage/graders/grader_manifest.json
+/tmp/gh-aw/usage/graders/grader_results.json
+/tmp/gh-aw/usage/github_rate_limits.jsonl
+/tmp/gh-aw/usage/agent/token_usage.jsonl
+/tmp/gh-aw/usage/detection/token_usage.jsonl
+/tmp/gh-aw/usage/activity/summary.json
+
+2026-09-23T12:39:44.4256358Z   if-no-files-found: ignore
+2026-09-23T12:39:44.4256900Z   compression-level: 6
+2026-09-23T12:39:44.4257382Z   overwrite: false
+2026-09-23T12:39:44.4257862Z   include-hidden-files: false
+2026-09-23T12:39:44.4259143Z   archive: true
+2026-09-23T12:39:44.4259966Z env:
+2026-09-23T12:39:44.4260460Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:39:44.4261092Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:39:44.4262838Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:39:44.4264875Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:39:44.4265473Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:39:44.4266103Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:39:44.4266639Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:39:44.4267262Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:39:44.4267982Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: f314a8841215b52f
+2026-09-23T12:39:44.4268628Z   GITHUB_AW_OTEL_JOB_START_MS: 1790167181577
+2026-09-23T12:39:44.4269205Z ##[endgroup]
+2026-09-23T12:39:44.6054673Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-09-23T12:39:44.6090163Z The least common ancestor is /tmp/gh-aw/usage. This will be the root directory of the artifact
+2026-09-23T12:39:44.6093694Z With the provided path, there will be 4 files uploaded
+2026-09-23T12:39:44.6104034Z Artifact name is valid!
+2026-09-23T12:39:44.6108214Z Root directory input is valid!
+2026-09-23T12:39:44.9689052Z Uploading artifact: usage.zip
+2026-09-23T12:39:44.9755408Z Beginning upload of artifact content to blob storage
+2026-09-23T12:39:45.2610704Z Uploaded bytes 2243
+2026-09-23T12:39:45.3228356Z Finished uploading artifact content to blob storage!
+2026-09-23T12:39:45.3235260Z SHA256 digest of uploaded artifact is 300dda9c52eb0c8ccc1ef6879562867dabf2d222a6162df26cf912d865ba16cc
+2026-09-23T12:39:45.3239086Z Finalizing artifact upload
+2026-09-23T12:39:45.7110787Z Artifact usage successfully finalized. Artifact ID 10751030016
+2026-09-23T12:39:45.7112756Z Artifact usage has been successfully uploaded! Final size is 2243 bytes. Artifact ID is 10751030016
+2026-09-23T12:39:45.7117329Z Artifact download URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/actions/runs/35861368570/artifacts/10751030016

@@ -1,0 +1,19 @@
+﻿2026-09-23T13:05:09.9444305Z ##[group]Run bash "${RUNNER_TEMP}/gh-aw/actions/conclude_threat_detection.sh" /tmp/gh-aw/threat-detection/detection_result.json
+2026-09-23T13:05:09.9445206Z [36;1mbash "${RUNNER_TEMP}/gh-aw/actions/conclude_threat_detection.sh" /tmp/gh-aw/threat-detection/detection_result.json[0m
+2026-09-23T13:05:09.9481969Z shell: /usr/bin/bash -e {0}
+2026-09-23T13:05:09.9482367Z env:
+2026-09-23T13:05:09.9482659Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T13:05:09.9483065Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T13:05:09.9483938Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35864303415,github.run_id=35864303415,gh-aw.engine.id=copilot
+2026-09-23T13:05:09.9484997Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T13:05:09.9485356Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T13:05:09.9485929Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T13:05:09.9486333Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T13:05:09.9486808Z   GITHUB_AW_OTEL_TRACE_ID: cefb6d20583ec2cff5efe1a0e03589da
+2026-09-23T13:05:09.9487223Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 01328b9d54ed9922
+2026-09-23T13:05:09.9487641Z   GITHUB_AW_OTEL_JOB_START_MS: 1790168685492
+2026-09-23T13:05:09.9487986Z   RUN_DETECTION: false
+2026-09-23T13:05:09.9488363Z   DETECTION_AGENTIC_EXECUTION_OUTCOME: skipped
+2026-09-23T13:05:09.9488720Z   GH_AW_DETECTION_CONTINUE_ON_ERROR: true
+2026-09-23T13:05:09.9489087Z ##[endgroup]
+2026-09-23T13:05:09.9580221Z ##[warning]threat-detect binary not found on PATH; continuing because GH_AW_DETECTION_CONTINUE_ON_ERROR != false

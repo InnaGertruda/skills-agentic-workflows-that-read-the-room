@@ -1,0 +1,44 @@
+﻿2026-09-23T12:35:29.8568641Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T12:35:29.8570172Z with:
+2026-09-23T12:35:29.8574648Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_workflow_timestamp_api.cjs'));
+await main();
+
+2026-09-23T12:35:29.8585897Z   github-token: ***
+2026-09-23T12:35:29.8586794Z   debug: false
+2026-09-23T12:35:29.8587762Z   user-agent: actions/github-script
+2026-09-23T12:35:29.8588830Z   result-encoding: json
+2026-09-23T12:35:29.8589734Z   retries: 0
+2026-09-23T12:35:29.8590667Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T12:35:29.8591804Z env:
+2026-09-23T12:35:29.8592676Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:35:29.8593787Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:35:29.8597130Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:35:29.8600315Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:35:29.8601398Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:35:29.8602577Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:35:29.8603591Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-09-23T12:35:29.8604618Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:35:29.8605891Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:35:29.8607232Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5e5a65a0467a2627
+2026-09-23T12:35:29.8608445Z   GITHUB_AW_OTEL_JOB_START_MS: 1790166926997
+2026-09-23T12:35:29.8609654Z   GH_AW_WORKFLOW_FILE: update-github-info.lock.yml
+2026-09-23T12:35:29.8612058Z   GH_AW_CONTEXT_WORKFLOW_REF: InnaGertruda/skills-agentic-workflows-that-read-the-room/.github/workflows/update-github-info.lock.yml@refs/heads/main
+2026-09-23T12:35:29.8614362Z ##[endgroup]
+2026-09-23T12:35:29.9977470Z Checking for stale lock file using frontmatter hash:
+2026-09-23T12:35:29.9982350Z   Source: .github/workflows/update-github-info.md
+2026-09-23T12:35:29.9984623Z   Lock file: .github/workflows/update-github-info.lock.yml
+2026-09-23T12:35:29.9988501Z Env workflow ref already identifies this workflow, skipping referenced_workflows API lookup
+2026-09-23T12:35:29.9992095Z GITHUB_WORKFLOW_REF: InnaGertruda/skills-agentic-workflows-that-read-the-room/.github/workflows/update-github-info.lock.yml@refs/heads/main
+2026-09-23T12:35:29.9997275Z GH_AW_CONTEXT_WORKFLOW_REF: InnaGertruda/skills-agentic-workflows-that-read-the-room/.github/workflows/update-github-info.lock.yml@refs/heads/main (available as env fallback)
+2026-09-23T12:35:30.0001269Z GITHUB_REPOSITORY: InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:30.0004221Z Resolved source repo: InnaGertruda/skills-agentic-workflows-that-read-the-room @ refs/heads/main
+2026-09-23T12:35:30.0007710Z Same-repo invocation: checking out InnaGertruda/skills-agentic-workflows-that-read-the-room @ refs/heads/main
+2026-09-23T12:35:30.6078511Z Frontmatter hash comparison:
+2026-09-23T12:35:30.6082907Z   Lock file hash:    f93c2d5ab430d44e305f01db4a83d6551345e59d79c0eee8a2c0fe2598eee406
+2026-09-23T12:35:30.6086721Z   Recomputed hash:   f93c2d5ab430d44e305f01db4a83d6551345e59d79c0eee8a2c0fe2598eee406
+2026-09-23T12:35:30.6089319Z   Status: ✅ Hashes match
+2026-09-23T12:35:30.6091343Z ✅ Lock file is up to date (hashes match)

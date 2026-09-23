@@ -1,0 +1,137 @@
+﻿2026-09-23T12:35:44.8234153Z ##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+2026-09-23T12:35:44.8234602Z with:
+2026-09-23T12:35:44.8234826Z   persist-credentials: false
+2026-09-23T12:35:44.8235216Z   repository: InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:44.8237997Z   token: ***
+2026-09-23T12:35:44.8238211Z   ssh-strict: true
+2026-09-23T12:35:44.8238426Z   ssh-user: git
+2026-09-23T12:35:44.8238632Z   clean: true
+2026-09-23T12:35:44.8238871Z   sparse-checkout-cone-mode: true
+2026-09-23T12:35:44.8239135Z   fetch-depth: 1
+2026-09-23T12:35:44.8239348Z   fetch-tags: false
+2026-09-23T12:35:44.8239571Z   show-progress: true
+2026-09-23T12:35:44.8239786Z   lfs: false
+2026-09-23T12:35:44.8239985Z   submodules: false
+2026-09-23T12:35:44.8240206Z   set-safe-directory: true
+2026-09-23T12:35:44.8240464Z   allow-unsafe-pr-checkout: false
+2026-09-23T12:35:44.8240723Z env:
+2026-09-23T12:35:44.8240932Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:35:44.8241217Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:35:44.8242519Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:35:44.8243480Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:35:44.8243761Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:35:44.8244066Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:35:44.8244319Z   DEFAULT_BRANCH: main
+2026-09-23T12:35:44.8244550Z   GH_AW_ASSETS_ALLOWED_EXTS: 
+2026-09-23T12:35:44.8244790Z   GH_AW_ASSETS_BRANCH: 
+2026-09-23T12:35:44.8245014Z   GH_AW_ASSETS_MAX_SIZE_KB: 0
+2026-09-23T12:35:44.8245294Z   GH_AW_MCP_LOG_DIR: /tmp/gh-aw/mcp-logs/safeoutputs
+2026-09-23T12:35:44.8245603Z   GH_AW_PR_HEAD_BASE_BRANCH: 
+2026-09-23T12:35:44.8245847Z   GH_AW_PR_HEAD_BASE_PR_NUMBER: 
+2026-09-23T12:35:44.8246101Z   GH_AW_PR_HEAD_BASE_REF: 
+2026-09-23T12:35:44.8246336Z   GH_AW_PR_HEAD_BASE_REPO: 
+2026-09-23T12:35:44.8246571Z   GH_AW_PR_HEAD_BASE_SHA: 
+2026-09-23T12:35:44.8246802Z   GH_AW_PR_HEAD_REPO: 
+2026-09-23T12:35:44.8247020Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:35:44.8247278Z   GH_AW_WORKFLOW_ID_SANITIZED: updategithubinfo
+2026-09-23T12:35:44.8247646Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:35:44.8248010Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5c6d187e32cf3618
+2026-09-23T12:35:44.8248329Z   GITHUB_AW_OTEL_JOB_START_MS: 1790166944750
+2026-09-23T12:35:44.8248610Z ##[endgroup]
+2026-09-23T12:35:44.9240136Z Syncing repository: InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:44.9242812Z ##[group]Getting Git version info
+2026-09-23T12:35:44.9244016Z Working directory is '/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room'
+2026-09-23T12:35:44.9245479Z [command]/usr/bin/git version
+2026-09-23T12:35:44.9323646Z git version 2.55.0
+2026-09-23T12:35:44.9348135Z ##[endgroup]
+2026-09-23T12:35:44.9364582Z Temporarily overriding HOME='/home/runner/work/_temp/1138c6b7-adee-442f-afe4-b883e5e94184' before making global git config changes
+2026-09-23T12:35:44.9366631Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-23T12:35:44.9368854Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:44.9430013Z Deleting the contents of '/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room'
+2026-09-23T12:35:44.9432913Z ##[group]Determining repository object format
+2026-09-23T12:35:44.9434781Z ##[endgroup]
+2026-09-23T12:35:44.9435385Z ##[group]Initializing the repository
+2026-09-23T12:35:44.9440735Z [command]/usr/bin/git init /home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:44.9561176Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-23T12:35:44.9563206Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-23T12:35:44.9564217Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-23T12:35:44.9573446Z hint: call:
+2026-09-23T12:35:44.9573921Z hint:
+2026-09-23T12:35:44.9574495Z hint: 	git config --global init.defaultBranch <name>
+2026-09-23T12:35:44.9575135Z hint:
+2026-09-23T12:35:44.9575912Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-23T12:35:44.9577012Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-23T12:35:44.9577986Z hint:
+2026-09-23T12:35:44.9578738Z hint: 	git branch -m <name>
+2026-09-23T12:35:44.9579502Z hint:
+2026-09-23T12:35:44.9580260Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-23T12:35:44.9581829Z Initialized empty Git repository in /home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room/.git/
+2026-09-23T12:35:44.9584620Z [command]/usr/bin/git remote add origin https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:44.9641127Z ##[endgroup]
+2026-09-23T12:35:44.9641880Z ##[group]Disabling automatic garbage collection
+2026-09-23T12:35:44.9646770Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-23T12:35:44.9692940Z ##[endgroup]
+2026-09-23T12:35:44.9693667Z ##[group]Setting up auth
+2026-09-23T12:35:44.9694238Z Removing SSH command configuration
+2026-09-23T12:35:44.9694856Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-23T12:35:44.9733055Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-23T12:35:45.0135400Z Removing HTTP extra header
+2026-09-23T12:35:45.0141026Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-23T12:35:45.0179681Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-23T12:35:45.0413248Z Removing includeIf entries pointing to credentials config files
+2026-09-23T12:35:45.0414775Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-23T12:35:45.0454284Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-23T12:35:45.0694017Z [command]/usr/bin/git config --file /home/runner/work/_temp/git-credentials-7accb53b-f2c0-47dc-a912-bb311665bb2e.config http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-23T12:35:45.0738847Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room/.git.path /home/runner/work/_temp/git-credentials-7accb53b-f2c0-47dc-a912-bb311665bb2e.config
+2026-09-23T12:35:45.0775657Z [command]/usr/bin/git config --local includeIf.gitdir:/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room/.git/worktrees/*.path /home/runner/work/_temp/git-credentials-7accb53b-f2c0-47dc-a912-bb311665bb2e.config
+2026-09-23T12:35:45.0814972Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git.path /github/runner_temp/git-credentials-7accb53b-f2c0-47dc-a912-bb311665bb2e.config
+2026-09-23T12:35:45.0854363Z [command]/usr/bin/git config --local includeIf.gitdir:/github/workspace/.git/worktrees/*.path /github/runner_temp/git-credentials-7accb53b-f2c0-47dc-a912-bb311665bb2e.config
+2026-09-23T12:35:45.0886597Z ##[endgroup]
+2026-09-23T12:35:45.0887073Z ##[group]Fetching the repository
+2026-09-23T12:35:45.0894204Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9ddf4c53558c369304172478f3bbcd6c39488f07:refs/remotes/origin/main
+2026-09-23T12:35:46.1241679Z From https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room
+2026-09-23T12:35:46.1243001Z  * [new ref]         9ddf4c53558c369304172478f3bbcd6c39488f07 -> origin/main
+2026-09-23T12:35:46.1251172Z [command]/usr/bin/git branch --list --remote origin/main
+2026-09-23T12:35:46.1282559Z   origin/main
+2026-09-23T12:35:46.1291197Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-09-23T12:35:46.1319633Z 9ddf4c53558c369304172478f3bbcd6c39488f07
+2026-09-23T12:35:46.1324370Z ##[endgroup]
+2026-09-23T12:35:46.1324781Z ##[group]Determining the checkout info
+2026-09-23T12:35:46.1325848Z ##[endgroup]
+2026-09-23T12:35:46.1331039Z [command]/usr/bin/git sparse-checkout disable
+2026-09-23T12:35:46.1388824Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-23T12:35:46.1424473Z ##[group]Checking out the ref
+2026-09-23T12:35:46.1430611Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-09-23T12:35:46.1639728Z Switched to a new branch 'main'
+2026-09-23T12:35:46.1646213Z branch 'main' set up to track 'origin/main'.
+2026-09-23T12:35:46.1653362Z ##[endgroup]
+2026-09-23T12:35:46.1753335Z [command]/usr/bin/git log -1 --format=%H
+2026-09-23T12:35:46.1785025Z 9ddf4c53558c369304172478f3bbcd6c39488f07
+2026-09-23T12:35:46.1794319Z ##[group]Removing auth
+2026-09-23T12:35:46.1795011Z Removing SSH command configuration
+2026-09-23T12:35:46.1800064Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-23T12:35:46.1840316Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-23T12:35:46.2074669Z Removing HTTP extra header
+2026-09-23T12:35:46.2078897Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-23T12:35:46.2116521Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-23T12:35:46.2348855Z Removing includeIf entries pointing to credentials config files
+2026-09-23T12:35:46.2353289Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-23T12:35:46.2391316Z includeif.gitdir:/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room/.git.path
+2026-09-23T12:35:46.2392954Z includeif.gitdir:/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room/.git/worktrees/*.path
+2026-09-23T12:35:46.2394229Z includeif.gitdir:/github/workspace/.git.path
+2026-09-23T12:35:46.2394653Z includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-09-23T12:35:46.2400584Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room/.git.path
+2026-09-23T12:35:46.2435388Z /home/runner/work/_temp/git-credentials-7accb53b-f2c0-47dc-a912-bb311665bb2e.config
+2026-09-23T12:35:46.2445644Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room/.git.path \/home\/runner\/work\/_temp\/git\-credentials\-7accb53b\-f2c0\-47dc\-a912\-bb311665bb2e\.config
+2026-09-23T12:35:46.2484247Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room/.git/worktrees/*.path
+2026-09-23T12:35:46.2511819Z /home/runner/work/_temp/git-credentials-7accb53b-f2c0-47dc-a912-bb311665bb2e.config
+2026-09-23T12:35:46.2521359Z [command]/usr/bin/git config --local --unset includeif.gitdir:/home/runner/work/skills-agentic-workflows-that-read-the-room/skills-agentic-workflows-that-read-the-room/.git/worktrees/*.path \/home\/runner\/work\/_temp\/git\-credentials\-7accb53b\-f2c0\-47dc\-a912\-bb311665bb2e\.config
+2026-09-23T12:35:46.2558784Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git.path
+2026-09-23T12:35:46.2603926Z /github/runner_temp/git-credentials-7accb53b-f2c0-47dc-a912-bb311665bb2e.config
+2026-09-23T12:35:46.2606620Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git.path \/github\/runner_temp\/git\-credentials\-7accb53b\-f2c0\-47dc\-a912\-bb311665bb2e\.config
+2026-09-23T12:35:46.2680851Z [command]/usr/bin/git config --local --get-all includeif.gitdir:/github/workspace/.git/worktrees/*.path
+2026-09-23T12:35:46.2709582Z /github/runner_temp/git-credentials-7accb53b-f2c0-47dc-a912-bb311665bb2e.config
+2026-09-23T12:35:46.2718399Z [command]/usr/bin/git config --local --unset includeif.gitdir:/github/workspace/.git/worktrees/*.path \/github\/runner_temp\/git\-credentials\-7accb53b\-f2c0\-47dc\-a912\-bb311665bb2e\.config
+2026-09-23T12:35:46.2758225Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-23T12:35:46.2987388Z Removing credentials config '/home/runner/work/_temp/git-credentials-7accb53b-f2c0-47dc-a912-bb311665bb2e.config'
+2026-09-23T12:35:46.2996413Z ##[endgroup]

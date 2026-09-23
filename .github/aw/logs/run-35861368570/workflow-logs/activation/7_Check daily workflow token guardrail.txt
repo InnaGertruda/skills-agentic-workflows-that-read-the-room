@@ -1,0 +1,36 @@
+﻿2026-09-23T12:35:28.1436169Z ##[group]Run actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3
+2026-09-23T12:35:28.1437753Z with:
+2026-09-23T12:35:28.1445974Z   github-token: ***
+2026-09-23T12:35:28.1450150Z   script: const path = require('path');
+const actionsDir = path.join(process.env.RUNNER_TEMP, 'gh-aw', 'actions');
+const { setupGlobals } = require(path.join(actionsDir, 'setup_globals.cjs'));
+setupGlobals(core, github, context, exec, io, getOctokit);
+const { main } = require(path.join(actionsDir, 'check_daily_aic_workflow_guardrail.cjs'));
+await main();
+
+2026-09-23T12:35:28.1454491Z   debug: false
+2026-09-23T12:35:28.1455418Z   user-agent: actions/github-script
+2026-09-23T12:35:28.1456704Z   result-encoding: json
+2026-09-23T12:35:28.1457640Z   retries: 0
+2026-09-23T12:35:28.1458610Z   retry-exempt-status-codes: 400,401,403,404,422
+2026-09-23T12:35:28.1459774Z env:
+2026-09-23T12:35:28.1460634Z   OTEL_EXPORTER_OTLP_ENDPOINT: 
+2026-09-23T12:35:28.1461749Z   OTEL_SERVICE_NAME: gh-aw.update-github-info
+2026-09-23T12:35:28.1465029Z   OTEL_RESOURCE_ATTRIBUTES: gh-aw.workflow.name=update-github-info,gh-aw.repository=InnaGertruda/skills-agentic-workflows-that-read-the-room,gh-aw.run.id=35861368570,github.run_id=35861368570,gh-aw.engine.id=copilot
+2026-09-23T12:35:28.1468433Z   OTEL_EXPORTER_OTLP_HEADERS: 
+2026-09-23T12:35:28.1469612Z   GH_AW_OTLP_ENDPOINTS: [{"url":"","headers":""}]
+2026-09-23T12:35:28.1470806Z   GH_AW_OTLP_IF_MISSING: ignore
+2026-09-23T12:35:28.1471857Z   GH_AW_MAX_DAILY_AI_CREDITS: 5000
+2026-09-23T12:35:28.1472915Z   GH_AW_RUNTIME_FEATURES: 
+2026-09-23T12:35:28.1474067Z   GITHUB_AW_OTEL_TRACE_ID: 4e23b47abbd8fef42f9033b59438c291
+2026-09-23T12:35:28.1475446Z   GITHUB_AW_OTEL_PARENT_SPAN_ID: 5e5a65a0467a2627
+2026-09-23T12:35:28.1476855Z   GITHUB_AW_OTEL_JOB_START_MS: 1790166926997
+2026-09-23T12:35:28.1478052Z   GH_AW_WORKFLOW_NAME: update-github-info
+2026-09-23T12:35:28.1479204Z   GH_AW_WORKFLOW_ID: update-github-info
+2026-09-23T12:35:28.1481179Z   GH_AW_RUN_URL: https://github.com/InnaGertruda/skills-agentic-workflows-that-read-the-room/actions/runs/35861368570
+2026-09-23T12:35:28.1483220Z   GH_AW_WORKFLOW_DISPATCH_AW_CONTEXT: 
+2026-09-23T12:35:28.1484347Z   GH_AW_HAS_SLASH_COMMAND: false
+2026-09-23T12:35:28.1485412Z   GH_AW_HAS_LABEL_COMMAND: false
+2026-09-23T12:35:28.1493158Z   GH_AW_GITHUB_TOKEN: ***
+2026-09-23T12:35:28.1494130Z ##[endgroup]
+2026-09-23T12:35:28.2916234Z Skipping daily workflow AI Credits guardrail for manual or command-driven runs.
