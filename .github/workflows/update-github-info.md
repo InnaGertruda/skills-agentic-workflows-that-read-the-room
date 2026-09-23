@@ -6,7 +6,7 @@ on:
 permissions:
   contents: read
 engine: copilot
-model: gpt-4.1
+model: gpt-5-mini
 tools:
   edit:
   web-fetch:
