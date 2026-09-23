@@ -37,7 +37,7 @@ Keep the repository's GitHub information current and propose the changes in a pu
 4. Use `web-fetch` to read `https://awesome-copilot.github.com/workflows/`.
 5. Use the GitHub repository API tools to read any repository guidance or reference files needed to understand the format and scope of `site/content/github-info.md`. Do not use terminal, CLI, or sandboxed commands for this repository guidance.
 
-For the three external sources above, call `web-fetch` directly and inspect its returned content. Do not use shell, `curl`, temporary files, or any other tool as a substitute for `web-fetch`.
+Your first three research actions must be direct `web-fetch` calls for the three URLs above. Do not call shell at any point for this task, and do not use `curl`, temporary files, or any other tool as a substitute for `web-fetch`. If `web-fetch` is unavailable or denied, stop researching and use the `noop` safe output; do not attempt a shell fallback.
 
 ## Update and review
 
